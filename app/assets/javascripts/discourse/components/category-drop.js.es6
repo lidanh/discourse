@@ -13,9 +13,9 @@ export default Ember.Component.extend({
 
   allCategoriesUrl: function() {
     if (this.get('subCategory')) {
-      return this.get('parentCategory.url') || "/";
+      return this.get('parentCategory.url') || "/categories";
     } else {
-      return "/";
+      return "/categories";
     }
   }.property('parentCategory.url', 'subCategory'),
 
