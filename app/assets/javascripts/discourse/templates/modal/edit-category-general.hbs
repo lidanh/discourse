@@ -4,14 +4,14 @@
       <label>{{i18n 'category.name'}}</label>
       {{text-field value=model.name placeholderKey="category.name_placeholder" maxlength="50"}}
     </section>
-    <section class="field-item">
+    <section class="field-item" style="display: none;">
       <label>{{i18n 'category.slug'}}</label>
       {{text-field value=model.slug placeholderKey="category.slug_placeholder" maxlength="255"}}
     </section>
   </section>
 
   {{#if canSelectParentCategory}}
-    <section class='field'>
+    <section class='field' style="display: none;">
       {{#if subCategories}}
         <label>{{i18n 'categories.subcategories'}}</label>
         {{#each s in subCategories}}
