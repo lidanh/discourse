@@ -294,23 +294,6 @@ var PostMenuView = Discourse.View.extend(StringBuffer, {
     this.get('controller').send('replyToPost', post);
   },
 
-  // Bookmark button
-  buttonForBookmark: function(post) {
-    if (!Discourse.User.current()) return;
-
-    var iconClass = 'read-icon',
-        buttonClass = 'bookmark',
-        tooltip = 'bookmarks.not_bookmarked';
-
-    if (post.get('bookmarked')) {
-      iconClass += ' bookmarked';
-      buttonClass += ' bookmarked';
-      tooltip = 'bookmarks.created';
-    }
-
-    return new Button('bookmark', tooltip, {className: buttonClass, innerHTML: "<div class='" + iconClass + "'>"});
-  },
-
   clickBookmark: function(post) {
     this.get('controller').send('toggleBookmark', post);
   },

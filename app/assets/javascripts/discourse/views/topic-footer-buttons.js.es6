@@ -1,9 +1,7 @@
 import TopicAdminMenuButton from 'discourse/views/topic-admin-menu-button';
 import LoginReplyButton from 'discourse/views/login-reply-button';
 import FlagTopicButton from 'discourse/views/flag-topic-button';
-import BookmarkButton from 'discourse/views/bookmark-button';
 import ShareButton from 'discourse/views/share-button';
-import InviteReplyButton from 'discourse/views/invite-reply-button';
 import ReplyButton from 'discourse/views/reply-button';
 import PinnedButton from 'discourse/components/pinned-button';
 import TopicNotificationsButton from 'discourse/components/topic-notifications-button';
@@ -27,11 +25,6 @@ export default DiscourseContainerView.extend({
         this.attachViewClass(TopicAdminMenuButton);
       }
       if (!topic.get('isPrivateMessage')) {
-        // We hide some controls from private messages
-        if (this.get('topic.details.can_invite_to')) {
-          this.attachViewClass(InviteReplyButton);
-        }
-        this.attachViewClass(BookmarkButton);
         this.attachViewClass(ShareButton);
         if (this.get('topic.details.can_flag_topic')) {
           this.attachViewClass(FlagTopicButton);
