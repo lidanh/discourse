@@ -54,9 +54,6 @@
               {{#if model.can_edit}}
                 <li>{{#link-to 'preferences' class="btn right"}}{{fa-icon "cog"}}{{i18n 'user.preferences'}}{{/link-to}}</li>
               {{/if}}
-              {{#if canInviteToForum}}
-                <li>{{#link-to 'user.invited' class="btn right"}}{{fa-icon "user-plus"}}{{i18n 'user.invited.title'}}{{/link-to}}</li>
-              {{/if}}
             </ul>
           </section>
 
@@ -175,36 +172,6 @@
           {{/link-to}}
         {{/if}}
       </ul>
-
-      {{#if canSeePrivateMessages}}
-        <h3>{{fa-icon "envelope"}} {{i18n 'user.private_messages'}}</h3>
-        <ul class='action-list nav-stacked'>
-          <li {{bind-attr class=":noGlyph privateMessagesActive:active"}}>
-            {{#link-to 'userPrivateMessages.index' model}}
-              {{i18n 'user.messages.all'}}
-              {{#if model.hasPMs}}<span class='count'>({{model.private_messages_stats.all}})</span>{{/if}}
-            {{/link-to}}
-          </li>
-          <li {{bind-attr class=":noGlyph privateMessagesMineActive:active"}}>
-            {{#link-to 'userPrivateMessages.mine' model}}
-              {{i18n 'user.messages.mine'}}
-              {{#if model.hasStartedPMs}}<span class='count'>({{model.private_messages_stats.mine}})</span>{{/if}}
-            {{/link-to}}
-          </li>
-          <li {{bind-attr class=":noGlyph privateMessagesUnreadActive:active"}}>
-            {{#link-to 'userPrivateMessages.unread' model}}
-              {{i18n 'user.messages.unread'}}
-              {{#if model.hasUnreadPMs}}<span class='badge-notification unread-private-messages'>{{model.private_messages_stats.unread}}</span>{{/if}}
-            {{/link-to}}
-          </li>
-        </ul>
-      {{/if}}
-
-      {{#if viewingSelf}}
-        <div class='user-archive'>
-          {{d-button action="exportUserArchive" label="user.download_archive" icon="download"}}
-        </div>
-      {{/if}}
     </section>
 
     <section class='user-right'>

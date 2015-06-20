@@ -43,12 +43,6 @@
 
     {{plugin-outlet "site-map-links"}}
 
-    {{#if showKeyboardShortcuts}}
-      <li><a href {{action "keyboardShortcuts"}} class="keyboard-shortcuts-link">{{i18n 'keyboard_shortcuts_help.title'}}</a></li>
-    {{/if}}
-    <li>
-      <a href="{{unbound faqUrl}}" class="faq-link">{{i18n 'faq'}}</a>
-    </li>
     <li>
       {{#link-to 'about'}}{{i18n 'about.simple_title'}}{{/link-to}}
     </li>
@@ -65,7 +59,7 @@
 
       {{#each c in categories itemController='site-map-category'}}
         <li class="category">
-          {{category-link c.model allowUncategorized="true"}}
+          {{category-link c.model allowUncategorized="false"}}
 
           {{#if c.unreadTotal}}
             <a href={{unbound c.model.url}} class='badge badge-notification'>{{c.unreadTotal}}</a>
