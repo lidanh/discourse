@@ -1,5 +1,5 @@
 # encoding: utf-8
-# This file contains content for the client portion of Discourse, sent out
+# This file contains content for the client portion of Game of Forums, sent out
 # to the Javascript app.
 #
 # To work with us on translations, see:
@@ -115,7 +115,7 @@ en:
 
     emails_are_disabled: "All outgoing email has been globally disabled by an administrator. No email notifications of any kind will be sent."
 
-    edit: 'edit the title and category of this topic'
+    edit: 'edit the title and subforum of this topic'
     not_implemented: "That feature hasn't been implemented yet, sorry!"
     no_value: "No"
     yes_value: "Yes"
@@ -127,7 +127,7 @@ en:
     last_post: "Last Post"
     joined: "Joined"
     admin_title: "Admin"
-    flags_title: "Flags"
+    flags_title: "Reports"
     show_more: "show more"
     show_help: "help"
     links: "Links"
@@ -330,16 +330,16 @@ en:
       "14": "Pending"
 
     categories:
-      all: "all categories"
+      all: "all subforums"
       all_subcategories: "all"
       no_subcategory: "none"
-      category: "Category"
+      category: "Subforum"
       posts: "Posts"
       topics: "Topics"
       latest: "Latest"
       latest_by: "latest by"
       toggle_ordering: "toggle ordering control"
-      subcategories: "Subcategories"
+      subcategories: "subforums"
       topic_stats: "The number of new topics."
       topic_stat_sentence:
         one: "%{count} new topic in the past %{unit}."
@@ -396,13 +396,13 @@ en:
       suspended_notice: "This user is suspended until {{date}}."
       suspended_reason: "Reason: "
       github_profile: "Github"
-      mailing_list_mode: "Send me an email for every new post (unless I mute the topic or category)"
+      mailing_list_mode: "Send me an email for every new post (unless I mute the topic or subforum)"
       watched_categories: "Watched"
-      watched_categories_instructions: "You will automatically watch all new topics in these categories. You will be notified of all new posts and topics, and a count of new posts will also appear next to the topic."
+      watched_categories_instructions: "You will automatically watch all new topics in these subforums. You will be notified of all new posts and topics, and a count of new posts will also appear next to the topic."
       tracked_categories: "Tracked"
-      tracked_categories_instructions: "You will automatically track all new topics in these categories. A count of new posts will appear next to the topic."
+      tracked_categories_instructions: "You will automatically track all new topics in these subforums. A count of new posts will appear next to the topic."
       muted_categories: "Muted"
-      muted_categories_instructions: "You will not be notified of anything about new topics in these categories, and they will not appear on your unread tab."
+      muted_categories_instructions: "You will not be notified of anything about new topics in these forums, and they will not appear on your unread tab."
       delete_account: "Delete My Account"
       delete_account_confirm: "Are you sure you want to permanently delete your account? This action cannot be undone!"
       deleted_yourself: "Your account has been deleted successfully."
@@ -414,8 +414,8 @@ en:
       muted_users_instructions: "Suppress all notifications from these users."
 
       staff_counters:
-        flags_given: "helpful flags"
-        flagged_posts: "flagged posts"
+        flags_given: "helpful reports"
+        flagged_posts: "reported posts"
         deleted_posts: "deleted posts"
         suspensions: "suspensions"
         warnings_received: "warnings"
@@ -532,7 +532,7 @@ en:
       email_always: "Do not suppress email notifications when I am active on the site"
 
       other_settings: "Other"
-      categories_settings: "Categories"
+      categories_settings: "Subforums"
 
       new_topic_duration:
         label: "Consider topics new when"
@@ -714,7 +714,7 @@ en:
       authenticating: "Authenticating..."
       awaiting_confirmation: "Your account is awaiting activation, use the forgot password link to issue another activation email."
       awaiting_approval: "Your account has not been approved by a staff member yet. You will be sent an email when it is approved."
-      requires_invite: "Sorry, access to this forum is by invite only."
+      requires_invite: "Sorry, access to this subforum is by invite only."
       not_activated: "You can't log in yet. We previously sent an activation email to you at <b>{{sentTo}}</b>. Please follow the instructions in that email to activate your account."
       not_allowed_from_ip_address: "You can't login from that IP address."
       admin_not_allowed_from_ip_address: "You can't log in as admin from that IP address."
@@ -762,7 +762,7 @@ en:
         post_missing: "Post can't be empty"
         post_length: "Post must be at least {{min}} characters"
         try_like: 'Have you tried the <i class="fa fa-heart"></i> button?'
-        category_missing: "You must choose a category"
+        category_missing: "You must choose a subforum"
 
       save_edit: "Save Edit"
       reply_original: "Reply on Original Topic"
@@ -828,7 +828,7 @@ en:
       title: "notifications of @name mentions, replies to your posts and topics, messages, etc"
       none: "Unable to load notifications at this time."
       more: "view older notifications"
-      total_flagged: "total flagged posts"
+      total_flagged: "total reported posts"
       mentioned: "<i title='mentioned' class='fa fa-at'></i><p><span>{{username}}</span> {{description}}</p>"
       quoted: "<i title='quoted' class='fa fa-quote-right'></i><p><span>{{username}}</span> {{description}}</p>"
       replied: "<i title='replied' class='fa fa-reply'></i><p><span>{{username}}</span> {{description}}</p>"
@@ -866,18 +866,18 @@ en:
       image_link: "link your image will point to"
 
     search:
-      title: "search topics, posts, users, or categories"
+      title: "search topics, posts, users, or subforums"
       no_results: "No results found."
       searching: "Searching ..."
       post_format: "#{{post_number}} by {{username}}"
 
       context:
         user: "Search posts by @{{username}}"
-        category: "Search the \"{{category}}\" category"
+        category: "Search the \"{{category}}\" subforum"
         topic: "Search this topic"
         private_messages: "Search messages"
 
-    site_map: "go to another topic list or category"
+    site_map: "go to another topic list or subforum"
     go_back: 'go back'
     not_logged_in_user: 'user page with summary of current activity and preferences'
     current_user: 'go to your user page'
@@ -893,11 +893,11 @@ en:
         dismiss_new: "Dismiss New"
         toggle: "toggle bulk selection of topics"
         actions: "Bulk Actions"
-        change_category: "Change Category"
+        change_category: "Change Subforum"
         close_topics: "Close Topics"
         archive_topics: "Archive Topics"
         notification_level: "Change Notification Level"
-        choose_new_category: "Choose the new category for the topics:"
+        choose_new_category: "Choose the new subforum for the topics:"
         selected:
           one: "You have selected <b>1</b> topic."
           other: "You have selected <b>{{count}}</b> topics."
@@ -989,7 +989,7 @@ en:
             other { {BOTH, select, true{and } false {are } other{}} <a href='/new'># new</a> topics}
         } remaining, or {CATEGORY, select, true {browse other topics in {catLink}} false {{latestLink}} other {}}"
 
-      browse_all_categories: Browse all categories
+      browse_all_categories: Browse all subforums
 
       view_latest_topics: view latest topics
       suggest_create_topic: Why not create a topic?
@@ -1016,18 +1016,18 @@ en:
 
       notifications:
         reasons:
-          "3_6": 'You will receive notifications because you are watching this category.'
+          "3_6": 'You will receive notifications because you are watching this subforum.'
           "3_5": 'You will receive notifications because you started watching this topic automatically.'
           "3_2": 'You will receive notifications because you are watching this topic.'
           "3_1": 'You will receive notifications because you created this topic.'
           "3": 'You will receive notifications because you are watching this topic.'
-          "2_8": 'You will receive notifications because you are tracking this category.'
+          "2_8": 'You will receive notifications because you are tracking this subforum.'
           "2_4": 'You will receive notifications because you posted a reply to this topic.'
           "2_2": 'You will receive notifications because you are tracking this topic.'
           "2": 'You will receive notifications because you <a href="/users/{{username}}/preferences">read this topic</a>.'
           "1_2": 'You will be notified if someone mentions your @name or replies to you.'
           "1": 'You will be notified if someone mentions your @name or replies to you.'
-          "0_7": 'You are ignoring all notifications in this category.'
+          "0_7": 'You are ignoring all notifications in this subforum.'
           "0_2": 'You are ignoring all notifications on this topic.'
           "0": 'You are ignoring all notifications on this topic.'
         watching_pm:
@@ -1090,15 +1090,15 @@ en:
         help: 'share a link to this topic'
 
       flag_topic:
-        title: 'Flag'
-        help: 'privately flag this topic for attention or send a private notification about it'
-        success_message: 'You successfully flagged this topic.'
+        title: 'Report'
+        help: 'privately report this topic for attention or send a private notification about it'
+        success_message: 'You successfully reported this topic.'
 
       feature_topic:
         title: "Feature this topic"
-        pin: "Make this topic appear at the top of the {{categoryLink}} category."
-        confirm_pin: "You already have {{count}} pinned topics. Too many pinned topics may be a burden for new and anonymous users. Are you sure you want to pin another topic in this category?"
-        unpin: "Remove this topic from the top of the {{categoryLink}} category."
+        pin: "Make this topic appear at the top of the {{categoryLink}} subforum."
+        confirm_pin: "You already have {{count}} pinned topics. Too many pinned topics may be a burden for new and anonymous users. Are you sure you want to pin another topic in this subforum?"
+        unpin: "Remove this topic from the top of the {{categoryLink}} subforum."
         pin_note: "Users can unpin the topic individually for themselves."
         already_pinned:
           zero: "There are no topics pinned in {{categoryLink}}."
@@ -1211,8 +1211,8 @@ en:
       show_full: "Show Full Post"
       show_hidden: 'View hidden content.'
       deleted_by_author:
-        one: "(post withdrawn by author, will be automatically deleted in %{count} hour unless flagged)"
-        other: "(post withdrawn by author, will be automatically deleted in %{count} hours unless flagged)"
+        one: "(post withdrawn by author, will be automatically deleted in %{count} hour unless reported)"
+        other: "(post withdrawn by author, will be automatically deleted in %{count} hours unless reported)"
       expand_collapse: "expand/collapse"
       gap:
         one: "view 1 hidden reply"
@@ -1257,7 +1257,7 @@ en:
         undo_like: "undo like"
         edit: "edit this post"
         edit_anonymous: "Sorry, but you need to be logged in to edit this post."
-        flag: "privately flag this post for attention or send a private notification about it"
+        flag: "privately report this post for attention or send a private notification about it"
         delete: "delete this post"
         undelete: "undelete this post"
         share: "share a link to this post"
@@ -1277,30 +1277,30 @@ en:
         unhide: "Unhide"
 
       actions:
-        flag: 'Flag'
+        flag: 'Report'
         defer_flags:
-          one: "Defer flag"
-          other: "Defer flags"
+          one: "Defer report"
+          other: "Defer reports"
         it_too:
-          off_topic: "Flag it too"
-          spam: "Flag it too"
-          inappropriate: "Flag it too"
-          custom_flag: "Flag it too"
+          off_topic: "Report it too"
+          spam: "Report it too"
+          inappropriate: "Report it too"
+          custom_flag: "Report it too"
           bookmark: "Bookmark it too"
           like: "Like it too"
           vote: "Vote for it too"
         undo:
-          off_topic: "Undo flag"
-          spam: "Undo flag"
-          inappropriate: "Undo flag"
+          off_topic: "Undo report"
+          spam: "Undo report"
+          inappropriate: "Undo report"
           bookmark: "Undo bookmark"
           like: "Undo like"
           vote: "Undo vote"
         people:
-          off_topic: "{{icons}} flagged this as off-topic"
-          spam: "{{icons}} flagged this as spam"
-          spam_with_url: "{{icons}} flagged <a href='{{postUrl}}'>this as spam</a>"
-          inappropriate: "{{icons}} flagged this as inappropriate"
+          off_topic: "{{icons}} reported this as off-topic"
+          spam: "{{icons}} reported this as spam"
+          spam_with_url: "{{icons}} reported <a href='{{postUrl}}'>this as spam</a>"
+          inappropriate: "{{icons}} reported this as inappropriate"
           notify_moderators: "{{icons}} notified moderators"
           notify_moderators_with_url: "{{icons}} <a href='{{postUrl}}'>notified moderators</a>"
           notify_user: "{{icons}} sent a message"
@@ -1309,27 +1309,27 @@ en:
           like: "{{icons}} liked this"
           vote: "{{icons}} voted for this"
         by_you:
-          off_topic: "You flagged this as off-topic"
-          spam: "You flagged this as spam"
-          inappropriate: "You flagged this as inappropriate"
-          notify_moderators: "You flagged this for moderation"
+          off_topic: "You reported this as off-topic"
+          spam: "You reported this as spam"
+          inappropriate: "You reported this as inappropriate"
+          notify_moderators: "You reported this for moderation"
           notify_user: "You sent a message to this user"
           bookmark: "You bookmarked this post"
           like: "You liked this"
           vote: "You voted for this post"
         by_you_and_others:
           off_topic:
-            one: "You and 1 other flagged this as off-topic"
-            other: "You and {{count}} other people flagged this as off-topic"
+            one: "You and 1 other reported this as off-topic"
+            other: "You and {{count}} other people reported this as off-topic"
           spam:
-            one: "You and 1 other flagged this as spam"
-            other: "You and {{count}} other people flagged this as spam"
+            one: "You and 1 other reported this as spam"
+            other: "You and {{count}} other people reported this as spam"
           inappropriate:
-            one: "You and 1 other flagged this as inappropriate"
-            other: "You and {{count}} other people flagged this as inappropriate"
+            one: "You and 1 other reported this as inappropriate"
+            other: "You and {{count}} other people reported this as inappropriate"
           notify_moderators:
-            one: "You and 1 other flagged this for moderation"
-            other: "You and {{count}} other people flagged this for moderation"
+            one: "You and 1 other reported this for moderation"
+            other: "You and {{count}} other people reported this for moderation"
           notify_user:
             one: "You and 1 other sent a message to this user"
             other: "You and {{count}} other people sent a message to this user"
@@ -1344,17 +1344,17 @@ en:
             other: "You and {{count}} other people voted for this post"
         by_others:
           off_topic:
-            one: "1 person flagged this as off-topic"
-            other: "{{count}} people flagged this as off-topic"
+            one: "1 person reported this as off-topic"
+            other: "{{count}} people reported this as off-topic"
           spam:
-            one: "1 person flagged this as spam"
-            other: "{{count}} people flagged this as spam"
+            one: "1 person reported this as spam"
+            other: "{{count}} people reported this as spam"
           inappropriate:
-            one: "1 person flagged this as inappropriate"
-            other: "{{count}} people flagged this as inappropriate"
+            one: "1 person reported this as inappropriate"
+            other: "{{count}} people reported this as inappropriate"
           notify_moderators:
-            one: "1 person flagged this for moderation"
-            other: "{{count}} people flagged this for moderation"
+            one: "1 person reported this for moderation"
+            other: "{{count}} people reported this for moderation"
           notify_user:
             one: "1 person sent a message to this user"
             other: "{{count}} sent a message to this user"
@@ -1400,36 +1400,36 @@ en:
 
     category:
       can: 'can&hellip; '
-      none: '(no category)'
-      choose: 'Select a category&hellip;'
+      none: '(no subforum)'
+      choose: 'Select a subforum&hellip;'
       edit: 'edit'
       edit_long: "Edit"
-      view: 'View Topics in Category'
+      view: 'View Topics in Subforum'
       general: 'General'
       settings: 'Settings'
-      delete: 'Delete Category'
-      create: 'New Category'
-      save: 'Save Category'
-      slug: 'Category Slug'
+      delete: 'Delete Subforum'
+      create: 'New Subforum'
+      save: 'Save Subforum'
+      slug: 'Subforum Slug'
       slug_placeholder: '(Optional) dashed-words for url'
-      creation_error: There has been an error during the creation of the category.
-      save_error: There was an error saving the category.
-      name: "Category Name"
+      creation_error: There has been an error during the creation of the subforum.
+      save_error: There was an error saving the subforum.
+      name: "Subforum Name"
       description: "Description"
-      topic: "category topic"
-      logo: "Category Logo Image"
-      background_image: "Category Background Image"
+      topic: "subforum topic"
+      logo: "Subforum Logo Image"
+      background_image: "Subforum Background Image"
       badge_colors: "Badge colors"
       background_color: "Background color"
       foreground_color: "Foreground color"
       name_placeholder: "One or two words maximum"
       color_placeholder: "Any web color"
-      delete_confirm: "Are you sure you want to delete this category?"
-      delete_error: "There was an error deleting the category."
-      list: "List Categories"
-      no_description: "Please add a description for this category."
+      delete_confirm: "Are you sure you want to delete this subforum?"
+      delete_error: "There was an error deleting the subforum."
+      list: "List Subforums"
+      no_description: "Please add a description for this subforum."
       change_in_category_topic: "Edit Description"
-      already_used: 'This color has been used by another category'
+      already_used: 'This color has been used by another subforum'
       security: "Security"
       images: "Images"
       auto_close_label: "Auto-close topics after:"
@@ -1438,35 +1438,35 @@ en:
       email_in_allow_strangers: "Accept emails from anonymous users with no accounts"
       email_in_disabled: "Posting new topics via email is disabled in the Site Settings. To enable posting new topics via email, "
       email_in_disabled_click: 'enable the "email in" setting.'
-      allow_badges_label: "Allow badges to be awarded in this category"
+      allow_badges_label: "Allow badges to be awarded in this subforum"
       edit_permissions: "Edit Permissions"
       add_permission: "Add Permission"
       this_year: "this year"
       position: "position"
       default_position: "Default Position"
-      position_disabled: "Categories will be displayed in order of activity. To control the order of categories in lists, "
-      position_disabled_click: 'enable the "fixed category positions" setting.'
-      parent: "Parent Category"
+      position_disabled: "Subforums will be displayed in order of activity. To control the order of forums in lists, "
+      position_disabled_click: 'enable the "fixed subforums positions" setting.'
+      parent: "Parent Subforum"
       notifications:
         title: ''
         reasons:
         watching:
           title: "Watching"
-          description: "You will automatically watch all new topics in these categories. You will be notified of all new posts and topics, and a count of new replies will appear for these topics."
+          description: "You will automatically watch all new topics in these subforums. You will be notified of all new posts and topics, and a count of new replies will appear for these topics."
         tracking:
           title: "Tracking"
-          description: "You will automatically track all new topics in these categories. A count of new replies will appear for these topics."
+          description: "You will automatically track all new topics in these subforums. A count of new replies will appear for these topics."
         regular:
           title: "Regular"
           description: "You will be notified if someone mentions your @name or replies to you."
         muted:
           title: "Muted"
-          description: "You will not be notified of anything about new topics in these categories, and they will not appear on your unread tab."
+          description: "You will not be notified of anything about new topics in these subforums, and they will not appear on your unread tab."
 
     flagging:
       title: 'Thanks for helping to keep our community civil!'
-      private_reminder: 'flags are private, <b>only</b> visible to staff'
-      action: 'Flag Post'
+      private_reminder: 'reports are private, <b>only</b> visible to staff'
+      action: 'Report Post'
       take_action: "Take Action"
       notify_action: 'Message'
       delete_spammer: "Delete Spammer"
@@ -1474,9 +1474,9 @@ en:
       yes_delete_spammer: "Yes, Delete Spammer"
       ip_address_missing: "(N/A)"
       hidden_email_address: "(hidden)"
-      submit_tooltip: "Submit the private flag"
-      take_action_tooltip: "Reach the flag threshold immediately, rather than waiting for more community flags"
-      cant: "Sorry, you can't flag this post at this time."
+      submit_tooltip: "Submit the private report"
+      take_action_tooltip: "Reach the report threshold immediately, rather than waiting for more community reports"
+      cant: "Sorry, you can't report this post at this time."
       formatted_name:
         off_topic: "It's Off-Topic"
         inappropriate: "It's Inappropriate"
@@ -1490,7 +1490,7 @@ en:
 
     flagging_topic:
       title: "Thanks for helping to keep our community civil!"
-      action: "Flag Topic"
+      action: "Report Topic"
       notify_action: "Message"
 
     topic_map:
@@ -1519,7 +1519,7 @@ en:
         help: "This topic is pinned globally; it will display at the top of all lists"
       pinned:
         title: "Pinned"
-        help: "This topic is pinned for you; it will display at the top of its category"
+        help: "This topic is pinned for you; it will display at the top of its subforum"
       archived:
         help: "This topic is archived; it is frozen and cannot be changed"
       invisible:
@@ -1551,7 +1551,7 @@ en:
     users_lowercase:
       one: "user"
       other: "users"
-    category_title: "Category"
+    category_title: "Subforum"
     history: "History"
     changed_by: "by {{author}}"
 
@@ -1559,7 +1559,7 @@ en:
       title: "Raw Email"
       not_available: "Not available!"
 
-    categories_list: "Categories List"
+    categories_list: "Subforums List"
 
     filters:
       with_topics: "%{filter} topics"
@@ -1577,9 +1577,9 @@ en:
         title: "Search"
         help: "search all topics"
       categories:
-        title: "Categories"
-        title_in: "Category - {{categoryName}}"
-        help: "all topics grouped by category"
+        title: "Subforums"
+        title_in: "Subforum - {{categoryName}}"
+        help: "all topics grouped by subforum"
       unread:
         title:
           zero: "Unread"
@@ -1612,7 +1612,7 @@ en:
           zero: "{{categoryName}}"
           one: "{{categoryName}} (1)"
           other: "{{categoryName}} ({{count}})"
-        help: "latest topics in the {{categoryName}} category"
+        help: "latest topics in the {{categoryName}} subforum"
       top:
         title: "Top"
         help: "the most active topics in the last year, month, week or day"
@@ -1645,7 +1645,7 @@ en:
     type_to_filter: "type to filter..."
 
     admin:
-      title: 'Discourse Admin'
+      title: 'Game of Forums Admin'
       moderator: 'Moderator'
 
       dashboard:
@@ -1661,7 +1661,7 @@ en:
         version_check_pending: "Looks like you upgraded recently. Fantastic!"
         installed_version: "Installed"
         latest_version: "Latest"
-        problems_found: "Some problems have been found with your installation of Discourse:"
+        problems_found: "Some problems have been found with your installation of Game of Forums:"
         last_checked: "Last checked"
         refresh_problems: "Refresh"
         no_problems: "No problems were found."
@@ -1700,36 +1700,36 @@ en:
         by: "by"
 
       flags:
-        title: "Flags"
+        title: "Reports"
         old: "Old"
         active: "Active"
 
         agree: "Agree"
-        agree_title: "Confirm this flag as valid and correct"
+        agree_title: "Confirm this report as valid and correct"
         agree_flag_modal_title: "Agree and..."
         agree_flag_hide_post: "Agree (hide post + send PM)"
         agree_flag_hide_post_title: "Hide this post and automatically send the user a message urging them to edit it"
         agree_flag_restore_post: "Agree (restore post)"
         agree_flag_restore_post_title: "Restore this post"
-        agree_flag: "Agree with flag"
-        agree_flag_title: "Agree with flag and keep the post unchanged"
+        agree_flag: "Agree with report"
+        agree_flag_title: "Agree with report and keep the post unchanged"
         defer_flag: "Defer"
-        defer_flag_title: "Remove this flag; it requires no action at this time."
+        defer_flag_title: "Remove this report; it requires no action at this time."
         delete: "Delete"
-        delete_title: "Delete the post this flag refers to."
-        delete_post_defer_flag: "Delete post and Defer flag"
+        delete_title: "Delete the post this report refers to."
+        delete_post_defer_flag: "Delete post and Defer report"
         delete_post_defer_flag_title: "Delete post; if the first post, delete the topic"
-        delete_post_agree_flag: "Delete post and Agree with flag"
+        delete_post_agree_flag: "Delete post and Agree with report"
         delete_post_agree_flag_title: "Delete post; if the first post, delete the topic"
         delete_flag_modal_title: "Delete and..."
         delete_spammer: "Delete Spammer"
         delete_spammer_title: "Remove the user and all posts and topics by this user."
         disagree_flag_unhide_post: "Disagree (unhide post)"
-        disagree_flag_unhide_post_title: "Remove any flags from this post and make the post visible again"
+        disagree_flag_unhide_post_title: "Remove any reports from this post and make the post visible again"
         disagree_flag: "Disagree"
-        disagree_flag_title: "Deny this flag as invalid or incorrect"
+        disagree_flag_title: "Deny this report as invalid or incorrect"
         clear_topic_flags: "Done"
-        clear_topic_flags_title: "The topic has been investigated and issues have been resolved. Click Done to remove the flags."
+        clear_topic_flags_title: "The topic has been investigated and issues have been resolved. Click Done to remove the reports."
         more: "(more replies...)"
 
         dispositions:
@@ -1737,17 +1737,17 @@ en:
           disagreed: "disagreed"
           deferred: "deferred"
 
-        flagged_by: "Flagged by"
+        flagged_by: "Reported by"
         resolved_by: "Resolved by"
         took_action: "Took action"
         system: "System"
         error: "Something went wrong"
         reply_message: "Reply"
-        no_results: "There are no flags."
-        topic_flagged: "This <strong>topic</strong> has been flagged."
+        no_results: "There are no reports."
+        topic_flagged: "This <strong>topic</strong> has been reported."
         visit_topic: "Visit the topic to take action"
-        was_edited: "Post was edited after the first flag"
-        previous_flags_count: "This post has already been flagged {{count}} times."
+        was_edited: "Post was edited after the first report"
+        previous_flags_count: "This post has already been reported {{count}} times."
 
         summary:
           action_type_3:
@@ -1928,7 +1928,7 @@ en:
           undo: "undo"
           undo_title: "Undo your changes to this color since the last time it was saved."
           revert: "revert"
-          revert_title: "Reset this color to Discourse's default color scheme."
+          revert_title: "Reset this color to forums's default color scheme."
           primary:
             name: 'primary'
             description: 'Most text, icons, and borders.'
@@ -2178,10 +2178,10 @@ en:
         posts_read_count: Posts Read
         post_count: Posts Created
         topics_entered: Topics Viewed
-        flags_given_count: Flags Given
-        flags_received_count: Flags Received
+        flags_given_count: Reports Given
+        flags_received_count: Reports Received
         warnings_received_count: Warnings Received
-        flags_given_received_count: 'Flags Given / Received'
+        flags_given_received_count: 'Reports Given / Received'
         approve: 'Approve'
         approved_by: "approved by"
         approve_success: "User approved and email sent with activation instructions."
@@ -2240,8 +2240,8 @@ en:
           topics_viewed_all_time: "Topics Viewed (all time)"
           posts_read: "Posts Read"
           posts_read_all_time: "Posts Read (all time)"
-          flagged_posts: "Flagged Posts"
-          flagged_by_users: "Users Who Flagged"
+          flagged_posts: "Reported Posts"
+          flagged_by_users: "Users Who Reported"
           likes_given: "Likes Given"
           likes_received: "Likes Received"
           likes_received_days: "Likes Received: unique days"
@@ -2415,7 +2415,7 @@ en:
         latest: '<b>g</b>, <b>l</b> Latest'
         new: '<b>g</b>, <b>n</b> New'
         unread: '<b>g</b>, <b>u</b> Unread'
-        categories: '<b>g</b>, <b>c</b> Categories'
+        categories: '<b>g</b>, <b>c</b> Subforums'
         top: '<b>g</b>, <b>t</b> Top'
         bookmarks: '<b>g</b>, <b>b</b> Bookmarks'
       navigation:
@@ -2447,7 +2447,7 @@ en:
         reply_post: '<b>r</b> Reply to post'
         quote_post: '<b>q</b> Quote post'
         like: '<b>l</b> Like post'
-        flag: '<b>!</b> Flag post'
+        flag: '<b>!</b> Report post'
         bookmark: '<b>b</b> Bookmark post'
         edit: '<b>e</b> Edit post'
         delete: '<b>d</b> Delete post'
@@ -2538,8 +2538,8 @@ en:
           name: First Like
           description: Liked a post
         first_flag:
-          name: First Flag
-          description: Flagged a post
+          name: First Report
+          description: Reported a post
         promoter:
           name: Promoter
           description: Invited a user
