@@ -1464,7 +1464,7 @@ en:
           description: "You will not be notified of anything about new topics in these subforums, and they will not appear on your unread tab."
 
     flagging:
-      title: 'Thanks for helping to keep our community civil!'
+      title: 'Report Topic'
       private_reminder: 'reports are private, <b>only</b> visible to staff'
       action: 'Report Post'
       take_action: "Take Action"
@@ -1489,7 +1489,7 @@ en:
         left: "{{n}} remaining"
 
     flagging_topic:
-      title: "Thanks for helping to keep our community civil!"
+      title: "Report Topic"
       action: "Report Topic"
       notify_action: "Message"
 

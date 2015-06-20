@@ -6,7 +6,6 @@
         <label class='radio'>
           <input type='radio' id="radio_{{unbound f.model.name_key}}" {{action "changePostActionType" f}} name='post_action_type_index'> <strong>{{f.formattedName}}</strong>
           {{#if f.showDescription}}
-            <div class='description'>{{{f.model.description}}}</div>
           {{/if}}
         </label>
         {{#if f.showMessageInput}}

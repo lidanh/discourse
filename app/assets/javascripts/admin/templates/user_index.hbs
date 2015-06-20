@@ -46,17 +46,6 @@
         {{/if}}
       </div>
     </div>
-
-    <div class='display-row associations'>
-      <div class='field'>{{i18n 'user.associated_accounts'}}</div>
-      <div class='value'>
-        {{#if model.associated_accounts}}
-          {{model.associated_accounts}}
-        {{else}}
-          <button class="btn" title="{{i18n 'admin.users.check_email.title'}}" {{action "checkEmail" this}}>{{fa-icon "envelope-o"}} {{i18n 'admin.users.check_email.text'}}</button>
-        {{/if}}
-      </div>
-    </div>
   {{/if}}
 
   <div class='display-row'>
@@ -196,24 +185,6 @@
         {{/if}}
       {{/if}}
     </div>
-  </div>
-
-  <div class='display-row'>
-    <div class='field'>{{i18n 'admin.api.key'}}</div>
-    {{#if model.api_key}}
-      <div class='long-value'>
-        {{model.api_key.key}}
-        {{d-button action="regenerateApiKey" icon="undo" label="admin.api.regenerate"}}
-        {{d-button action="revokeApiKey" icon="times" label="admin.api.revoke"}}
-      </div>
-    {{else}}
-      <div class='value'>
-        &mdash;
-      </div>
-      <div class='controls'>
-        {{d-button action="generateApiKey" icon="key" label="admin.api.generate"}}
-      </div>
-    {{/if}}
   </div>
 
   <div class='display-row'>
@@ -366,10 +337,6 @@
     <div class='value'>{{{model.created_at_age}}}</div>
   </div>
   <div class='display-row'>
-    <div class='field'>{{i18n 'admin.users.last_emailed'}}</div>
-    <div class='value'>{{{model.last_emailed_age}}}</div>
-  </div>
-  <div class='display-row'>
     <div class='field'>{{i18n 'last_seen'}}</div>
     <div class='value'>{{{model.last_seen_age}}}</div>
   </div>
@@ -402,82 +369,9 @@
     <div class='value'>{{model.posts_read_count}}</div>
   </div>
   <div class='display-row'>
-    <div class='field'>{{i18n 'admin.user.warnings_received_count'}}</div>
-    <div class='value'>{{model.warnings_received_count}}</div>
-  </div>
-  <div class='display-row'>
     <div class='field'>{{i18n 'admin.user.flags_given_received_count'}}</div>
     <div class='value'>{{model.flags_given_count}} / {{model.flags_received_count}}</div>
   </div>
-  <div class='display-row'>
-    <div class='field'>{{i18n 'admin.user.private_topics_count'}}</div>
-    <div class='value'>{{model.private_topics_count}}</div>
-  </div>
-  <div class='display-row'>
-    <div class='field'>{{i18n 'admin.user.time_read'}}</div>
-    <div class='value'>{{{model.time_read}}}</div>
-  </div>
-  <div class='display-row'>
-    <div class='field'>{{i18n 'user.invited.days_visited'}}</div>
-    <div class='value'>{{{model.days_visited}}}</div>
-  </div>
 </section>
 
-{{#if model.single_sign_on_record}}
-<section class='details'>
-  <h1>{{i18n 'admin.user.sso.title'}}</h1>
-
-  {{#with model.single_sign_on_record}}
-    <div class='display-row'>
-      <div class='field'>{{i18n 'admin.user.sso.external_id'}}</div>
-      <div class='value'>{{external_id}}</div>
-    </div>
-    <div class='display-row'>
-      <div class='field'>{{i18n 'admin.user.sso.external_username'}}</div>
-      <div class='value'>{{external_username}}</div>
-    </div>
-    <div class='display-row'>
-      <div class='field'>{{i18n 'admin.user.sso.external_name'}}</div>
-      <div class='value'>{{external_name}}</div>
-    </div>
-    <div class='display-row'>
-      <div class='field'>{{i18n 'admin.user.sso.external_email'}}</div>
-      <div class='value'>{{external_email}}</div>
-    </div>
-    <div class='display-row'>
-      <div class='field'>{{i18n 'admin.user.sso.external_avatar_url'}}</div>
-      <div class='value'>{{external_avatar_url}}</div>
-    </div>
-  {{/with}}
-</section>
-{{/if}}
-
-<section>
-  <hr/>
-  <div class="pull-right">
-    {{#unless model.anonymizeForbidden}}
-      {{d-button label="admin.user.anonymize"
-                 icon="exclamation-triangle"
-                 class="btn-danger"
-                 disabled=model.anonymizeForbidden
-                 action="anonymize"}}
-    {{/unless}}
-
-    {{#unless model.deleteForbidden}}
-      {{d-button label="admin.user.delete"
-                 icon="exclamation-triangle"
-                 class="btn-danger"
-                 disabled=model.deleteForbidden
-                 action="destroy"}}
-    {{/unless}}
-  </div>
-
-  {{#if model.deleteExplanation}}
-    <div class="clearfix"></div>
-    <br/>
-    <div class="pull-right">
-      {{fa-icon "exclamation-triangle"}} {{model.deleteExplanation}}
-    </div>
-  {{/if}}
-</section>
 <div class="clearfix"></div>
