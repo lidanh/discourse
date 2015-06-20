@@ -298,11 +298,6 @@ var PostMenuView = Discourse.View.extend(StringBuffer, {
     this.get('controller').send('toggleBookmark', post);
   },
 
-  buttonForAdmin: function() {
-    if (!Discourse.User.currentProp('canManageTopic')) { return; }
-    return new Button('admin', 'post.controls.admin', 'wrench');
-  },
-
   renderAdminPopup: function(post, buffer) {
     if (!Discourse.User.currentProp('canManageTopic')) { return; }
 
