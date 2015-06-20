@@ -41,8 +41,8 @@ Badge.exec_sql "UPDATE badges
 trust_level_badges = [
   {id: 1, name: "Basic User", type: BadgeType::Bronze},
   {id: 2, name: "Member", type: BadgeType::Bronze},
-  {id: 3, name: "Regular", type: BadgeType::Silver},
-  {id: 4, name: "Leader", type: BadgeType::Gold}
+  {id: 3, name: "Silver Member", type: BadgeType::Silver},
+  {id: 4, name: "Gold Memeber", type: BadgeType::Gold}
 ]
 
 trust_level_badges.each do |spec|
@@ -61,57 +61,57 @@ trust_level_badges.each do |spec|
   end
 end
 
-Badge.seed do |b|
-  b.id = Badge::Reader
-  b.default_name = "Reader"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.target_posts = false
-  b.show_posts = false
-  b.query = Badge::Queries::Reader
-  b.default_badge_grouping_id = BadgeGrouping::GettingStarted
-  b.auto_revoke = false
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::Reader
+#   b.default_name = "Reader"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.target_posts = false
+#   b.show_posts = false
+#   b.query = Badge::Queries::Reader
+#   b.default_badge_grouping_id = BadgeGrouping::GettingStarted
+#   b.auto_revoke = false
+#   b.system = true
+# end
 
-Badge.seed do |b|
-  b.id = Badge::ReadGuidelines
-  b.default_name = "Read Guidelines"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.target_posts = false
-  b.show_posts = false
-  b.query = Badge::Queries::ReadGuidelines
-  b.default_badge_grouping_id = BadgeGrouping::GettingStarted
-  b.trigger = Badge::Trigger::UserChange
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::ReadGuidelines
+#   b.default_name = "Read Guidelines"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.target_posts = false
+#   b.show_posts = false
+#   b.query = Badge::Queries::ReadGuidelines
+#   b.default_badge_grouping_id = BadgeGrouping::GettingStarted
+#   b.trigger = Badge::Trigger::UserChange
+#   b.system = true
+# end
 
-Badge.seed do |b|
-  b.id = Badge::FirstLink
-  b.default_name = "First Link"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.target_posts = true
-  b.show_posts = true
-  b.query = Badge::Queries::FirstLink
-  b.default_badge_grouping_id = BadgeGrouping::GettingStarted
-  b.trigger = Badge::Trigger::PostRevision
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::FirstLink
+#   b.default_name = "First Link"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.target_posts = true
+#   b.show_posts = true
+#   b.query = Badge::Queries::FirstLink
+#   b.default_badge_grouping_id = BadgeGrouping::GettingStarted
+#   b.trigger = Badge::Trigger::PostRevision
+#   b.system = true
+# end
 
-Badge.seed do |b|
-  b.id = Badge::FirstQuote
-  b.default_name = "First Quote"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.target_posts = true
-  b.show_posts = true
-  b.query = Badge::Queries::FirstQuote
-  b.default_badge_grouping_id = BadgeGrouping::GettingStarted
-  b.trigger = Badge::Trigger::PostRevision
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::FirstQuote
+#   b.default_name = "First Quote"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.target_posts = true
+#   b.show_posts = true
+#   b.query = Badge::Queries::FirstQuote
+#   b.default_badge_grouping_id = BadgeGrouping::GettingStarted
+#   b.trigger = Badge::Trigger::PostRevision
+#   b.system = true
+# end
 
 Badge.seed do |b|
   b.id = Badge::FirstLike
@@ -141,27 +141,27 @@ Badge.seed do |b|
 end
 
 
-[
-  [Badge::Promoter,"Promoter",BadgeType::Bronze,1,0],
-  [Badge::Campaigner,"Campaigner",BadgeType::Silver,3,1],
-  [Badge::Champion,"Champion",BadgeType::Gold,5,2],
-].each do |id, name, type, count, trust_level|
-  Badge.seed do |b|
-    b.id = id
-    b.default_name = name
-    b.default_icon = "fa-user-plus"
-    b.badge_type_id = type
-    b.multiple_grant = false
-    b.target_posts = false
-    b.show_posts = false
-    b.query = Badge::Queries.invite_badge(count,trust_level)
-    b.default_badge_grouping_id = BadgeGrouping::Community
-    # daily is good enough
-    b.trigger = Badge::Trigger::None
-    b.auto_revoke = true
-    b.system = true
-  end
-end
+# [
+#   [Badge::Promoter,"Promoter",BadgeType::Bronze,1,0],
+#   [Badge::Campaigner,"Campaigner",BadgeType::Silver,3,1],
+#   [Badge::Champion,"Champion",BadgeType::Gold,5,2],
+# ].each do |id, name, type, count, trust_level|
+#   Badge.seed do |b|
+#     b.id = id
+#     b.default_name = name
+#     b.default_icon = "fa-user-plus"
+#     b.badge_type_id = type
+#     b.multiple_grant = false
+#     b.target_posts = false
+#     b.show_posts = false
+#     b.query = Badge::Queries.invite_badge(count,trust_level)
+#     b.default_badge_grouping_id = BadgeGrouping::Community
+#     # daily is good enough
+#     b.trigger = Badge::Trigger::None
+#     b.auto_revoke = true
+#     b.system = true
+#   end
+# end
 
 Badge.seed do |b|
   b.id = Badge::FirstShare
@@ -199,40 +199,40 @@ end
   end
 end
 
-Badge.seed do |b|
-  b.id = Badge::Welcome
-  b.default_name = "Welcome"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.target_posts = true
-  b.show_posts = true
-  b.query = Badge::Queries::Welcome
-  b.default_badge_grouping_id = BadgeGrouping::Community
-  b.trigger = Badge::Trigger::PostAction
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::Welcome
+#   b.default_name = "Welcome"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.target_posts = true
+#   b.show_posts = true
+#   b.query = Badge::Queries::Welcome
+#   b.default_badge_grouping_id = BadgeGrouping::Community
+#   b.trigger = Badge::Trigger::PostAction
+#   b.system = true
+# end
 
-Badge.seed do |b|
-  b.id = Badge::Autobiographer
-  b.default_name = "Autobiographer"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.query = Badge::Queries::Autobiographer
-  b.default_badge_grouping_id = BadgeGrouping::GettingStarted
-  b.trigger = Badge::Trigger::UserChange
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::Autobiographer
+#   b.default_name = "Autobiographer"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.query = Badge::Queries::Autobiographer
+#   b.default_badge_grouping_id = BadgeGrouping::GettingStarted
+#   b.trigger = Badge::Trigger::UserChange
+#   b.system = true
+# end
 
-Badge.seed do |b|
-  b.id = Badge::Editor
-  b.default_name = "Editor"
-  b.badge_type_id = BadgeType::Bronze
-  b.multiple_grant = false
-  b.query = Badge::Queries::Editor
-  b.default_badge_grouping_id = BadgeGrouping::Community
-  b.trigger = Badge::Trigger::PostRevision
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::Editor
+#   b.default_name = "Editor"
+#   b.badge_type_id = BadgeType::Bronze
+#   b.multiple_grant = false
+#   b.query = Badge::Queries::Editor
+#   b.default_badge_grouping_id = BadgeGrouping::Community
+#   b.trigger = Badge::Trigger::PostRevision
+#   b.system = true
+# end
 
 #
 # Like system badges.
@@ -261,17 +261,17 @@ like_badges.each do |spec|
   end
 end
 
-Badge.seed do |b|
-  b.id = Badge::OneYearAnniversary
-  b.default_name = "Anniversary"
-  b.default_icon = "fa-clock-o"
-  b.badge_type_id = BadgeType::Silver
-  b.query = Badge::Queries::OneYearAnniversary
-  b.default_badge_grouping_id = BadgeGrouping::Community
-  b.trigger = Badge::Trigger::None
-  b.auto_revoke = false
-  b.system = true
-end
+# Badge.seed do |b|
+#   b.id = Badge::OneYearAnniversary
+#   b.default_name = "Anniversary"
+#   b.default_icon = "fa-clock-o"
+#   b.badge_type_id = BadgeType::Silver
+#   b.query = Badge::Queries::OneYearAnniversary
+#   b.default_badge_grouping_id = BadgeGrouping::Community
+#   b.trigger = Badge::Trigger::None
+#   b.auto_revoke = false
+#   b.system = true
+# end
 
 Badge.where("NOT system AND id < 100").each do |badge|
   new_id = [Badge.maximum(:id) + 1, 100].max

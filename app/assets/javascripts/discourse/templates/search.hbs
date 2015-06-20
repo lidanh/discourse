@@ -5,7 +5,6 @@
       {{input type="checkbox" name="searchContext" checked=searchContextEnabled}} {{searchContextDescription}}
     </label>
   {{/if}}
-  <a href class="show-help" {{action "showSearchHelp" bubbles=false}}>{{i18n "show_help"}}</a>
 </div>
 {{#if loading}}
   <div class="searching">{{loading-spinner}}</div>

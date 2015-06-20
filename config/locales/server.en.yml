@@ -36,7 +36,7 @@ en:
   topics: "Topics"
   posts: "posts"
   loading: "Loading"
-  powered_by_html: 'Powered by <a href="http://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled'
+  powered_by_html: ''
   log_in: "Log In"
 
   via: "%{username} via %{site_name}"
@@ -334,8 +334,6 @@ en:
 
       (For more information on trust levels, [see this topic][trust]. Please note that only members who continue to meet the requirements over time will remain regulars.)
 
-      [trust]: https://meta.discourse.org/t/what-do-user-trust-levels-do/4924
-
 
   category:
     topic_prefix: "About the %{category} subforum"
@@ -490,7 +488,7 @@ en:
       email_body: "%{link}\n\n%{message}"
     inappropriate:
       title: 'Inappropriate'
-      description: 'This post contains content that a reasonable person would consider offensive, abusive, or a violation of <a href="/guidelines">our community guidelines</a>.'
+      description: 'This post contains content that a reasonable person would consider offensive, abusive, or a violation of our guidelines.'
       long_form: 'reported this as inappropriate'
     notify_user:
       title: 'Message @{{username}}'
@@ -524,11 +522,11 @@ en:
       long_form: 'reported this as spam'
     inappropriate:
       title: 'Inappropriate'
-      description: 'This topic contains content that a reasonable person would consider offensive, abusive, or a violation of <a href="/guidelines">our community guidelines</a>.'
+      description: 'This topic contains content that a reasonable person would consider offensive, abusive, or a violation of our guidelines.'
       long_form: 'reported this as inappropriate'
     notify_moderators:
       title: "Something Else"
-      description: 'This topic requires general moderator attention based on the <a href="/guidelines">guidelines</a>, <a href="%{tos_url}">TOS</a>, or for another reason not listed above.'
+      description: 'This topic requires general moderator attention based on the guidelines, terms of service, or for another reason not listed above.'
       long_form: 'reported this for moderator attention'
       email_title: 'The topic "%{title}" requires moderator attention'
       email_body: "%{link}\n\n%{message}"
@@ -785,7 +783,7 @@ en:
 
     notification_email: "The from: email address used when sending all essential system emails. The domain specified here must have SPF, DKIM and reverse PTR records set correctly for email to arrive."
     email_custom_headers: "A pipe-delimited list of custom email headers"
-    email_subject: "Customizable subject format for standard emails. See https://meta.discourse.org/t/customize-subject-format-for-standard-emails/20801"
+    email_subject: "Customizable subject format for standard emails."
     use_https: "Should the full url for the site (Discourse.base_url) be http or https? DO NOT ENABLE THIS UNLESS HTTPS IS ALREADY SET UP AND WORKING!"
     summary_score_threshold: "The minimum score required for a post to be included in 'Summarize This Topic'"
     summary_posts_required: "Minimum posts in a topic before 'Summarize This Topic' is enabled"
@@ -1346,70 +1344,17 @@ en:
 
       [**%{base_url}**][0]
 
-      Email deliverability is complicated. Here are a few important things you should check first:
-
-      - Be *sure* to set the `notification email` from: address correctly in your site settings. **The domain specified in the "from" address of the emails you send is the domain your email will be validated against**.
-
-      - Know how to view the raw source of the email in your mail client, so you can examine email headers for important clues. in Gmail, it is the "show original" option in the drop-down menu at the top right of each mail.
-
-      - **IMPORTANT:** Does your ISP have a reverse DNS record entered to associate the domain names and IP addresses you send mail from? [Test your Reverse PTR record][2] here. If your ISP does not enter the proper reverse DNS pointer record, it's very unlikely any of your email will be delivered.
-
-      - Is your domain's [SPF record][8] correct? [Test your SPF record][1] here. Note that TXT is the correct official record type for SPF.
-
-      - Is your domain's [DKIM record][3] correct? This will significantly improve email deliverability. [Test your DKIM record][7] here.
-
-      - If you run your own mail server, check to make sure the IPs of your mail server are [not on any email blacklists][4]. Also verify that it is definitely sending a fully-qualified hostname that resolves in DNS in its HELO message. If not, this will cause your email to be rejected by many mail services.
-
-      (The *easy* way is to create a free account on [Mandrill][md] or [Mailgun][mg] or [Mailjet][mj], which have free generous free mailing plans and will be fine for small communities. You'll still need to set up the SPF and DKIM records in your DNS, though!)
-
-      We hope you received this email deliverability test OK!
-
-      Good luck,
-
-      Your friends at [Discourse](http://www.discourse.org)
-
-      [0]: %{base_url}
-      [1]: http://www.kitterman.com/spf/validate.html
-      [2]: http://mxtoolbox.com/ReverseLookup.aspx
-      [3]: http://www.dkim.org/
-      [4]: http://whatismyipaddress.com/blacklist-check
-      [7]: http://dkimcore.org/tools/dkimrecordcheck.html
-      [8]: http://www.openspf.org/SPF_Record_Syntax
-      [md]: http://mandrill.com
-      [mg]: http://www.mailgun.com/
-      [mj]: https://www.mailjet.com/pricing
-
   new_version_mailer:
     subject_template: "[%{site_name}] New Game of Forums version, update available"
     text_body_template: |
-      A new version of [Discourse](http://www.discourse.org) is available.
-
       Your version: %{installed_version}
       New version: **%{new_version}**
-
-      You may want to:
-
-      - See what's new in the [GitHub changelog](https://github.com/discourse/discourse/commits/master).
-
-      - Upgrade from your browser at [%{base_url}/admin/upgrade](%{base_url}/admin/upgrade).
-
-      - Visit [meta.discourse.org](http://meta.discourse.org) for news, discussion, and support for Discourse.
 
   new_version_mailer_with_notes:
     subject_template: "[%{site_name}] update available"
     text_body_template: |
-      A new version of [Discourse](http://www.discourse.org) is available.
-
       Your version: %{installed_version}
       New version: **%{new_version}**
-
-      You may want to:
-
-      - See what's new in the [GitHub changelog](https://github.com/discourse/discourse/commits/master).
-
-      - Upgrade from your browser at [%{base_url}/admin/upgrade](%{base_url}/admin/upgrade).
-
-      - Visit [meta.discourse.org](http://meta.discourse.org) for news, discussion, and support for Discourse.
 
       ### Release notes
 
@@ -1421,7 +1366,7 @@ en:
       other: "These reports were submitted over %{count} hours ago."
     please_review: "Please review them."
     post_number: "post"
-    how_to_disable: 'You can disable or change the frequency of this email reminder via the "notify about reports after" setting.'
+    how_to_disable: ''
     subject_template:
       one: "1 report waiting to be handled"
       other: "%{count} reports waiting to be handled"
@@ -1437,7 +1382,7 @@ en:
 
   flag_reasons:
     off_topic: "Your post was reported as **off-topic**: the community feels it is not a good fit for the topic, as currently defined by the title and the first post."
-    inappropriate: "Your post was reported as **inappropriate**: the community feels it is offensive, abusive, or a violation of [our community guidelines](/guidelines)."
+    inappropriate: "Your post was reported as **inappropriate**: the community feels it is offensive, abusive, or a violation of our guidelines."
     spam: "Your post was reported as **spam**: the community feels it is an advertisement, something that is overly promotional in nature instead of being useful or relevant to the topic as expected."
     notify_moderators: "Your post was reported **for moderator attention**: the community feels something about the post requires manual intervention by a staff member."
 
@@ -1452,11 +1397,11 @@ en:
 
   system_messages:
     post_hidden:
-      subject_template: "Post hidden due to community flagging"
+      subject_template: "Post hidden due to community reporting"
       text_body_template: |
         Hello,
 
-        This is an automated message from %{site_name} to inform you that your post was hidden.
+        We would like to inform you that your post was hidden.
 
         %{base_url}%{url}
 
@@ -1465,8 +1410,6 @@ en:
         Multiple community members reported this post before it was hidden, so please consider how you might revise your post to reflect their feedback. **You can edit your post after %{edit_delay} minutes, and it will be automatically unhidden.**
 
         However, if the post is hidden by the community a second time, it will remain hidden until handled by staff – and there may be further action, including the possible suspension of your account.
-
-        For additional guidance, please refer to our [community guidelines](%{base_url}/guidelines).
 
     usage_tips:
       text_body_template: |
@@ -1555,13 +1498,7 @@ en:
       text_body_template: |
         Thanks for joining %{site_name}, and welcome!
 
-        %{new_user_tips}
-
-        We believe in [civilized community behavior](%{base_url}/guidelines) at all times.
-
         Enjoy your stay!
-
-        (If you need to communicate with [staff members](%{base_url}/about) as a new user, just reply to this message.)
 
     welcome_invite:
       subject_template: "Welcome to %{site_name}!"
@@ -1576,13 +1513,7 @@ en:
 
         2. Create a unique password for [your user profile][prefs], and use it to log in.
 
-        %{new_user_tips}
-
-        We believe in [civilized community behavior](%{base_url}/guidelines) at all times.
-
         Enjoy your stay!
-
-        (If you need to communicate with [staff members](%{base_url}/about) as a new user, just reply to this message.)
 
         [prefs]: %{user_preferences_url}
 
@@ -1748,11 +1679,9 @@ en:
       text_body_template: |
         Hello,
 
-        This is an automated message from %{site_name} to inform you that your posts have been automatically hidden because they were reported by the community.
+        We're sorry to inform you that your posts have been automatically hidden because they were reported by the community.
 
         As a precautionary measure, your new account has been blocked from creating new replies or topics until a staff member can review your account.
-
-        For additional guidance, please refer to our [community guidelines](%{base_url}/guidelines).
 
     blocked_by_staff:
       subject_template: "Account blocked"
@@ -1761,13 +1690,9 @@ en:
 
         This is an automated message from %{site_name} to inform you that your account has been blocked by a staff member.
 
-        For additional guidance, please refer to our [community guidelines](%{base_url}/guidelines).
-
     user_automatically_blocked:
       subject_template: "New user %{username} blocked due to community reports"
       text_body_template: |
-        This is an automated message.
-
         The new user [%{username}](%{base_url}%{user_url}) was automatically blocked because multiple users reported %{username}'s post(s).
 
         Please [review the reports](%{base_url}/admin/reports). If %{username} was incorrectly blocked from posting, click the unblock button on [the admin page for this user](%{base_url}%{user_url}).
@@ -1777,8 +1702,6 @@ en:
     spam_post_blocked:
       subject_template: "New user %{username} posts blocked due to repeated links"
       text_body_template: |
-        This is an automated message.
-
         The new user [%{username}](%{base_url}%{user_url}) tried to create multiple posts with links to %{domains}, but those posts were blocked to avoid spam. The user is still able to create new posts that do not link to %{domains}.
 
         Please [review the user](%{base_url}%{user_url}).
@@ -1790,7 +1713,7 @@ en:
       text_body_template: |
         Hello,
 
-        This is an automated message from %{site_name} to inform you that your account has been unblocked after staff review.
+        We're happy to inform you that your account has been unblocked after staff review.
 
         You can now create new replies and topics again.
 
@@ -1975,13 +1898,7 @@ en:
 
         If the above link is not clickable, try copying and pasting it into the address bar of your web browser.
 
-        %{new_user_tips}
-
-        We believe in [civilized community behavior](%{base_url}/guidelines) at all times.
-
         Enjoy your stay!
-
-        (If you need to communicate with [staff members](%{base_url}/about) as a new user, just reply to this message.)
 
     signup:
       subject_template: "[%{site_name}] Activate your new account"
@@ -2008,7 +1925,7 @@ en:
 
   terms_of_service:
     title: "Terms of Service"
-    signup_form_message: 'I have read and accept the <a href="/tos" target="_blank">Terms of Service</a>.'
+    signup_form_message: 'I have read and accept the Terms of Service.'
 
   deleted: 'deleted'
 

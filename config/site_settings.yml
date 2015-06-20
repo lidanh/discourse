@@ -18,18 +18,18 @@
 required:
   title:
     client: true
-    default: 'Discourse'
+    default: 'Game of Forums'
   site_description:
-    default: ''
+    default: 'Game of Forums - Workshop in Software Engineering'
   contact_email:
     client: true
-    default: ''
+    default: 'lidanh@post.bgu.ac.il'
     type: email
   contact_url:
     client: true
     default: ''
   notification_email:
-    default: 'noreply@unconfigured.discourse.org'
+    default: 'noreply@game-of-forums.com'
     type: email
     shadowed_by_global: true
   site_contact_username:
@@ -66,7 +66,7 @@ basic:
     default: false
   suggested_topics:
     client: true
-    default: 5
+    default: 0
     min: 0
   limit_suggested_to_category:
     client: false
@@ -282,7 +282,7 @@ users:
     default: ''
   full_name_required:
     client: true
-    default: false
+    default: true
   enable_names:
     client: true
     default: true
@@ -328,13 +328,13 @@ posting:
     min: 1
     default:
       test: 5
-      default: 20
+      default: 10
   min_first_post_length:
     client: true
     min: 1
     default:
       test: 5
-      default: 20
+      default: 10
   min_private_message_post_length:
     client: true
     min: 1
@@ -347,11 +347,11 @@ posting:
   body_min_entropy: 7
   min_topic_title_length:
     client: true
-    default: 15
+    default: 10
   max_topic_title_length:
     client: true
     default: 255
-  title_min_entropy: 10
+  title_min_entropy: 7
   title_prettify: true
   title_fancy_entities: true
   min_private_message_title_length:
@@ -359,9 +359,9 @@ posting:
     default: 2
   allow_uncategorized_topics:
     client: true
-    default: true
+    default: false
     refresh: true
-  uncategorized_description: "Topics that don't need a category, or don't fit into any other existing category."
+  uncategorized_description: "Topics that don't need a subforum, or don't fit into any other existing subforum."
   allow_duplicate_topic_titles: false
   min_title_similar_length:
     client: true
@@ -369,7 +369,7 @@ posting:
   min_body_similar_length:
     client: true
     default: 15
-  enable_private_messages: true
+  enable_private_messages: false
   ninja_edit_window: 300
   post_edit_time_limit: 86400
   edit_history_visible_to_public:
@@ -443,7 +443,7 @@ posting:
     default: true
     client: true
   emoji_set:
-    default: 'emoji_one'
+    default: 'apple_international'
     client: true
     enum: 'EmojiSetSiteSetting'
   enforce_square_emoji:
@@ -469,7 +469,7 @@ email:
     enum: 'DigestEmailSiteSetting'
   suppress_digest_email_after_days: 365
   disable_digest_emails:
-    default: false
+    default: true
     client: true
   email_custom_headers: 'Auto-Submitted: auto-generated'
   email_subject: '[%{site_name}] %{optional_pm}%{optional_cat}%{topic_title}'
@@ -571,7 +571,7 @@ files:
 
 trust:
   default_trust_level:
-    default: 0
+    default: 1
     enum: 'TrustLevelSetting'
   default_invitee_trust_level:
     default: 1
@@ -792,7 +792,7 @@ uncategorized:
     client: true
     default: true
   new_version_emails: true
-  send_welcome_message: true
+  send_welcome_message: false
 
   suppress_uncategorized_badge:
     client: true

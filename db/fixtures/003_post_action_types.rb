@@ -1,9 +1,9 @@
-PostActionType.seed do |s|
-  s.id = PostActionType.types[:bookmark]
-  s.name_key = 'bookmark'
-  s.is_flag = false
-  s.position = 1
-end
+# PostActionType.seed do |s|
+#   s.id = PostActionType.types[:bookmark]
+#   s.name_key = 'bookmark'
+#   s.is_flag = false
+#   s.position = 1
+# end
 
 PostActionType.seed do |s|
   s.id = PostActionType.types[:like]
