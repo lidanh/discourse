@@ -337,8 +337,8 @@ en:
 
   category:
     topic_prefix: "About the %{category} subforum"
-    replace_paragraph: "[Replace this first paragraph with a short description of your new subforum. This guidance will appear in the subforum selection area, so try to keep it below 200 characters. Until you edit this text or create topics, this subforum won't appear on the subforums page.]"
-    post_template: "%{replace_paragraph}\n\nUse the following paragraphs for a longer description, as well as to establish any subforum guidelines or rules.\n\nSome things to consider in any discussion replies below:\n\n- What is this subforum for? Why should people select this subforum for their topic?\n\n- How is this different than the other subforums we already have?\n\n- Do we need this subforum?\n\n- Should we merge this with another subforum, or split it into more subforums?\n"
+    replace_paragraph: "[Subforum short description paragraph]"
+    post_template: "%{replace_paragraph}\n\nUse the following paragraphs for a longer description, and to establish subforum guidelines or rules."
     errors:
       uncategorized_parent: "Uncategorized can't have a parent subforum"
       self_parent: "A subforums's parent cannot be itself"

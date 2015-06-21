@@ -866,7 +866,7 @@ uncategorized:
     default: 180
 
   # Warnings
-  educate_until_posts: 2
+  educate_until_posts: 0
   sequential_replies_threshold: 2
   dominating_topic_minimum_percent: 20
 
