@@ -275,7 +275,7 @@ var PostMenuView = Discourse.View.extend(StringBuffer, {
       shareUrl: post.get('shareUrl'),
       postNumber: post.get('post_number')
     };
-    return new Button('share', 'post.controls.share', 'link', options);
+    return new Button('share', 'post.controls.share', 'share-alt', options);
   },
 
   // Reply button

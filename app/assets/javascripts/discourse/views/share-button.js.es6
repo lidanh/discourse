@@ -8,7 +8,7 @@ export default ButtonView.extend({
   topic: Em.computed.alias('controller.model'),
 
   renderIcon: function(buffer) {
-    buffer.push("<i class='fa fa-link'></i>");
+    buffer.push("<i class='fa fa-share-alt'></i>");
   }
 });
 
