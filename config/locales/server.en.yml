@@ -302,7 +302,7 @@ en:
     no_info_other: "<div class='missing-profile'>%{name} hasn't entered anything in the About Me field of their profile yet</div>"
 
   vip_category_name: "Lounge"
-  vip_category_description: "A subforum exclusive to members with trust level 3 and higher."
+  vip_category_description: "A subforum exclusive to members with user level 3 and higher."
 
   meta_category_name: "Meta"
   meta_category_description: "Discussion about this site, its organization, how it works, and how we can improve it."
@@ -318,21 +318,21 @@ en:
 
       Congratulations! :confetti_ball:
 
-      If you can see this topic, you were recently promoted to **regular** (trust level 3).
+      If you can see this topic, you were recently promoted to **regular** (user level 3).
 
       You can now &hellip;
 
       * Edit the title of any topic
       * Change the subforum of any topic
       * Have all your links followed ([automatic nofollow](http://en.wikipedia.org/wiki/Nofollow) is removed)
-      * Access a private Lounge subforum only visible to users at trust level 3 and higher
+      * Access a private Lounge subforum only visible to users at user level 3 and higher
       * Hide spam with a single flag
 
       Here's the [current list of fellow regulars](/badges/3/regular). Be sure to say hi.
 
       Thanks for being an important part of this community!
 
-      (For more information on trust levels, [see this topic][trust]. Please note that only members who continue to meet the requirements over time will remain regulars.)
+      (For more information on user levels, [see this topic][trust]. Please note that only members who continue to meet the requirements over time will remain regulars.)
 
 
   category:
@@ -362,7 +362,7 @@ en:
       title: "regular"
     elder:
       title: "leader"
-    change_failed_explanation: "You attempted to demote %{user_name} to '%{new_trust_level}'. However their trust level is already '%{current_trust_level}'. %{user_name} will remain at '%{current_trust_level}' - if you wish to demote user lock trust level first"
+    change_failed_explanation: "You attempted to demote %{user_name} to '%{new_trust_level}'. However their user level is already '%{current_trust_level}'. %{user_name} will remain at '%{current_trust_level}' - if you wish to demote user lock user level first"
 
 
   rate_limiter:
@@ -791,7 +791,7 @@ en:
     summary_percent_filter: "When a user clicks 'Summarize This Topic', show the top % of posts"
     summary_max_results: "Maximum posts returned by 'Summary This Topic'"
 
-    enable_private_messages: "Allow trust level 1 users to create messages and reply to messages"
+    enable_private_messages: "Allow user level 1 users to create messages and reply to messages"
 
     enable_long_polling: "Message bus used for notification can use long polling"
     long_polling_base_url: "Base URL used for long polling (when a CDN is serving dynamic content, be sure to set this to origin pull) eg: http://origin.site.com"
@@ -952,36 +952,36 @@ en:
 
     enable_flash_video_onebox: "Enable embedding of swf and flv (Adobe Flash) links in oneboxes. WARNING: may introduce security risks."
 
-    default_invitee_trust_level: "Default trust level (0-4) for invited users."
-    default_trust_level: "Default trust level (0-4) for all new users. WARNING! Changing this will put you at serious risk for spam."
+    default_invitee_trust_level: "Default user level (0-4) for invited users."
+    default_trust_level: "Default user level (0-4) for all new users. WARNING! Changing this will put you at serious risk for spam."
 
-    tl1_requires_topics_entered: "How many topics a new user must enter before promotion to trust level 1."
-    tl1_requires_read_posts: "How many posts a new user must read before promotion to trust level 1."
-    tl1_requires_time_spent_mins: "How many minutes a new user must read posts before promotion to trust level 1."
+    tl1_requires_topics_entered: "How many topics a new user must enter before promotion to user level 1."
+    tl1_requires_read_posts: "How many posts a new user must read before promotion to user level 1."
+    tl1_requires_time_spent_mins: "How many minutes a new user must read posts before promotion to user level 1."
 
-    tl2_requires_topics_entered: "How many topics a user must enter before promotion to trust level 2."
-    tl2_requires_read_posts: "How many posts a user must read before promotion to trust level 2."
-    tl2_requires_time_spent_mins: "How many minutes a user must read posts before promotion to trust level 2."
-    tl2_requires_days_visited: "How many days a user must visit the site before promotion to trust level 2."
-    tl2_requires_likes_received: "How many likes a user must receive before promotion to trust level 2."
-    tl2_requires_likes_given: "How many likes a user must cast before promotion to trust level 2."
-    tl2_requires_topic_reply_count: "How many topics user must reply to before promotion to trust level 2."
+    tl2_requires_topics_entered: "How many topics a user must enter before promotion to user level 2."
+    tl2_requires_read_posts: "How many posts a user must read before promotion to user level 2."
+    tl2_requires_time_spent_mins: "How many minutes a user must read posts before promotion to user level 2."
+    tl2_requires_days_visited: "How many days a user must visit the site before promotion to user level 2."
+    tl2_requires_likes_received: "How many likes a user must receive before promotion to user level 2."
+    tl2_requires_likes_given: "How many likes a user must cast before promotion to user level 2."
+    tl2_requires_topic_reply_count: "How many topics user must reply to before promotion to user level 2."
 
-    tl3_requires_days_visited: "Minimum number of days that a user needs to have visited the site in the last 100 days to qualify for promotion to trust level 3. (0 to 100)"
-    tl3_requires_topics_replied_to: "Minimum number of topics a user needs to have replied to in the last 100 days to qualify for promotion to trust level 3. (0 or higher)"
-    tl3_requires_topics_viewed: "The percentage of topics created in the last 100 days that a user needs to have viewed to qualify for promotion to trust level 3. (0 to 100)"
-    tl3_requires_posts_read: "The percentage of posts created in the last 100 days that a user needs to have viewed to qualify for promotion to trust level 3. (0 to 100)"
-    tl3_requires_topics_viewed_all_time: "The minimum total number of topics a user must have viewed to qualify for trust level 3."
-    tl3_requires_posts_read_all_time: "The minimum total number of posts a user must have read to qualify for trust level 3."
-    tl3_requires_max_flagged: "User must not have had more than x posts reported by x different users in the last 100 days to qualify for promotion to trust level 3, where x is this setting's value. (0 or higher)"
-    tl3_promotion_min_duration: "The minimum number of days that a promotion to trust level 3 lasts before a user can be demoted back to trust level 2."
-    tl3_requires_likes_given: "The minimum number of likes that must be given in the last 100 days to qualify for promotion to trust level 3."
-    tl3_requires_likes_received: "The minimum number of likes that must be received in the last 100 days to qualify for promotion to trust level 3."
-    tl3_links_no_follow: "Do not remove rel=nofollow from links posted by trust level 3 users."
+    tl3_requires_days_visited: "Minimum number of days that a user needs to have visited the site in the last 100 days to qualify for promotion to user level 3. (0 to 100)"
+    tl3_requires_topics_replied_to: "Minimum number of topics a user needs to have replied to in the last 100 days to qualify for promotion to user level 3. (0 or higher)"
+    tl3_requires_topics_viewed: "The percentage of topics created in the last 100 days that a user needs to have viewed to qualify for promotion to user level 3. (0 to 100)"
+    tl3_requires_posts_read: "The percentage of posts created in the last 100 days that a user needs to have viewed to qualify for promotion to user level 3. (0 to 100)"
+    tl3_requires_topics_viewed_all_time: "The minimum total number of topics a user must have viewed to qualify for user level 3."
+    tl3_requires_posts_read_all_time: "The minimum total number of posts a user must have read to qualify for user level 3."
+    tl3_requires_max_flagged: "User must not have had more than x posts reported by x different users in the last 100 days to qualify for promotion to user level 3, where x is this setting's value. (0 or higher)"
+    tl3_promotion_min_duration: "The minimum number of days that a promotion to user level 3 lasts before a user can be demoted back to user level 2."
+    tl3_requires_likes_given: "The minimum number of likes that must be given in the last 100 days to qualify for promotion to user level 3."
+    tl3_requires_likes_received: "The minimum number of likes that must be received in the last 100 days to qualify for promotion to user level 3."
+    tl3_links_no_follow: "Do not remove rel=nofollow from links posted by user level 3 users."
 
-    min_trust_to_create_topic: "The minimum trust level required to create a new topic."
+    min_trust_to_create_topic: "The minimum user level required to create a new topic."
 
-    min_trust_to_edit_wiki_post: "The minimum trust level required to edit post marked as wiki."
+    min_trust_to_edit_wiki_post: "The minimum user level required to edit post marked as wiki."
 
     newuser_max_links: "How many links a new user can add to a post."
     newuser_max_images: "How many images a new user can add to a post."
@@ -1041,7 +1041,7 @@ en:
     topic_view_duration_hours: "Count new a topic view once per IP/User every N hours"
 
     levenshtein_distance_spammer_emails: "When matching spammer emails, number of characters difference that will still allow a fuzzy match."
-    max_new_accounts_per_registration_ip: "If there are already (n) trust level 0 accounts from this IP (and none is a staff member or at TL2 or higher), stop accepting new signups from that IP."
+    max_new_accounts_per_registration_ip: "If there are already (n) user level 0 accounts from this IP (and none is a staff member or at TL2 or higher), stop accepting new signups from that IP."
     min_ban_entries_for_roll_up: "When clicking the Roll up button, will create a new subnet ban entry if there are at least (N) entries."
 
     max_age_unmatched_emails: "Delete unmatched screened email entries after (N) days."
@@ -1068,7 +1068,7 @@ en:
     pop3_polling_username: "The username for the POP3 account to poll for email."
     pop3_polling_password: "The password for the POP3 account to poll for email."
     email_in: "Allow users to post new topics via email (requires pop3 polling). Configure the addresses in the \"Settings\" tab of each subforum."
-    email_in_min_trust: "The minimum trust level a user needs to have to be allowed to post new topics via email."
+    email_in_min_trust: "The minimum user level a user needs to have to be allowed to post new topics via email."
     email_prefix: "The [label] used in the subject of emails. It will default to 'title' if not set."
     email_site_title: "The title of the site used as the sender of emails from the site. Default to 'title' if not set. If your 'title' contains characters that are not allowed in email sender strings, use this setting."
 
@@ -1099,7 +1099,7 @@ en:
     staff_user_custom_fields: "A whitelist of custom fields for a user that can be shown to staff."
     enable_user_directory: "Provide a directory of users for browsing"
     allow_anonymous_posting: "Allow users to switch to anonymous mode"
-    anonymous_posting_min_trust_level: "Minimum trust level required to enable anonymous posting"
+    anonymous_posting_min_trust_level: "Minimum user level required to enable anonymous posting"
     anonymous_account_duration_minutes: "To protect anonymity create a new anonymous account every N minutes for each user. Example: if set to 600, as soon as 600 minutes elapse from last post AND user switches to anon, a new anonymous account is created."
 
     allow_profile_backgrounds: "Allow users to upload profile backgrounds."
@@ -1153,7 +1153,7 @@ en:
     enforce_square_emoji: "Force a square aspect ratio to all emojis."
 
     approve_post_count: "The amount of posts from a new user that must be approved"
-    approve_unless_trust_level: "Posts for users below this trust level must be approved"
+    approve_unless_trust_level: "Posts for users below this user level must be approved"
     notify_about_queued_posts_after: "If there are posts that have been waiting to be reviewed for more than this many hours, an email will be sent to the contact email. Set to 0 to disable these emails."
 
     errors:
@@ -1491,7 +1491,7 @@ en:
 
         ## Community Trust
 
-        As you participate here, over time you'll gain the trust of the community, become a full citizen, and new user limitations will be lifted. At a high enough [trust level](https://meta.discourse.org/t/what-do-user-trust-levels-do/4924), you'll gain new abilities to help us manage our community together.
+        As you participate here, over time you'll gain the trust of the community, become a full citizen, and new user limitations will be lifted. At a high enough [user level](https://meta.discourse.org/t/what-do-user-trust-levels-do/4924), you'll gain new abilities to help us manage our community together.
 
     welcome_user:
       subject_template: "Welcome to %{site_name}!"
@@ -1582,7 +1582,7 @@ en:
       text_body_template: |
         We're sorry, but your email message to %{destination} (titled %{former_title}) didn't work.
 
-        Your account does not have the required trust level to post new topics to this email address. If you believe this is in error, contact a staff member.
+        Your account does not have the required user level to post new topics to this email address. If you believe this is in error, contact a staff member.
 
     email_reject_no_account:
       subject_template: "[%{site_name}] Email issue -- Unknown Account"
@@ -2356,7 +2356,7 @@ en:
       first_flag: |
         Flagging is critical to the health of your community. If you notice any posts that require moderator attention please
         do not hesitate to flag. You may also use the flagging dialog to send <b>messages</b> to users once you reach
-        trust level 1.
+        user level 1.
       nice_share: |
         Blah blah blah
         Blah blah blah

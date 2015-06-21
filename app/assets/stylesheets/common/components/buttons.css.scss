@@ -15,6 +15,9 @@
   text-align: center;
   cursor: pointer;
   transition: all .25s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 
   &:active {
     text-shadow: none;

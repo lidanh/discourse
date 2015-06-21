@@ -142,7 +142,7 @@ basic:
   category_colors:
     client: true
     type: list
-    default: 'BF1E2E|F1592A|F7941D|9EB83B|3AB54A|12A89D|25AAE2|0E76BD|652D90|92278F|ED207B|8C6238|231F20|808281|B3B5B4|283890'
+    default: 'cccccc|2658b2|02226a|a30800|000000|700500|e5c913|498917|b47209|e08c03'
   category_style:
     client: true
     default: 'bullet'
@@ -443,7 +443,7 @@ posting:
     default: true
     client: true
   emoji_set:
-    default: 'apple_international'
+    default: 'apple'
     client: true
     enum: 'EmojiSetSiteSetting'
   enforce_square_emoji:

@@ -13,7 +13,7 @@ class UserAvatar < ActiveRecord::Base
     DistributedMutex.synchronize("update_gravatar_#{user.id}") do
       begin
         # special logic for our system user
-        email_hash = user.id == Discourse::SYSTEM_USER_ID ? User.email_hash("info@discourse.org") : user.email_hash
+        email_hash = user.id == Discourse::SYSTEM_USER_ID ? User.email_hash("gameofforumsgce@gmail.com") : user.email_hash
 
         self.last_gravatar_download_attempt = Time.new
 
