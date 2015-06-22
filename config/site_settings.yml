@@ -32,7 +32,7 @@ required:
     default: 'noreply@game-of-forums.com'
     type: email
     shadowed_by_global: true
-  site_contact_username:
+  site_contact_username: lidan
     default: ''
     type: username
   logo_url:
@@ -75,7 +75,7 @@ basic:
   track_external_right_clicks:
     client: true
     default: false
-  ga_universal_tracking_code:
+  ga_universal_tracking_code: UA-64356556-1
     client: true
     default: ''
     regex: "^UA-\\d+-\\d+$"

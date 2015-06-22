@@ -99,40 +99,6 @@
 
 <div class="dashboard-right">
 
-  {{#if foundProblems}}
-    <div class="dashboard-stats detected-problems">
-      <div class="look-here"><i class="fa fa-exclamation-triangle"></i></div>
-      <div class="problem-messages">
-        <p {{bind-attr class="loadingProblems:invisible"}}>
-          {{i18n 'admin.dashboard.problems_found'}}
-          <ul {{bind-attr class="loadingProblems:invisible"}}>
-            {{#each problem in problems}}
-              <li>{{{problem}}}</li>
-            {{/each}}
-          </ul>
-        </p>
-        <p class="actions">
-          <small>{{i18n 'admin.dashboard.last_checked'}}: {{problemsTimestamp}}</small>
-          {{d-button action="refreshProblems" class="btn-small" icon="refresh" label="admin.dashboard.refresh_problems"}}
-        </p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  {{else}}
-    {{#if thereWereProblems}}
-      <div class="dashboard-stats detected-problems">
-        <div class="look-here">&nbsp;</div>
-        <div class="problem-messages">
-          <p>
-            {{i18n 'admin.dashboard.no_problems'}}
-            {{d-button action="refreshProblems" class="btn-small" icon="refresh" label="admin.dashboard.refresh_problems"}}
-          </p>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    {{/if}}
-  {{/if}}
-
   <div class="dashboard-stats">
     <table class="table table-condensed table-hover">
       <thead>
