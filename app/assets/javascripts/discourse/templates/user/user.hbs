@@ -37,14 +37,6 @@
           {{bound-avatar model "huge"}}
           <section class='controls'>
             <ul>
-              {{#if model.can_send_private_message_to_user}}
-              <li>
-                <a class='btn btn-primary right' {{action "composePrivateMessage" model}}>
-                  {{fa-icon "envelope"}}
-                  {{i18n 'user.private_message'}}
-                </a>
-              </li>
-              {{/if}}
               {{#if viewingSelf}}
                 <li><a {{action "logout"}} class='btn btn-danger right'>{{fa-icon "sign-out"}}{{i18n 'user.log_out'}}</a></li>
               {{/if}}

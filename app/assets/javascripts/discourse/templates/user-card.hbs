@@ -24,10 +24,6 @@
   </div>
 
   <ul class="usercard-controls">
-    {{#if user.can_send_private_message_to_user}}
-      <li><a class='btn btn-primary' {{action "composePrivateMessage" user post}}>{{fa-icon "envelope"}}{{i18n 'user.private_message'}}</a></li>
-    {{/if}}
-
     {{#if showFilter}}
       <li><a class='btn' href {{action "togglePosts" user}}>{{fa-icon "filter"}}{{i18n 'topic.filter_to' username=username post_count=topicPostCount}}</a></li>
     {{/if}}
