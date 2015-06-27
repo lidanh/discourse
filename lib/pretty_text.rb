@@ -85,18 +85,18 @@ module PrettyText
     ctx_load(ctx,
       "vendor/assets/javascripts/better_markdown.js",
       "app/assets/javascripts/defer/html-sanitizer-bundle.js",
-      "app/assets/javascripts/discourse/dialects/dialect.js",
-      "app/assets/javascripts/discourse/lib/utilities.js",
-      "app/assets/javascripts/discourse/lib/html.js",
-      "app/assets/javascripts/discourse/lib/markdown.js",
+      "app/assets/javascripts/game-of-forums/dialects/dialect.js",
+      "app/assets/javascripts/game-of-forums/lib/utilities.js",
+      "app/assets/javascripts/game-of-forums/lib/html.js",
+      "app/assets/javascripts/game-of-forums/lib/markdown.js",
     )
 
-    Dir["#{app_root}/app/assets/javascripts/discourse/dialects/**.js"].sort.each do |dialect|
+    Dir["#{app_root}/app/assets/javascripts/game-of-forums/dialects/**.js"].sort.each do |dialect|
       ctx.load(dialect) unless dialect =~ /\/dialect\.js$/
     end
 
     # emojis
-    emoji = ERB.new(File.read("#{app_root}/app/assets/javascripts/discourse/lib/emoji/emoji.js.erb"))
+    emoji = ERB.new(File.read("#{app_root}/app/assets/javascripts/game-of-forums/lib/emoji/emoji.js.erb"))
     ctx.eval(emoji.result)
 
     # Load server side javascripts

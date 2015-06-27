@@ -5,26 +5,26 @@ test("modal", () => {
   visit('/');
 
   andThen(() => {
-    ok(find('#discourse-modal:visible').length === 0, 'there is no modal at first');
+    ok(find('#game-of-forums-modal:visible').length === 0, 'there is no modal at first');
   });
 
   click('.login-button');
   andThen(() => {
-    ok(find('#discourse-modal:visible').length === 1, 'modal should appear');
+    ok(find('#game-of-forums-modal:visible').length === 1, 'modal should appear');
   });
 
   click('.modal-outer-container');
   andThen(() => {
-    ok(find('#discourse-modal:visible').length === 0, 'modal should disappear when you click outside');
+    ok(find('#game-of-forums-modal:visible').length === 0, 'modal should disappear when you click outside');
   });
 
   click('.login-button');
   andThen(() => {
-    ok(find('#discourse-modal:visible').length === 1, 'modal should reappear');
+    ok(find('#game-of-forums-modal:visible').length === 1, 'modal should reappear');
   });
 
   keyEvent('#main-outlet', 'keydown', 27);
   andThen(() => {
-    ok(find('#discourse-modal:visible').length === 0, 'ESC should close the modal');
+    ok(find('#game-of-forums-modal:visible').length === 0, 'ESC should close the modal');
   });
 });

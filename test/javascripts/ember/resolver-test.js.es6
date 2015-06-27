@@ -1,4 +1,4 @@
-import GameOfForumsResolver from 'discourse/ember/resolver';
+import GameOfForumsResolver from 'game-of-forums/ember/resolver';
 
 var originalTemplates, originalMobileViewFlag;
 var resolver = GameOfForumsResolver.create();

@@ -1,4 +1,4 @@
-import Session from "discourse/models/session";
+import Session from "game-of-forums/models/session";
 
 module("GameOfForums.Session");
 

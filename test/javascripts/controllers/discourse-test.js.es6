@@ -1,5 +1,5 @@
-import GameOfForumsController from 'discourse/controllers/controller';
-import Presence from 'discourse/mixins/presence';
+import GameOfForumsController from 'game-of-forums/controllers/controller';
+import Presence from 'game-of-forums/mixins/presence';
 
 module("GameOfForumsController");
 

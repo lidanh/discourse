@@ -9,7 +9,7 @@ module Autospec
     def watchers; WATCHERS; end
 
     # Discourse specific
-    watch(%r{^app/assets/javascripts/discourse/(.+)\.js$}) { |m| "test/javascripts/#{m[1]}_test.js" }
+    watch(%r{^app/assets/javascripts/game-of-forums(.+)\.js$}) { |m| "test/javascripts/#{m[1]}_test.js" }
     watch(%r{^app/assets/javascripts/admin/(.+)\.js$})     { |m| "test/javascripts/admin/#{m[1]}_test.js" }
     watch(%r{^test/javascripts/.+\.js$})
 

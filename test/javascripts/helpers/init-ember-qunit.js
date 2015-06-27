@@ -1,2 +1,2 @@
-var resolver = require('discourse/ember/resolver').default;
+var resolver = require('game-of-forums/ember/resolver').default;
 window.setResolver(resolver.create({ namespace: GameOfForums }));

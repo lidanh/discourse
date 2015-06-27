@@ -1,6 +1,6 @@
 module("model:topic");
 
-import Topic from 'discourse/models/topic';
+import Topic from 'game-of-forums/models/topic';
 
 test("defaults", function() {
   var topic = Topic.create({id: 1234});

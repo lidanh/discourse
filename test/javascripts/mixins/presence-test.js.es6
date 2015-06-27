@@ -1,4 +1,4 @@
-import Presence from 'discourse/mixins/presence';
+import Presence from 'game-of-forums/mixins/presence';
 
 module("mixin:presence");
 

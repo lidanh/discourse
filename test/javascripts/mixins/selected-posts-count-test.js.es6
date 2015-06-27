@@ -1,7 +1,7 @@
 module("SelectedPostsCount");
 
-import SelectedPostsCount from 'discourse/mixins/selected-posts-count';
-import Topic from 'discourse/models/topic';
+import SelectedPostsCount from 'game-of-forums/mixins/selected-posts-count';
+import Topic from 'game-of-forums/models/topic';
 
 var buildTestObj = function(params) {
   return Ember.Object.createWithMixins(SelectedPostsCount, params || {});

@@ -1,6 +1,6 @@
 module('result-set');
 
-import ResultSet from 'discourse/models/result-set';
+import ResultSet from 'game-of-forums/models/result-set';
 import createStore from 'helpers/create-store';
 
 test('defaults', function() {

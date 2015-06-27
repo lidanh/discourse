@@ -1,4 +1,4 @@
-import PostView from "discourse/views/post";
+import PostView from "game-of-forums/views/post";
 
 function createPollView(container, post, poll, vote) {
   const controller = container.lookup("controller:poll", { singleton: false }),

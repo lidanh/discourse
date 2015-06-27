@@ -1,4 +1,4 @@
-import ClickTrack from "discourse/lib/click-track";
+import ClickTrack from "game-of-forums/lib/click-track";
 
 var windowOpen,
     win,

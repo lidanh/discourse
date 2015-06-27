@@ -1,5 +1,5 @@
-import Presence from 'discourse/mixins/presence';
-import Model from 'discourse/models/model';
+import Presence from 'game-of-forums/mixins/presence';
+import Model from 'game-of-forums/models/model';
 
 module("GameOfForums.Model");
 

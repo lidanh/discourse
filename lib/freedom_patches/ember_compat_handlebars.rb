@@ -11,7 +11,7 @@ module Barber
     def precompiler
     @precompiler ||= StringIO.new <<END
       var GameOfForums = {};
-      #{File.read(Rails.root + "app/assets/javascripts/discourse/lib/ember_compat_handlebars.js")}
+      #{File.read(Rails.root + "app/assets/javascripts/game-of-forums/lib/ember_compat_handlebars.js")}
       var Barber = {
         precompile: function(string) {
           return GameOfForums.EmberCompatHandlebars.precompile(string,false).toString();

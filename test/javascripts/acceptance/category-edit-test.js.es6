@@ -7,11 +7,11 @@ test("Can edit a category", (assert) => {
 
   click('.edit-category');
   andThen(() => {
-    assert.ok(visible('#discourse-modal'), 'it pops up a modal');
+    assert.ok(visible('#game-of-forums-modal'), 'it pops up a modal');
   });
 
   click('a.close');
   andThen(() => {
-    assert.ok(!visible('#discourse-modal'), 'it closes the modal');
+    assert.ok(!visible('#game-of-forums-modal'), 'it closes the modal');
   });
 });

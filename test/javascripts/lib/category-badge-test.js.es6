@@ -1,6 +1,6 @@
 module("categoryBadgeHTML");
 
-import { categoryBadgeHTML } from "discourse/helpers/category-link";
+import { categoryBadgeHTML } from "game-of-forums/helpers/category-link";
 
 test("categoryBadge without a category", function() {
   blank(categoryBadgeHTML(), "it returns no HTML");

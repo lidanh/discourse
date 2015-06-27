@@ -1,7 +1,7 @@
 module('rest-model');
 
 import createStore from 'helpers/create-store';
-import RestModel from 'discourse/models/rest';
+import RestModel from 'game-of-forums/models/rest';
 
 test('munging', function() {
   const store = createStore();

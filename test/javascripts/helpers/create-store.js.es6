@@ -1,6 +1,6 @@
-import Store from "discourse/models/store";
-import RestAdapter from 'discourse/adapters/rest';
-import Resolver from 'discourse/ember/resolver';
+import Store from "game-of-forums/models/store";
+import RestAdapter from 'game-of-forums/adapters/rest';
+import Resolver from 'game-of-forums/ember/resolver';
 
 let _restAdapter;
 export default function() {

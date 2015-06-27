@@ -89,7 +89,7 @@ module Tilt
       # We should eventually have an upgrade system for plugins to use ES6 or some other
       # resolve based API.
       if ENV['DISCOURSE_NO_CONSTANTS'].nil? &&
-        scope.logical_path =~ /(discourse|admin)\/(controllers|components|views|routes|mixins|models)\/(.*)/
+        scope.logical_path =~ /(game-of-forums|admin)\/(controllers|components|views|routes|mixins|models)\/(.*)/
 
         type = Regexp.last_match[2]
         file_name = Regexp.last_match[3].gsub(/[\-\/]/, '_')
@@ -101,7 +101,7 @@ module Tilt
         end
         require_name = module_name(scope.root_path, scope.logical_path)
 
-        if require_name !~ /\-test$/ && require_name !~ /^discourse\/plugins\//
+        if require_name !~ /\-test$/ && require_name !~ /^game-of-forums\/plugins\//
           result = "#{class_name}#{type.classify}"
 
           # HAX
@@ -149,7 +149,7 @@ module Tilt
         plugin_path = "#{Regexp.last_match[1]}/plugin.rb"
 
         plugin = Discourse.plugins.find {|p| p.path == plugin_path }
-        path = "discourse/plugins/#{plugin.name}/#{logical_path.sub(/javascripts\//, '')}" if plugin
+        path = "game-of-forums/plugins/#{plugin.name}/#{logical_path.sub(/javascripts\//, '')}" if plugin
       end
 
       path ||= logical_path

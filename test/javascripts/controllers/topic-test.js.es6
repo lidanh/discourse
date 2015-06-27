@@ -3,7 +3,7 @@ moduleFor('controller:topic', 'controller:topic', {
           'controller:search', 'controller:topic-progress', 'controller:application']
 });
 
-import Topic from 'discourse/models/topic';
+import Topic from 'game-of-forums/models/topic';
 
 var buildTopic = function() {
   return Topic.create({

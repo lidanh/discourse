@@ -6,7 +6,7 @@
 //= require ../../app/assets/javascripts/preload_store
 
 // probe framework first
-//= require ../../app/assets/javascripts/discourse/lib/probes
+//= require ../../app/assets/javascripts/game-of-forums/lib/probes
 
 // Externals we need to load first
 //= require jquery.debug
@@ -78,7 +78,7 @@ if (window.Logster) {
 var origDebounce = Ember.run.debounce,
     createPretendServer = require('helpers/create-pretender', null, null, false).default,
     fixtures = require('fixtures/site_fixtures', null, null, false).default,
-    flushMap = require('discourse/models/store', null, null, false).flushMap,
+    flushMap = require('game-of-forums/models/store', null, null, false).flushMap,
     server;
 
 QUnit.testStart(function(ctx) {

@@ -88,13 +88,13 @@ test("Create an enqueued Topic", () => {
   fillIn('#wmd-input', "enqueue this content please");
   click('#reply-control button.create');
   andThen(() => {
-    ok(visible('#discourse-modal'), 'it pops up a modal');
+    ok(visible('#game-of-forums-modal'), 'it pops up a modal');
     equal(currentURL(), "/", "it doesn't change routes");
   });
 
   click('.modal-footer button');
   andThen(() => {
-    ok(invisible('#discourse-modal'), 'the modal can be dismissed');
+    ok(invisible('#game-of-forums-modal'), 'the modal can be dismissed');
   });
 });
 
@@ -156,12 +156,12 @@ test("Create an enqueued Reply", () => {
   });
 
   andThen(() => {
-    ok(visible('#discourse-modal'), 'it pops up a modal');
+    ok(visible('#game-of-forums-modal'), 'it pops up a modal');
   });
 
   click('.modal-footer button');
   andThen(() => {
-    ok(invisible('#discourse-modal'), 'the modal can be dismissed');
+    ok(invisible('#game-of-forums-modal'), 'the modal can be dismissed');
   });
 });
 

@@ -1,4 +1,4 @@
-import round from "discourse/plugins/poll/lib/round";
+import round from "game-of-forums/plugins/poll/lib/round";
 
 export default Em.Component.extend({
   tagName: "span",

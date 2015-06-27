@@ -1,4 +1,4 @@
-import avatarTemplate from 'discourse/lib/avatar-template';
+import avatarTemplate from 'game-of-forums/lib/avatar-template';
 
 module('avatarTemplate');
 

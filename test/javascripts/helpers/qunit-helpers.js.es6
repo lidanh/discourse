@@ -2,7 +2,7 @@
 
 import sessionFixtures from 'fixtures/session-fixtures';
 import siteFixtures from 'fixtures/site_fixtures';
-import HeaderView from 'discourse/views/header';
+import HeaderView from 'game-of-forums/views/header';
 
 function currentUser() {
   return GameOfForums.User.create(sessionFixtures['/session/current.json'].current_user);
