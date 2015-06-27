@@ -39,11 +39,11 @@ test("editingMode", function() {
 
 test("toggledSelectedPost", function() {
   var tc = this.subject({ model: buildTopic() }),
-      post = Discourse.Post.create({id: 123, post_number: 2}),
+      post = GameOfForums.Post.create({id: 123, post_number: 2}),
       postStream = tc.get('model.postStream');
 
   postStream.appendPost(post);
-  postStream.appendPost(Discourse.Post.create({id: 124, post_number: 3}));
+  postStream.appendPost(GameOfForums.Post.create({id: 124, post_number: 3}));
 
   blank(tc.get('selectedPosts'), "there are no selected posts by default");
   equal(tc.get('selectedPostsCount'), 0, "there is a selected post count of 0");
@@ -61,7 +61,7 @@ test("toggledSelectedPost", function() {
 
 test("selectAll", function() {
   var tc = this.subject({model: buildTopic()}),
-      post = Discourse.Post.create({id: 123, post_number: 2}),
+      post = GameOfForums.Post.create({id: 123, post_number: 2}),
       postStream = tc.get('model.postStream');
 
   postStream.appendPost(post);
@@ -79,7 +79,7 @@ test("selectAll", function() {
 test("Automating setting of allPostsSelected", function() {
   var topic = buildTopic(),
       tc = this.subject({model: topic}),
-      post = Discourse.Post.create({id: 123, post_number: 2}),
+      post = GameOfForums.Post.create({id: 123, post_number: 2}),
       postStream = tc.get('model.postStream');
 
   topic.set('posts_count', 1);
@@ -96,9 +96,9 @@ test("Automating setting of allPostsSelected", function() {
 test("Select Replies when present", function() {
   var topic = buildTopic(),
       tc = this.subject({ model: topic }),
-      p1 = Discourse.Post.create({id: 1, post_number: 1, reply_count: 1}),
-      p2 = Discourse.Post.create({id: 2, post_number: 2}),
-      p3 = Discourse.Post.create({id: 2, post_number: 3, reply_to_post_number: 1});
+      p1 = GameOfForums.Post.create({id: 1, post_number: 1, reply_count: 1}),
+      p2 = GameOfForums.Post.create({id: 2, post_number: 2}),
+      p3 = GameOfForums.Post.create({id: 2, post_number: 3, reply_to_post_number: 1});
 
   ok(!tc.postSelected(p3), "replies are not selected by default");
   tc.send('toggledSelectedPostReplies', p1);

@@ -1,8 +1,8 @@
-import showModal from 'discourse/lib/show-modal';
+import showModal from 'game-of-forums/lib/show-modal';
 
 const LOG_CHANNEL = "/admin/backups/logs";
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
 
   activate() {
     this.messageBus.subscribe(LOG_CHANNEL, this._processLogMessage.bind(this));
@@ -16,11 +16,11 @@ export default Discourse.Route.extend({
       this.controllerFor("adminBackups").set("isOperationRunning", false);
       bootbox.alert(I18n.t("admin.backups.operations.failed", { operation: log.operation }));
     } else if (log.message === "[SUCCESS]") {
-      Discourse.User.currentProp("hideReadOnlyAlert", false);
+      GameOfForums.User.currentProp("hideReadOnlyAlert", false);
       this.controllerFor("adminBackups").set("isOperationRunning", false);
       if (log.operation === "restore") {
         // redirect to homepage when the restore is done (session might be lost)
-        window.location.pathname = Discourse.getURL("/");
+        window.location.pathname = GameOfForums.getURL("/");
       }
     } else {
       this.controllerFor("adminBackupsLogs").pushObject(Em.Object.create(log));
@@ -29,9 +29,9 @@ export default Discourse.Route.extend({
 
   model() {
     return PreloadStore.getAndRemove("operations_status", function() {
-      return Discourse.ajax("/admin/backups/status.json");
+      return GameOfForums.ajax("/admin/backups/status.json");
     }).then(function (status) {
-      return Discourse.BackupStatus.create({
+      return GameOfForums.BackupStatus.create({
         isOperationRunning: status.is_operation_running,
         canRollback: status.can_rollback,
         allowRestore: status.allow_restore
@@ -79,7 +79,7 @@ export default Discourse.Route.extend({
         I18n.t("yes_value"),
         function(confirmed) {
           if (confirmed) {
-            Discourse.User.currentProp("hideReadOnlyAlert", true);
+            GameOfForums.User.currentProp("hideReadOnlyAlert", true);
             backup.restore().then(function() {
               self.controllerFor("adminBackupsLogs").clear();
               self.modelFor("adminBackups").set("isOperationRunning", true);
@@ -98,7 +98,7 @@ export default Discourse.Route.extend({
         I18n.t("yes_value"),
         function(confirmed) {
           if (confirmed) {
-            Discourse.Backup.cancel().then(function() {
+            GameOfForums.Backup.cancel().then(function() {
               self.controllerFor("adminBackups").set("isOperationRunning", false);
             });
           }
@@ -112,7 +112,7 @@ export default Discourse.Route.extend({
         I18n.t("no_value"),
         I18n.t("yes_value"),
         function(confirmed) {
-          if (confirmed) { Discourse.Backup.rollback(); }
+          if (confirmed) { GameOfForums.Backup.rollback(); }
         }
       );
     },
@@ -120,7 +120,7 @@ export default Discourse.Route.extend({
     uploadSuccess(filename) {
       const self = this;
       bootbox.alert(I18n.t("admin.backups.upload.success", { filename: filename }), function() {
-        Discourse.Backup.find().then(function (backups) {
+        GameOfForums.Backup.find().then(function (backups) {
           self.controllerFor("adminBackupsIndex").set("model", backups);
         });
       });

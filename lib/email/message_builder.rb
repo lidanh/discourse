@@ -106,11 +106,11 @@ module Email
         result['List-Unsubscribe'] = "<#{template_args[:user_preferences_url]}>" if @opts[:add_unsubscribe_link]
       end
 
-      result['X-Discourse-Post-Id'] = @opts[:post_id].to_s if @opts[:post_id]
-      result['X-Discourse-Topic-Id'] = @opts[:topic_id].to_s if @opts[:topic_id]
+      result['X-GameOfForums-Post-Id'] = @opts[:post_id].to_s if @opts[:post_id]
+      result['X-GameOfForums-Topic-Id'] = @opts[:topic_id].to_s if @opts[:topic_id]
 
       if allow_reply_by_email?
-        result['X-Discourse-Reply-Key'] = reply_key
+        result['X-GameOfForums-Reply-Key'] = reply_key
         result['Reply-To'] = reply_by_email_address
       else
         result['Reply-To'] = from_value

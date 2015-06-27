@@ -1,4 +1,4 @@
-import { outputExportResult } from 'discourse/lib/export-result';
+import { outputExportResult } from 'game-of-forums/lib/export-result';
 
 export default Ember.ArrayController.extend({
   loading: false,
@@ -35,7 +35,7 @@ export default Ember.ArrayController.extend({
     });
     this.set('filterCount', count);
 
-    Discourse.StaffActionLog.findAll(params).then(function(result) {
+    GameOfForums.StaffActionLog.findAll(params).then(function(result) {
       self.set('model', result);
     }).finally(function() {
       self.set('loading', false);
@@ -92,7 +92,7 @@ export default Ember.ArrayController.extend({
     },
 
     exportStaffActionLogs: function() {
-      Discourse.ExportCsv.exportStaffActionLogs().then(outputExportResult);
+      GameOfForums.ExportCsv.exportStaffActionLogs().then(outputExportResult);
     }
   }
 });

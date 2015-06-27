@@ -30,7 +30,7 @@ class EmailTestMailer < ActionMailer::Base
     mail(from: mailfrom,
          to: mailto,
          body: "Testing email settings",
-         subject: "Discourse email settings test",
+         subject: "GameOfForums email settings test",
          delivery_method_options: $delivery_options)
   end
 end

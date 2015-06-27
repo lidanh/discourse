@@ -1,4 +1,4 @@
-Discourse.BackupStatus = Discourse.Model.extend({
+GameOfForums.BackupStatus = GameOfForums.Model.extend({
 
   restoreDisabled: Em.computed.not("restoreEnabled"),
 

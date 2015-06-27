@@ -1,12 +1,12 @@
-module("Discourse.Site");
+module("GameOfForums.Site");
 
 test('create', function() {
-  ok(Discourse.Site.create(), 'it can create with no parameters');
+  ok(GameOfForums.Site.create(), 'it can create with no parameters');
 });
 
 test('instance', function() {
 
-  var site = Discourse.Site.current();
+  var site = GameOfForums.Site.current();
 
   present(site, "We have a current site singleton");
   present(site.get('categories'), "The instance has a list of categories");
@@ -17,7 +17,7 @@ test('instance', function() {
 
 test('create categories', function() {
 
-  var site = Discourse.Site.create({
+  var site = GameOfForums.Site.create({
     categories: [{ id: 1234, name: 'Test'},
                  { id: 3456, name: 'Test Subcategory', parent_category_id: 1234},
                  { id: 3456, name: 'Invalid Subcategory', parent_category_id: 6666}]

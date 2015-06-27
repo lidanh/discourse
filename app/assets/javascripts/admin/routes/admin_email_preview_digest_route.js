@@ -2,15 +2,15 @@
   Previews the Email Digests
 
   @class AdminEmailPreviewDigest
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 
-Discourse.AdminEmailPreviewDigestRoute = Discourse.Route.extend({
+GameOfForums.AdminEmailPreviewDigestRoute = GameOfForums.Route.extend({
 
   model: function() {
-    return Discourse.EmailPreview.findDigest();
+    return GameOfForums.EmailPreview.findDigest();
   },
 
   afterModel: function(model) {

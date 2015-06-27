@@ -3,11 +3,11 @@
   given user is meeting them.
 
   @class AdminUserLeaderRequirementsRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminUserTl3RequirementsRoute = Discourse.Route.extend({
+GameOfForums.AdminUserTl3RequirementsRoute = GameOfForums.Route.extend({
   model: function() {
     return this.modelFor('adminUser');
   }

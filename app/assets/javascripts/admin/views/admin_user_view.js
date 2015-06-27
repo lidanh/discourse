@@ -2,9 +2,9 @@
   The view class for an Admin User
 
   @class AdminUserView
-  @extends Discourse.View
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.View
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminUserView = Discourse.View.extend(Discourse.ScrollTop);
+GameOfForums.AdminUserView = GameOfForums.View.extend(GameOfForums.ScrollTop);
 

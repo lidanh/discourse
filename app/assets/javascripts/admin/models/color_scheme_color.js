@@ -3,11 +3,11 @@
   (It's a funny name for a class, but Color seemed too generic for what this class is.)
 
   @class ColorSchemeColor
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.ColorSchemeColor = Discourse.Model.extend({
+GameOfForums.ColorSchemeColor = GameOfForums.Model.extend({
 
   init: function() {
     this._super();
@@ -26,12 +26,12 @@ Discourse.ColorSchemeColor = Discourse.Model.extend({
     return false;
   }.property('hex'),
 
-  // Whether the current value is different than Discourse's default color scheme.
+  // Whether the current value is different than GameOfForums's default color scheme.
   overridden: function() {
     return this.get('hex') !== this.get('default_hex');
   }.property('hex', 'default_hex'),
 
-  // Whether the saved value is different than Discourse's default color scheme.
+  // Whether the saved value is different than GameOfForums's default color scheme.
   savedIsOverriden: function() {
     return this.get('originals').hex !== this.get('default_hex');
   }.property('hex', 'default_hex'),

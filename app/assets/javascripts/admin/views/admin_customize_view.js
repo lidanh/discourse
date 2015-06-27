@@ -4,11 +4,11 @@
   A view to handle site customizations
 
   @class AdminCustomizeView
-  @extends Discourse.View
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.View
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminCustomizeView = Discourse.View.extend({
+GameOfForums.AdminCustomizeView = GameOfForums.View.extend({
   templateName: 'admin/templates/customize',
   classNames: ['customize'],
   selected: 'stylesheet',

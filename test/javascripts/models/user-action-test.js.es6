@@ -1,19 +1,19 @@
-module("Discourse.UserAction");
+module("GameOfForums.UserAction");
 
 test("collapsing likes", function () {
-  var actions = Discourse.UserAction.collapseStream([
-    Discourse.UserAction.create({
-      action_type: Discourse.UserAction.TYPES.likes_given,
+  var actions = GameOfForums.UserAction.collapseStream([
+    GameOfForums.UserAction.create({
+      action_type: GameOfForums.UserAction.TYPES.likes_given,
       topic_id: 1,
       user_id: 1,
       post_number: 1
-    }), Discourse.UserAction.create({
-      action_type: Discourse.UserAction.TYPES.edits,
+    }), GameOfForums.UserAction.create({
+      action_type: GameOfForums.UserAction.TYPES.edits,
       topic_id: 2,
       user_id: 1,
       post_number: 1
-    }), Discourse.UserAction.create({
-      action_type: Discourse.UserAction.TYPES.likes_given,
+    }), GameOfForums.UserAction.create({
+      action_type: GameOfForums.UserAction.TYPES.likes_given,
       topic_id: 1,
       user_id: 2,
       post_number: 1

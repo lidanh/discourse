@@ -1,8 +1,8 @@
-import DiscourseController from 'discourse/controllers/controller';
+import GameOfForumsController from 'discourse/controllers/controller';
 import Presence from 'discourse/mixins/presence';
 
-module("DiscourseController");
+module("GameOfForumsController");
 
 test("includes mixins", function() {
-  ok(Presence.detect(DiscourseController.create()), "has Presence");
+  ok(Presence.detect(GameOfForumsController.create()), "has Presence");
 });

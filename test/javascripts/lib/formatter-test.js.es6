@@ -1,6 +1,6 @@
 var clock;
 
-module("Discourse.Formatter", {
+module("GameOfForums.Formatter", {
   setup: function() {
     clock = sinon.useFakeTimers(new Date(2012,11,31,12,0).getTime());
   },
@@ -17,7 +17,7 @@ var mins_ago = function(mins){
 };
 
 var formatMins = function(mins) {
-  return Discourse.Formatter.relativeAge(mins_ago(mins), {format: format, leaveAgo: leaveAgo});
+  return GameOfForums.Formatter.relativeAge(mins_ago(mins), {format: format, leaveAgo: leaveAgo});
 };
 
 var formatHours = function(hours) {
@@ -99,16 +99,16 @@ test("formating tiny dates", function() {
   equal(formatDays(500), shortDateYear(500));
   equal(formatDays(365*2 + 1), shortDateYear(365*2 + 1)); // one leap year
 
-  var originalValue = Discourse.SiteSettings.relative_date_duration;
-  Discourse.SiteSettings.relative_date_duration = 7;
+  var originalValue = GameOfForums.SiteSettings.relative_date_duration;
+  GameOfForums.SiteSettings.relative_date_duration = 7;
   equal(formatDays(7), "7d");
   equal(formatDays(8), shortDate(8));
 
-  Discourse.SiteSettings.relative_date_duration = 1;
+  GameOfForums.SiteSettings.relative_date_duration = 1;
   equal(formatDays(1), "1d");
   equal(formatDays(2), shortDate(2));
 
-  Discourse.SiteSettings.relative_date_duration = 0;
+  GameOfForums.SiteSettings.relative_date_duration = 0;
   equal(formatMins(0), "< 1m");
   equal(formatMins(2), "2m");
   equal(formatMins(60), "1h");
@@ -116,12 +116,12 @@ test("formating tiny dates", function() {
   equal(formatDays(2), shortDate(2));
   equal(formatDays(366), shortDateYear(366));
 
-  Discourse.SiteSettings.relative_date_duration = null;
+  GameOfForums.SiteSettings.relative_date_duration = null;
   equal(formatDays(1), '1d');
   equal(formatDays(14), '14d');
   equal(formatDays(15), shortDate(15));
 
-  Discourse.SiteSettings.relative_date_duration = 14;
+  GameOfForums.SiteSettings.relative_date_duration = 14;
 
   clock.restore();
   clock = sinon.useFakeTimers(new Date(2012,0,12,12,0).getTime()); // Jan 12, 2012
@@ -138,29 +138,29 @@ test("formating tiny dates", function() {
   equal(formatDays(15), shortDate(15));
   equal(formatDays(20), shortDateYear(20));
 
-  Discourse.SiteSettings.relative_date_duration = originalValue;
+  GameOfForums.SiteSettings.relative_date_duration = originalValue;
 });
 
-module("Discourse.Formatter");
+module("GameOfForums.Formatter");
 
 test("autoUpdatingRelativeAge", function() {
   var d = moment().subtract(1, 'day').toDate();
 
-  var $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d));
+  var $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d));
   equal($elem.data('format'), "tiny");
   equal($elem.data('time'), d.getTime());
   equal($elem.attr('title'), undefined);
 
-  $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d, {title: true}));
+  $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d, {title: true}));
   equal($elem.attr('title'), moment(d).longDate());
 
-  $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d,{format: 'medium', title: true, leaveAgo: true}));
+  $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d,{format: 'medium', title: true, leaveAgo: true}));
   equal($elem.data('format'), "medium-with-ago");
   equal($elem.data('time'), d.getTime());
   equal($elem.attr('title'), moment(d).longDate());
   equal($elem.html(), '1 day ago');
 
-  $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d,{format: 'medium'}));
+  $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d,{format: 'medium'}));
   equal($elem.data('format'), "medium");
   equal($elem.data('time'), d.getTime());
   equal($elem.attr('title'), undefined);
@@ -170,25 +170,25 @@ test("autoUpdatingRelativeAge", function() {
 test("updateRelativeAge", function(){
 
   var d = new Date();
-  var $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d));
+  var $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d));
   $elem.data('time', d.getTime() - 2 * 60 * 1000);
 
-  Discourse.Formatter.updateRelativeAge($elem);
+  GameOfForums.Formatter.updateRelativeAge($elem);
 
   equal($elem.html(), "2m");
 
   d = new Date();
-  $elem = $(Discourse.Formatter.autoUpdatingRelativeAge(d, {format: 'medium', leaveAgo: true}));
+  $elem = $(GameOfForums.Formatter.autoUpdatingRelativeAge(d, {format: 'medium', leaveAgo: true}));
   $elem.data('time', d.getTime() - 2 * 60 * 1000);
 
-  Discourse.Formatter.updateRelativeAge($elem);
+  GameOfForums.Formatter.updateRelativeAge($elem);
 
   equal($elem.html(), "2 mins ago");
 });
 
 test("breakUp", function(){
 
-  var b = function(s,hint){ return Discourse.Formatter.breakUp(s,hint); };
+  var b = function(s,hint){ return GameOfForums.Formatter.breakUp(s,hint); };
 
   equal(b("hello"), "hello");
   equal(b("helloworld"), "helloworld");
@@ -201,8 +201,8 @@ test("breakUp", function(){
 });
 
 test("number", function() {
-  equal(Discourse.Formatter.number(123), "123", "it returns a string version of the number");
-  equal(Discourse.Formatter.number("123"), "123", "it works with a string command");
-  equal(Discourse.Formatter.number(NaN), "0", "it reeturns 0 for NaN");
-  equal(Discourse.Formatter.number(3333), "3.3K", "it abbreviates thousands");
+  equal(GameOfForums.Formatter.number(123), "123", "it returns a string version of the number");
+  equal(GameOfForums.Formatter.number("123"), "123", "it works with a string command");
+  equal(GameOfForums.Formatter.number(NaN), "0", "it reeturns 0 for NaN");
+  equal(GameOfForums.Formatter.number(3333), "3.3K", "it abbreviates thousands");
 });

@@ -1,10 +1,10 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   serialize(model) {
     return { username: model.get('username').toLowerCase() };
   },
 
   model(params) {
-    return Discourse.AdminUser.find(Em.get(params, 'username').toLowerCase());
+    return GameOfForums.AdminUser.find(Em.get(params, 'username').toLowerCase());
   },
 
   renderTemplate() {

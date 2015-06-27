@@ -1,4 +1,4 @@
-export default Discourse.View.extend({
+export default GameOfForums.View.extend({
   classNames: ["admin-backups"],
 
   _hijackDownloads: function() {
@@ -12,7 +12,7 @@ export default Discourse.View.extend({
         $link.data("auto-route", true);
       }
 
-      Discourse.URL.redirectTo($link.data("href"));
+      GameOfForums.URL.redirectTo($link.data("href"));
     });
   }.on("didInsertElement"),
 

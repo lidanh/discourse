@@ -1,6 +1,6 @@
-import DiscourseController from 'discourse/controllers/controller';
+import GameOfForumsController from 'game-of-forums/controllers/controller';
 
-export default DiscourseController.extend({
+export default GameOfForumsController.extend({
 
   /**
     Is the "send test email" button disabled?
@@ -31,7 +31,7 @@ export default DiscourseController.extend({
       });
 
       var self = this;
-      Discourse.ajax("/admin/email/test", {
+      GameOfForums.ajax("/admin/email/test", {
         type: 'POST',
         data: { email_address: this.get('testEmailAddress') }
       }).then(function () {

@@ -1,5 +1,5 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model: function() {
-    return Discourse.SiteTextType.findAll();
+    return GameOfForums.SiteTextType.findAll();
   }
 });

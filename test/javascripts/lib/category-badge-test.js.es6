@@ -7,7 +7,7 @@ test("categoryBadge without a category", function() {
 });
 
 test("Regular categoryBadge", function() {
-  var category = Discourse.Category.create({
+  var category = GameOfForums.Category.create({
         name: 'hello',
         id: 123,
         description_text: 'cool description',
@@ -26,15 +26,15 @@ test("Regular categoryBadge", function() {
 });
 
 test("undefined color", function() {
-  var noColor = Discourse.Category.create({ name: 'hello', id: 123 }),
+  var noColor = GameOfForums.Category.create({ name: 'hello', id: 123 }),
       tag = parseHTML(categoryBadgeHTML(noColor))[0];
 
   blank(tag.attributes.style, "it has no color style because there are no colors");
 });
 
 test("allowUncategorized", function() {
-  var uncategorized = Discourse.Category.create({name: 'uncategorized', id: 345});
-  sandbox.stub(Discourse.Site, 'currentProp').withArgs('uncategorized_category_id').returns(345);
+  var uncategorized = GameOfForums.Category.create({name: 'uncategorized', id: 345});
+  sandbox.stub(GameOfForums.Site, 'currentProp').withArgs('uncategorized_category_id').returns(345);
 
   blank(categoryBadgeHTML(uncategorized), "it doesn't return HTML for uncategorized by default");
   present(categoryBadgeHTML(uncategorized, {allowUncategorized: true}), "it returns HTML");

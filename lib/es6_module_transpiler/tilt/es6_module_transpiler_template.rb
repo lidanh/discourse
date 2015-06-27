@@ -106,12 +106,12 @@ module Tilt
 
           # HAX
           result = "Controller" if result == "ControllerController"
-          result = "Route" if result == "DiscourseRoute"
+          result = "Route" if result == "GameOfForumsRoute"
           result = "View" if result == "ViewView"
           result.gsub!(/Mixin$/, '')
           result.gsub!(/Model$/, '')
 
-          @output << "\n\nDiscourse.#{result} = require('#{require_name}').default;\n"
+          @output << "\n\nGameOfForums.#{result} = require('#{require_name}').default;\n"
         end
       end
 

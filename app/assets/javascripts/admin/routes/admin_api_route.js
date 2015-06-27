@@ -2,14 +2,14 @@
   Handles routes related to api
 
   @class AdminApiRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminApiRoute = Discourse.Route.extend({
+GameOfForums.AdminApiRoute = GameOfForums.Route.extend({
 
   model: function() {
-    return Discourse.ApiKey.find();
+    return GameOfForums.ApiKey.find();
   }
 
 });

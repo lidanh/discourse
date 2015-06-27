@@ -412,7 +412,7 @@ class ImportScripts::Smf2 < ImportScripts::Base
   end
 
   def get_upload_markdown(upload)
-    @func ||= v8.eval("Discourse.Utilities.getUploadMarkdown")
+    @func ||= v8.eval("GameOfForums.Utilities.getUploadMarkdown")
     return @func.call(upload).to_s
   end
 

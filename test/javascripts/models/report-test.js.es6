@@ -1,7 +1,7 @@
-module("Discourse.Report");
+module("GameOfForums.Report");
 
 function reportWithData(data) {
-  return Discourse.Report.create({
+  return GameOfForums.Report.create({
     type: 'topics',
     data: _.map(data, function(val, index) {
       return { x: moment().subtract(index, "days").format('YYYY-MM-DD'), y: val };

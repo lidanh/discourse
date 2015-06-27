@@ -5,9 +5,9 @@ module("model:composer");
 function createComposer(opts) {
   opts = opts || {};
   opts.user = opts.user || currentUser();
-  opts.site = Discourse.Site.current();
-  opts.siteSettings = Discourse.SiteSettings;
-  return Discourse.Composer.create(opts);
+  opts.site = GameOfForums.Site.current();
+  opts.siteSettings = GameOfForums.SiteSettings;
+  return GameOfForums.Composer.create(opts);
 }
 
 test('replyLength', function() {
@@ -24,15 +24,15 @@ test('replyLength', function() {
 });
 
 test('missingReplyCharacters', function() {
-  Discourse.SiteSettings.min_first_post_length = 40;
+  GameOfForums.SiteSettings.min_first_post_length = 40;
   const missingReplyCharacters = function(val, isPM, isFirstPost, expected, message) {
     const composer = createComposer({ reply: val, creatingPrivateMessage: isPM, creatingTopic: isFirstPost });
     equal(composer.get('missingReplyCharacters'), expected, message);
   };
 
-  missingReplyCharacters('hi', false, false, Discourse.SiteSettings.min_post_length - 2, 'too short public post');
-  missingReplyCharacters('hi', false, true,  Discourse.SiteSettings.min_first_post_length - 2, 'too short first post');
-  missingReplyCharacters('hi', true, false,  Discourse.SiteSettings.min_private_message_post_length - 2, 'too short private message');
+  missingReplyCharacters('hi', false, false, GameOfForums.SiteSettings.min_post_length - 2, 'too short public post');
+  missingReplyCharacters('hi', false, true,  GameOfForums.SiteSettings.min_first_post_length - 2, 'too short first post');
+  missingReplyCharacters('hi', true, false,  GameOfForums.SiteSettings.min_private_message_post_length - 2, 'too short private message');
 });
 
 test('missingTitleCharacters', function() {
@@ -41,8 +41,8 @@ test('missingTitleCharacters', function() {
     equal(composer.get('missingTitleCharacters'), expected, message);
   };
 
-  missingTitleCharacters('hi', false, Discourse.SiteSettings.min_topic_title_length - 2, 'too short post title');
-  missingTitleCharacters('z', true,  Discourse.SiteSettings.min_private_message_title_length - 1, 'too short pm title');
+  missingTitleCharacters('hi', false, GameOfForums.SiteSettings.min_topic_title_length - 2, 'too short post title');
+  missingTitleCharacters('z', true,  GameOfForums.SiteSettings.min_private_message_title_length - 1, 'too short pm title');
 });
 
 test('replyDirty', function() {
@@ -89,8 +89,8 @@ test("appendText", function() {
 });
 
 test("Title length for regular topics", function() {
-  Discourse.SiteSettings.min_topic_title_length = 5;
-  Discourse.SiteSettings.max_topic_title_length = 10;
+  GameOfForums.SiteSettings.min_topic_title_length = 5;
+  GameOfForums.SiteSettings.max_topic_title_length = 10;
   const composer = createComposer();
 
   composer.set('title', 'asdf');
@@ -104,9 +104,9 @@ test("Title length for regular topics", function() {
 });
 
 test("Title length for private messages", function() {
-  Discourse.SiteSettings.min_private_message_title_length = 5;
-  Discourse.SiteSettings.max_topic_title_length = 10;
-  const composer = createComposer({action: Discourse.Composer.PRIVATE_MESSAGE});
+  GameOfForums.SiteSettings.min_private_message_title_length = 5;
+  GameOfForums.SiteSettings.max_topic_title_length = 10;
+  const composer = createComposer({action: GameOfForums.Composer.PRIVATE_MESSAGE});
 
   composer.set('title', 'asdf');
   ok(!composer.get('titleLengthValid'), "short titles are not valid");
@@ -119,9 +119,9 @@ test("Title length for private messages", function() {
 });
 
 test("Title length for private messages", function() {
-  Discourse.SiteSettings.min_private_message_title_length = 5;
-  Discourse.SiteSettings.max_topic_title_length = 10;
-  const composer = createComposer({action: Discourse.Composer.PRIVATE_MESSAGE});
+  GameOfForums.SiteSettings.min_private_message_title_length = 5;
+  GameOfForums.SiteSettings.max_topic_title_length = 10;
+  const composer = createComposer({action: GameOfForums.Composer.PRIVATE_MESSAGE});
 
   composer.set('title', 'asdf');
   ok(!composer.get('titleLengthValid'), "short titles are not valid");
@@ -137,8 +137,8 @@ test('editingFirstPost', function() {
   const composer = createComposer();
   ok(!composer.get('editingFirstPost'), "it's false by default");
 
-  const post = Discourse.Post.create({id: 123, post_number: 2});
-  composer.setProperties({post: post, action: Discourse.Composer.EDIT });
+  const post = GameOfForums.Post.create({id: 123, post_number: 2});
+  composer.setProperties({post: post, action: GameOfForums.Composer.EDIT });
   ok(!composer.get('editingFirstPost'), "it's false when not editing the first post");
 
   post.set('post_number', 1);
@@ -150,7 +150,7 @@ test('clearState', function() {
   const composer = createComposer({
     originalText: 'asdf',
     reply: 'asdf2',
-    post: Discourse.Post.create({id: 1}),
+    post: GameOfForums.Post.create({id: 1}),
     title: 'wat'
   });
 
@@ -164,37 +164,37 @@ test('clearState', function() {
 });
 
 test('initial category when uncategorized is allowed', function() {
-  Discourse.SiteSettings.allow_uncategorized_topics = true;
-  const composer = Discourse.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
+  GameOfForums.SiteSettings.allow_uncategorized_topics = true;
+  const composer = GameOfForums.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
   equal(composer.get('categoryId'),undefined,"Uncategorized by default");
 });
 
 test('initial category when uncategorized is not allowed', function() {
-  Discourse.SiteSettings.allow_uncategorized_topics = false;
-  const composer = Discourse.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
+  GameOfForums.SiteSettings.allow_uncategorized_topics = false;
+  const composer = GameOfForums.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
   ok(composer.get('categoryId') === undefined, "Uncategorized by default. Must choose a category.");
 });
 
 test('showPreview', function() {
   const newComposer = function() {
-    return Discourse.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
+    return GameOfForums.Composer.open({action: 'createTopic', draftKey: 'asfd', draftSequence: 1});
   };
 
-  Discourse.Mobile.mobileView = true;
+  GameOfForums.Mobile.mobileView = true;
   equal(newComposer().get('showPreview'), false, "Don't show preview in mobile view");
 
-  Discourse.KeyValueStore.set({ key: 'composer.showPreview', value: 'true' });
+  GameOfForums.KeyValueStore.set({ key: 'composer.showPreview', value: 'true' });
   equal(newComposer().get('showPreview'), false, "Don't show preview in mobile view even if KeyValueStore wants to");
-  Discourse.KeyValueStore.remove('composer.showPreview');
+  GameOfForums.KeyValueStore.remove('composer.showPreview');
 
-  Discourse.Mobile.mobileView = false;
+  GameOfForums.Mobile.mobileView = false;
   equal(newComposer().get('showPreview'), true, "Show preview by default in desktop view");
 });
 
 test('open with a quote', function() {
   const quote = '[quote="neil, post:5, topic:413"]\nSimmer down you two.\n[/quote]';
   const newComposer = function() {
-    return Discourse.Composer.open({action: Discourse.Composer.REPLY, draftKey: 'asfd', draftSequence: 1, quote: quote});
+    return GameOfForums.Composer.open({action: GameOfForums.Composer.REPLY, draftKey: 'asfd', draftSequence: 1, quote: quote});
   };
 
   equal(newComposer().get('originalText'), quote, "originalText is the quote" );
@@ -202,12 +202,12 @@ test('open with a quote', function() {
 });
 
 test("Title length for static page topics as admin", function() {
-  Discourse.SiteSettings.min_topic_title_length = 5;
-  Discourse.SiteSettings.max_topic_title_length = 10;
+  GameOfForums.SiteSettings.min_topic_title_length = 5;
+  GameOfForums.SiteSettings.max_topic_title_length = 10;
   const composer = createComposer();
 
-  const post = Discourse.Post.create({id: 123, post_number: 2, static_doc: true});
-  composer.setProperties({post: post, action: Discourse.Composer.EDIT });
+  const post = GameOfForums.Post.create({id: 123, post_number: 2, static_doc: true});
+  composer.setProperties({post: post, action: GameOfForums.Composer.EDIT });
 
   composer.set('title', 'asdf');
   ok(composer.get('titleLengthValid'), "admins can use short titles");

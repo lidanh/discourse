@@ -1,10 +1,10 @@
-import DiscourseController from 'discourse/controllers/controller';
+import GameOfForumsController from 'game-of-forums/controllers/controller';
 
-export default DiscourseController.extend({
+export default GameOfForumsController.extend({
 
-  filterEmailLogs: Discourse.debounce(function() {
+  filterEmailLogs: GameOfForums.debounce(function() {
     var self = this;
-    Discourse.EmailLog.findAll(this.get("filter")).then(function(logs) {
+    GameOfForums.EmailLog.findAll(this.get("filter")).then(function(logs) {
       self.set("model", logs);
     });
   }, 250).observes("filter.user", "filter.address", "filter.type", "filter.reply_key")

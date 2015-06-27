@@ -2,11 +2,11 @@
   Our data model for interacting with flagged posts.
 
   @class FlaggedPost
-  @extends Discourse.Post
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Post
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.FlaggedPost = Discourse.Post.extend({
+GameOfForums.FlaggedPost = GameOfForums.Post.extend({
 
   summary: function () {
     return _(this.post_actions)
@@ -104,27 +104,27 @@ Discourse.FlaggedPost = Discourse.Post.extend({
   }.property('post_actions.@each.targets_topic'),
 
   canDeleteAsSpammer: function() {
-    return Discourse.User.currentProp('staff') && this.get('flaggedForSpam') && this.get('user.can_delete_all_posts') && this.get('user.can_be_deleted');
+    return GameOfForums.User.currentProp('staff') && this.get('flaggedForSpam') && this.get('user.can_delete_all_posts') && this.get('user.can_be_deleted');
   }.property('flaggedForSpam'),
 
   deletePost: function() {
     if (this.get('post_number') === 1) {
-      return Discourse.ajax('/t/' + this.topic_id, { type: 'DELETE', cache: false });
+      return GameOfForums.ajax('/t/' + this.topic_id, { type: 'DELETE', cache: false });
     } else {
-      return Discourse.ajax('/posts/' + this.id, { type: 'DELETE', cache: false });
+      return GameOfForums.ajax('/posts/' + this.id, { type: 'DELETE', cache: false });
     }
   },
 
   disagreeFlags: function () {
-    return Discourse.ajax('/admin/flags/disagree/' + this.id, { type: 'POST', cache: false });
+    return GameOfForums.ajax('/admin/flags/disagree/' + this.id, { type: 'POST', cache: false });
   },
 
   deferFlags: function (deletePost) {
-    return Discourse.ajax('/admin/flags/defer/' + this.id, { type: 'POST', cache: false, data: { delete_post: deletePost } });
+    return GameOfForums.ajax('/admin/flags/defer/' + this.id, { type: 'POST', cache: false, data: { delete_post: deletePost } });
   },
 
   agreeFlags: function (actionOnPost) {
-    return Discourse.ajax('/admin/flags/agree/' + this.id, { type: 'POST', cache: false, data: { action_on_post: actionOnPost } });
+    return GameOfForums.ajax('/admin/flags/agree/' + this.id, { type: 'POST', cache: false, data: { action_on_post: actionOnPost } });
   },
 
   postHidden: Em.computed.alias('hidden'),
@@ -140,29 +140,29 @@ Discourse.FlaggedPost = Discourse.Post.extend({
 
 });
 
-Discourse.FlaggedPost.reopenClass({
+GameOfForums.FlaggedPost.reopenClass({
   findAll: function (filter, offset) {
     offset = offset || 0;
 
     var result = Em.A();
     result.set('loading', true);
 
-    return Discourse.ajax('/admin/flags/' + filter + '.json?offset=' + offset).then(function (data) {
+    return GameOfForums.ajax('/admin/flags/' + filter + '.json?offset=' + offset).then(function (data) {
       // users
       var userLookup = {};
       _.each(data.users, function (user) {
-        userLookup[user.id] = Discourse.AdminUser.create(user);
+        userLookup[user.id] = GameOfForums.AdminUser.create(user);
       });
 
       // topics
       var topicLookup = {};
       _.each(data.topics, function (topic) {
-        topicLookup[topic.id] = Discourse.Topic.create(topic);
+        topicLookup[topic.id] = GameOfForums.Topic.create(topic);
       });
 
       // posts
       _.each(data.posts, function (post) {
-        var f = Discourse.FlaggedPost.create(post);
+        var f = GameOfForums.FlaggedPost.create(post);
         f.userLookup = userLookup;
         f.topicLookup = topicLookup;
         result.pushObject(f);

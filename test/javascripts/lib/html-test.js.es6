@@ -1,6 +1,6 @@
-module("Discourse.HTML");
+module("GameOfForums.HTML");
 
-var html = Discourse.HTML;
+var html = GameOfForums.HTML;
 
 test("customHTML", function() {
   blank(html.getCustomHTML('evil'), "there is no custom HTML for a key by default");

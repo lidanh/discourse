@@ -2,23 +2,23 @@
   Our data model for showing a preview of an email
 
   @class EmailPreview
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.EmailPreview = Discourse.Model.extend({});
+GameOfForums.EmailPreview = GameOfForums.Model.extend({});
 
-Discourse.EmailPreview.reopenClass({
+GameOfForums.EmailPreview.reopenClass({
   findDigest: function(lastSeenAt) {
 
     if (Em.isEmpty(lastSeenAt)) {
       lastSeenAt = moment().subtract(7, 'days').format('YYYY-MM-DD');
     }
 
-    return Discourse.ajax("/admin/email/preview-digest.json", {
+    return GameOfForums.ajax("/admin/email/preview-digest.json", {
       data: {last_seen_at: lastSeenAt}
     }).then(function (result) {
-      return Discourse.EmailPreview.create(result);
+      return GameOfForums.EmailPreview.create(result);
     });
   }
 });

@@ -1,4 +1,4 @@
-import ObjectController from 'discourse/controllers/object';
+import ObjectController from 'game-of-forums/controllers/object';
 
 export default ObjectController.extend({
 
@@ -8,7 +8,7 @@ export default ObjectController.extend({
           self = this;
 
       self.set('loading', true);
-      Discourse.EmailPreview.findDigest(this.get('lastSeen')).then(function (email) {
+      GameOfForums.EmailPreview.findDigest(this.get('lastSeen')).then(function (email) {
         model.setProperties(email.getProperties('html_content', 'text_content'));
         self.set('loading', false);
       });

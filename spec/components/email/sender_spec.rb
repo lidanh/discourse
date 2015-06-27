@@ -66,7 +66,7 @@ describe Email::Sender do
 
     context "adds a List-ID header to identify the forum" do
       before do
-        message.header['X-Discourse-Topic-Id'] = 5577
+        message.header['X-GameOfForums-Topic-Id'] = 5577
       end
 
       When { email_sender.send }
@@ -80,7 +80,7 @@ describe Email::Sender do
 
     context "adds Precedence header" do
       before do
-        message.header['X-Discourse-Topic-Id'] = 5577
+        message.header['X-GameOfForums-Topic-Id'] = 5577
       end
 
       When { email_sender.send }
@@ -89,20 +89,20 @@ describe Email::Sender do
 
     context "removes custom Discourse headers from topic notification mails" do
       before do
-        message.header['X-Discourse-Topic-Id'] = 5577
+        message.header['X-GameOfForums-Topic-Id'] = 5577
       end
 
       When { email_sender.send }
-      Then { expect(message.header['X-Discourse-Topic-Id']).not_to be_present }
-      Then { expect(message.header['X-Discourse-Post-Id']).not_to be_present }
-      Then { expect(message.header['X-Discourse-Reply-Key']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Topic-Id']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Post-Id']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Reply-Key']).not_to be_present }
     end
 
     context "removes custom Discourse headers from digest/registration/other mails" do
       When { email_sender.send }
-      Then { expect(message.header['X-Discourse-Topic-Id']).not_to be_present }
-      Then { expect(message.header['X-Discourse-Post-Id']).not_to be_present }
-      Then { expect(message.header['X-Discourse-Reply-Key']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Topic-Id']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Post-Id']).not_to be_present }
+      Then { expect(message.header['X-GameOfForums-Reply-Key']).not_to be_present }
     end
 
     context 'email logs' do
@@ -118,8 +118,8 @@ describe Email::Sender do
 
     context "email log with a post id and topic id" do
       before do
-        message.header['X-Discourse-Post-Id'] = 3344
-        message.header['X-Discourse-Topic-Id'] = 5577
+        message.header['X-GameOfForums-Post-Id'] = 3344
+        message.header['X-GameOfForums-Topic-Id'] = 5577
       end
 
       let(:email_log) { EmailLog.last }
@@ -133,7 +133,7 @@ describe Email::Sender do
 
     context "email log with a reply key" do
       before do
-        message.header['X-Discourse-Reply-Key'] = reply_key
+        message.header['X-GameOfForums-Reply-Key'] = reply_key
       end
 
       let(:email_log) { EmailLog.last }

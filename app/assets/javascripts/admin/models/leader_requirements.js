@@ -1,4 +1,4 @@
-Discourse.TL3Requirements = Discourse.Model.extend({
+GameOfForums.TL3Requirements = GameOfForums.Model.extend({
   days_visited_percent: function() {
     return ((this.get('days_visited') * 100) / this.get('time_period'));
   }.property('days_visited', 'time_period'),

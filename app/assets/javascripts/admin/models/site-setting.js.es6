@@ -1,4 +1,4 @@
-const SiteSetting = Discourse.Model.extend({
+const SiteSetting = GameOfForums.Model.extend({
   overridden: function() {
     let val = this.get('value'),
         defaultVal = this.get('default');
@@ -28,14 +28,14 @@ const SiteSetting = Discourse.Model.extend({
 
 SiteSetting.reopenClass({
   findAll() {
-    return Discourse.ajax("/admin/site_settings").then(function (settings) {
+    return GameOfForums.ajax("/admin/site_settings").then(function (settings) {
       // Group the results by category
       const categories = {};
       settings.site_settings.forEach(function(s) {
         if (!categories[s.category]) {
           categories[s.category] = [];
         }
-        categories[s.category].pushObject(Discourse.SiteSetting.create(s));
+        categories[s.category].pushObject(GameOfForums.SiteSetting.create(s));
       });
 
       return Object.keys(categories).map(function(n) {
@@ -47,7 +47,7 @@ SiteSetting.reopenClass({
   update(key, value) {
     const data = {};
     data[key] = value;
-    return Discourse.ajax("/admin/site_settings/" + key, { type: 'PUT', data });
+    return GameOfForums.ajax("/admin/site_settings/" + key, { type: 'PUT', data });
   }
 });
 

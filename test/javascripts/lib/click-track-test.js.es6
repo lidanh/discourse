@@ -9,8 +9,8 @@ module("ClickTrack", {
 
     // Prevent any of these tests from navigating away
     win = {focus: function() { } };
-    redirectTo = sandbox.stub(Discourse.URL, "redirectTo");
-    sandbox.stub(Discourse, "ajax");
+    redirectTo = sandbox.stub(GameOfForums.URL, "redirectTo");
+    sandbox.stub(GameOfForums, "ajax");
     windowOpen = sandbox.stub(window, "open").returns(win);
     sandbox.stub(win, "focus");
 
@@ -51,7 +51,7 @@ test("it calls preventDefault when clicking on an a", function() {
   sandbox.stub(clickEvent, "preventDefault");
   track(clickEvent);
   ok(clickEvent.preventDefault.calledOnce);
-  ok(Discourse.URL.redirectTo.calledOnce);
+  ok(GameOfForums.URL.redirectTo.calledOnce);
 });
 
 test("does not track clicks on back buttons", function() {
@@ -70,7 +70,7 @@ test("removes the href and put it as a data attribute", function() {
   equal($link.data('href'), 'http://www.google.com');
   blank($link.attr('href'));
   ok($link.data('auto-route'));
-  ok(Discourse.URL.redirectTo.calledOnce);
+  ok(GameOfForums.URL.redirectTo.calledOnce);
 });
 
 asyncTest("restores the href after a while", function() {
@@ -91,12 +91,12 @@ var badgeClickCount = function(id, expected) {
 };
 
 test("does not update badge clicks on my own link", function() {
-  sandbox.stub(Discourse.User, 'currentProp').withArgs('id').returns(314);
+  sandbox.stub(GameOfForums.User, 'currentProp').withArgs('id').returns(314);
   badgeClickCount('with-badge', 1);
 });
 
 test("does not update badge clicks in my own post", function() {
-  sandbox.stub(Discourse.User, 'currentProp').withArgs('id').returns(3141);
+  sandbox.stub(GameOfForums.User, 'currentProp').withArgs('id').returns(3141);
   badgeClickCount('with-badge-but-not-mine', 1);
 });
 
@@ -118,7 +118,7 @@ test("right clicks change the href", function() {
 });
 
 test("right clicks are tracked", function() {
-  Discourse.SiteSettings.track_external_right_clicks = true;
+  GameOfForums.SiteSettings.track_external_right_clicks = true;
   trackRightClick();
   equal(fixture('a').first().attr('href'), "/clicks/track?url=http%3A%2F%2Fwww.google.com&post_id=42");
 });
@@ -137,7 +137,7 @@ var testOpenInANewTab = function(description, clickEventModifier) {
     clickEventModifier(clickEvent);
     sandbox.stub(clickEvent, "preventDefault");
     ok(track(clickEvent));
-    ok(Discourse.ajax.calledOnce);
+    ok(GameOfForums.ajax.calledOnce);
     ok(!clickEvent.preventDefault.calledOnce);
   });
 };
@@ -159,25 +159,25 @@ testOpenInANewTab("it opens in a new tab on middle click", function(clickEvent) 
 });
 
 test("tracks via AJAX if we're on the same site", function() {
-  sandbox.stub(Discourse.URL, "routeTo");
-  sandbox.stub(Discourse.URL, "origin").returns("http://discuss.domain.com");
+  sandbox.stub(GameOfForums.URL, "routeTo");
+  sandbox.stub(GameOfForums.URL, "origin").returns("http://discuss.domain.com");
 
   ok(!track(generateClickEventOn('#same-site')));
-  ok(Discourse.ajax.calledOnce);
-  ok(Discourse.URL.routeTo.calledOnce);
+  ok(GameOfForums.ajax.calledOnce);
+  ok(GameOfForums.URL.routeTo.calledOnce);
 });
 
 test("does not track via AJAX for attachments", function() {
-  sandbox.stub(Discourse.URL, "routeTo");
-  sandbox.stub(Discourse.URL, "origin").returns("http://discuss.domain.com");
+  sandbox.stub(GameOfForums.URL, "routeTo");
+  sandbox.stub(GameOfForums.URL, "origin").returns("http://discuss.domain.com");
 
   ok(!track(generateClickEventOn('.attachment')));
-  ok(Discourse.URL.redirectTo.calledOnce);
+  ok(GameOfForums.URL.redirectTo.calledOnce);
 });
 
 test("tracks custom urls when opening in another window", function() {
   var clickEvent = generateClickEventOn('a');
-  sandbox.stub(Discourse.User, "currentProp").withArgs('external_links_in_new_tab').returns(true);
+  sandbox.stub(GameOfForums.User, "currentProp").withArgs('external_links_in_new_tab').returns(true);
   ok(!track(clickEvent));
   ok(windowOpen.calledWith('/clicks/track?url=http%3A%2F%2Fwww.google.com&post_id=42', '_blank'));
 });

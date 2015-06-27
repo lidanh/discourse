@@ -1,36 +1,36 @@
-import { popupAjaxError } from 'discourse/lib/ajax-error';
+import { popupAjaxError } from 'game-of-forums/lib/ajax-error';
 
-const AdminUser = Discourse.User.extend({
+const AdminUser = GameOfForums.User.extend({
 
-  customGroups: Em.computed.filter("groups", (g) => !g.automatic && Discourse.Group.create(g)),
-  automaticGroups: Em.computed.filter("groups", (g) => g.automatic && Discourse.Group.create(g)),
+  customGroups: Em.computed.filter("groups", (g) => !g.automatic && GameOfForums.Group.create(g)),
+  automaticGroups: Em.computed.filter("groups", (g) => g.automatic && GameOfForums.Group.create(g)),
 
   generateApiKey() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/generate_api_key", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/generate_api_key", {
       type: 'POST'
     }).then(function (result) {
-      const apiKey = Discourse.ApiKey.create(result.api_key);
+      const apiKey = GameOfForums.ApiKey.create(result.api_key);
       self.set('api_key', apiKey);
       return apiKey;
     });
   },
 
   groupAdded(added) {
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/groups", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/groups", {
       type: 'POST',
       data: { group_id: added.id }
     }).then(() => this.get('groups').pushObject(added));
   },
 
   groupRemoved(groupId) {
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/groups/" + groupId, {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/groups/" + groupId, {
       type: 'DELETE'
     }).then(() => this.set('groups.[]', this.get('groups').rejectBy("id", groupId)));
   },
 
   revokeApiKey() {
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/revoke_api_key", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/revoke_api_key", {
       type: 'DELETE'
     }).then(() => this.set('api_key', null));
   },
@@ -40,10 +40,10 @@ const AdminUser = Discourse.User.extend({
       if (this.get('deleteForbidden') && this.get('staff')) {
         return I18n.t('admin.user.delete_posts_forbidden_because_staff');
       }
-      if (this.get('post_count') > Discourse.SiteSettings.delete_all_posts_max) {
-        return I18n.t('admin.user.cant_delete_all_too_many_posts', {count: Discourse.SiteSettings.delete_all_posts_max});
+      if (this.get('post_count') > GameOfForums.SiteSettings.delete_all_posts_max) {
+        return I18n.t('admin.user.cant_delete_all_too_many_posts', {count: GameOfForums.SiteSettings.delete_all_posts_max});
       } else {
-        return I18n.t('admin.user.cant_delete_all_posts', {count: Discourse.SiteSettings.delete_user_max_post_age});
+        return I18n.t('admin.user.cant_delete_all_posts', {count: GameOfForums.SiteSettings.delete_user_max_post_age});
       }
     } else {
       return null;
@@ -61,7 +61,7 @@ const AdminUser = Discourse.User.extend({
             "label": '<i class="fa fa-exclamation-triangle"></i> ' + I18n.t("admin.user.delete_all_posts"),
             "class": "btn btn-danger",
             "callback": function() {
-              Discourse.ajax("/admin/users/" + user.get('id') + "/delete_all_posts", {
+              GameOfForums.ajax("/admin/users/" + user.get('id') + "/delete_all_posts", {
                 type: 'PUT'
               }).then(() => user.set('post_count', 0));
             }
@@ -71,7 +71,7 @@ const AdminUser = Discourse.User.extend({
 
   revokeAdmin() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/revoke_admin", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/revoke_admin", {
       type: 'PUT'
     }).then(function() {
       self.setProperties({
@@ -84,7 +84,7 @@ const AdminUser = Discourse.User.extend({
 
   grantAdmin() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/grant_admin", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/grant_admin", {
       type: 'PUT'
     }).then(function() {
       self.setProperties({
@@ -97,7 +97,7 @@ const AdminUser = Discourse.User.extend({
 
   revokeModeration() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/revoke_moderation", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/revoke_moderation", {
       type: 'PUT'
     }).then(function() {
       self.setProperties({
@@ -110,7 +110,7 @@ const AdminUser = Discourse.User.extend({
 
   grantModeration() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/grant_moderation", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/grant_moderation", {
       type: 'PUT'
     }).then(function() {
       self.setProperties({
@@ -122,20 +122,20 @@ const AdminUser = Discourse.User.extend({
   },
 
   refreshBrowsers() {
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/refresh_browsers", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/refresh_browsers", {
       type: 'POST'
     }).finally(() => bootbox.alert(I18n.t("admin.user.refresh_browsers_message")));
   },
 
   approve() {
     const self = this;
-    return Discourse.ajax("/admin/users/" + this.get('id') + "/approve", {
+    return GameOfForums.ajax("/admin/users/" + this.get('id') + "/approve", {
       type: 'PUT'
     }).then(function() {
       self.setProperties({
         can_approve: false,
         approved: true,
-        approved_by: Discourse.User.current()
+        approved_by: GameOfForums.User.current()
       });
     });
   },
@@ -144,10 +144,10 @@ const AdminUser = Discourse.User.extend({
     this.set('originalTrustLevel', this.get('trust_level'));
   },
 
-  dirty: Discourse.computed.propertyNotEqual('originalTrustLevel', 'trustLevel.id'),
+  dirty: GameOfForums.computed.propertyNotEqual('originalTrustLevel', 'trustLevel.id'),
 
   saveTrustLevel() {
-    return Discourse.ajax("/admin/users/" + this.id + "/trust_level", {
+    return GameOfForums.ajax("/admin/users/" + this.id + "/trust_level", {
       type: 'PUT',
       data: { level: this.get('trustLevel.id') }
     }).then(function() {
@@ -167,7 +167,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   lockTrustLevel(locked) {
-    return Discourse.ajax("/admin/users/" + this.id + "/trust_level_lock", {
+    return GameOfForums.ajax("/admin/users/" + this.id + "/trust_level_lock", {
       type: 'PUT',
       data: { locked: !!locked }
     }).then(function() {
@@ -196,14 +196,14 @@ const AdminUser = Discourse.User.extend({
   }.property('suspended_till', 'suspended_at'),
 
   suspend(duration, reason) {
-    return Discourse.ajax("/admin/users/" + this.id + "/suspend", {
+    return GameOfForums.ajax("/admin/users/" + this.id + "/suspend", {
       type: 'PUT',
       data: { duration: duration, reason: reason }
     });
   },
 
   unsuspend() {
-    return Discourse.ajax("/admin/users/" + this.id + "/unsuspend", {
+    return GameOfForums.ajax("/admin/users/" + this.id + "/unsuspend", {
       type: 'PUT'
     }).then(function() {
       window.location.reload();
@@ -214,7 +214,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   log_out() {
-    return Discourse.ajax("/admin/users/" + this.id + "/log_out", {
+    return GameOfForums.ajax("/admin/users/" + this.id + "/log_out", {
       type: 'POST',
       data: { username_or_email: this.get('username') }
     }).then(function() {
@@ -223,11 +223,11 @@ const AdminUser = Discourse.User.extend({
   },
 
   impersonate() {
-    return Discourse.ajax("/admin/impersonate", {
+    return GameOfForums.ajax("/admin/impersonate", {
       type: 'POST',
       data: { username_or_email: this.get('username') }
     }).then(function() {
-      document.location = Discourse.getURL("/");
+      document.location = GameOfForums.getURL("/");
     }).catch(function(e) {
       if (e.status === 404) {
         bootbox.alert(I18n.t('admin.impersonate.not_found'));
@@ -238,7 +238,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   activate() {
-    return Discourse.ajax('/admin/users/' + this.id + '/activate', {
+    return GameOfForums.ajax('/admin/users/' + this.id + '/activate', {
       type: 'PUT'
     }).then(function() {
       window.location.reload();
@@ -249,7 +249,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   deactivate() {
-    return Discourse.ajax('/admin/users/' + this.id + '/deactivate', {
+    return GameOfForums.ajax('/admin/users/' + this.id + '/deactivate', {
       type: 'PUT'
     }).then(function() {
       window.location.reload();
@@ -260,7 +260,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   unblock() {
-    return Discourse.ajax('/admin/users/' + this.id + '/unblock', {
+    return GameOfForums.ajax('/admin/users/' + this.id + '/unblock', {
       type: 'PUT'
     }).then(function() {
       window.location.reload();
@@ -271,7 +271,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   block() {
-    return Discourse.ajax('/admin/users/' + this.id + '/block', {
+    return GameOfForums.ajax('/admin/users/' + this.id + '/block', {
       type: 'PUT'
     }).then(function() {
       window.location.reload();
@@ -282,7 +282,7 @@ const AdminUser = Discourse.User.extend({
   },
 
   sendActivationEmail() {
-    return Discourse.ajax('/users/action/send_activation_email', {
+    return GameOfForums.ajax('/users/action/send_activation_email', {
       type: 'POST',
       data: { username: this.get('username') }
     }).then(function() {
@@ -300,14 +300,14 @@ const AdminUser = Discourse.User.extend({
           message = I18n.t("admin.user.anonymize_confirm");
 
     const performAnonymize = function() {
-      return Discourse.ajax("/admin/users/" + user.get('id') + '/anonymize.json', {
+      return GameOfForums.ajax("/admin/users/" + user.get('id') + '/anonymize.json', {
         type: 'PUT'
       }).then(function(data) {
         if (data.success) {
           if (data.username) {
-            document.location = Discourse.getURL("/admin/users/" + data.username);
+            document.location = GameOfForums.getURL("/admin/users/" + data.username);
           } else {
-            document.location = Discourse.getURL("/admin/users/list/active");
+            document.location = GameOfForums.getURL("/admin/users/list/active");
           }
         } else {
           bootbox.alert(I18n.t("admin.user.anonymize_failed"));
@@ -340,7 +340,7 @@ const AdminUser = Discourse.User.extend({
       if (this.get('staff')) {
         return I18n.t('admin.user.delete_forbidden_because_staff');
       } else {
-        return I18n.t('admin.user.delete_forbidden', {count: Discourse.SiteSettings.delete_user_max_post_age});
+        return I18n.t('admin.user.delete_forbidden', {count: GameOfForums.SiteSettings.delete_user_max_post_age});
       }
     } else {
       return null;
@@ -362,7 +362,7 @@ const AdminUser = Discourse.User.extend({
       if (opts && opts.deletePosts) {
         formData["delete_posts"] = true;
       }
-      return Discourse.ajax("/admin/users/" + user.get('id') + '.json', {
+      return GameOfForums.ajax("/admin/users/" + user.get('id') + '.json', {
         type: 'DELETE',
         data: formData
       }).then(function(data) {
@@ -370,7 +370,7 @@ const AdminUser = Discourse.User.extend({
           if (/^\/admin\/users\/list\//.test(location)) {
             document.location = location;
           } else {
-            document.location = Discourse.getURL("/admin/users/list/active");
+            document.location = GameOfForums.getURL("/admin/users/list/active");
           }
         } else {
           bootbox.alert(I18n.t("admin.user.delete_failed"));
@@ -379,7 +379,7 @@ const AdminUser = Discourse.User.extend({
           }
         }
       }).catch(function() {
-        Discourse.AdminUser.find( user.get('username') ).then(function(u){ user.setProperties(u); });
+        GameOfForums.AdminUser.find( user.get('username') ).then(function(u){ user.setProperties(u); });
         bootbox.alert(I18n.t("admin.user.delete_failed"));
       });
     };
@@ -421,7 +421,7 @@ const AdminUser = Discourse.User.extend({
         "label": '<i class="fa fa-exclamation-triangle"></i> ' + I18n.t("flagging.yes_delete_spammer"),
         "class": "btn btn-danger",
         "callback": function() {
-          return Discourse.ajax("/admin/users/" + user.get('id') + '.json', {
+          return GameOfForums.ajax("/admin/users/" + user.get('id') + '.json', {
             type: 'DELETE',
             data: {
               delete_posts: true,
@@ -452,7 +452,7 @@ const AdminUser = Discourse.User.extend({
 
     if (user.get('loadedDetails')) { return Ember.RSVP.resolve(user); }
 
-    return Discourse.AdminUser.find(user.get('username_lower')).then(function (result) {
+    return GameOfForums.AdminUser.find(user.get('username_lower')).then(function (result) {
       user.setProperties(result);
       user.set('loadedDetails', true);
     });
@@ -460,19 +460,19 @@ const AdminUser = Discourse.User.extend({
 
   tl3Requirements: function() {
     if (this.get('tl3_requirements')) {
-      return Discourse.TL3Requirements.create(this.get('tl3_requirements'));
+      return GameOfForums.TL3Requirements.create(this.get('tl3_requirements'));
     }
   }.property('tl3_requirements'),
 
   suspendedBy: function() {
     if (this.get('suspended_by')) {
-      return Discourse.AdminUser.create(this.get('suspended_by'));
+      return GameOfForums.AdminUser.create(this.get('suspended_by'));
     }
   }.property('suspended_by'),
 
   approvedBy: function() {
     if (this.get('approved_by')) {
-      return Discourse.AdminUser.create(this.get('approved_by'));
+      return GameOfForums.AdminUser.create(this.get('approved_by'));
     }
   }.property('approved_by')
 
@@ -489,7 +489,7 @@ AdminUser.reopenClass({
       });
     });
 
-    return Discourse.ajax("/admin/users/approve-bulk", {
+    return GameOfForums.ajax("/admin/users/approve-bulk", {
       type: 'PUT',
       data: { users: users.map((u) => u.id) }
     }).finally(() => bootbox.alert(I18n.t("admin.user.approve_bulk_success")));
@@ -501,7 +501,7 @@ AdminUser.reopenClass({
       user.set('selected', false);
     });
 
-    return Discourse.ajax("/admin/users/reject-bulk", {
+    return GameOfForums.ajax("/admin/users/reject-bulk", {
       type: 'DELETE',
       data: {
         users: users.map((u) => u.id),
@@ -511,17 +511,17 @@ AdminUser.reopenClass({
   },
 
   find(username) {
-    return Discourse.ajax("/admin/users/" + username + ".json").then(function (result) {
+    return GameOfForums.ajax("/admin/users/" + username + ".json").then(function (result) {
       result.loadedDetails = true;
-      return Discourse.AdminUser.create(result);
+      return GameOfForums.AdminUser.create(result);
     });
   },
 
   findAll(query, filter) {
-    return Discourse.ajax("/admin/users/list/" + query + ".json", {
+    return GameOfForums.ajax("/admin/users/list/" + query + ".json", {
       data: filter
     }).then(function(users) {
-      return users.map((u) => Discourse.AdminUser.create(u));
+      return users.map((u) => GameOfForums.AdminUser.create(u));
     });
   }
 });

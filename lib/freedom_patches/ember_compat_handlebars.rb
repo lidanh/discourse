@@ -10,11 +10,11 @@ module Barber
 
     def precompiler
     @precompiler ||= StringIO.new <<END
-      var Discourse = {};
+      var GameOfForums = {};
       #{File.read(Rails.root + "app/assets/javascripts/discourse/lib/ember_compat_handlebars.js")}
       var Barber = {
         precompile: function(string) {
-          return Discourse.EmberCompatHandlebars.precompile(string,false).toString();
+          return GameOfForums.EmberCompatHandlebars.precompile(string,false).toString();
         }
       };
 END
@@ -24,9 +24,9 @@ end
 
 class Ember::Handlebars::Template
   def precompile_handlebars(string)
-    "Discourse.EmberCompatHandlebars.template(#{Barber::EmberCompatPrecompiler.compile(string)});"
+    "GameOfForums.EmberCompatHandlebars.template(#{Barber::EmberCompatPrecompiler.compile(string)});"
   end
   def compile_handlebars(string)
-    "Discourse.EmberCompatHandlebars.compile(#{indent(string).inspect});"
+    "GameOfForums.EmberCompatHandlebars.compile(#{indent(string).inspect});"
   end
 end

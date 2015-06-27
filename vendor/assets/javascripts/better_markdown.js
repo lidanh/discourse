@@ -1,20 +1,3 @@
-/*
-  This is a fork of markdown-js with a few changes to support discourse:
-
-  * We have replaced the strong/em handlers because we prefer them only to work on word
-    boundaries.
-
-  * [MOD]: non-url is fixed
-
-  // Fix code within attrs
-  if (prev && (typeof prev[0] === "string") && prev[0].match(/<[^>]+$/)) { return; }
-
-  // __RAW
-
-  // if ( next_block.match(is_list_re) || (next_block.match(/^ /) && (!next_block.match(/^ *\>/))) ) {
-
-*/
-
 // Released under MIT license
 // Copyright (c) 2009-2010 Dominic Baggott
 // Copyright (c) 2009-2010 Ash Berlin

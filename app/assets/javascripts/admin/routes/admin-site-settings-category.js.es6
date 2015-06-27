@@ -1,4 +1,4 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model(params) {
     // The model depends on user input, so let the controller do the work:
     this.controllerFor('adminSiteSettingsCategory').set('categoryNameKey', params.category_id);

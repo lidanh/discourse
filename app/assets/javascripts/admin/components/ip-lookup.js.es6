@@ -22,7 +22,7 @@ export default Ember.Component.extend({
       this.set("show", true);
 
       if (!this.get("location")) {
-        Discourse.ajax("/admin/users/ip-info.json", {
+        GameOfForums.ajax("/admin/users/ip-info.json", {
           data: { ip: this.get("ip") }
         }).then(function (location) {
           self.set("location", Em.Object.create(location));
@@ -38,11 +38,11 @@ export default Ember.Component.extend({
           "order": "trust_level DESC"
         };
 
-        Discourse.ajax("/admin/users/total-others-with-same-ip.json", { data: data }).then(function (result) {
+        GameOfForums.ajax("/admin/users/total-others-with-same-ip.json", { data: data }).then(function (result) {
           self.set("totalOthersWithSameIP", result.total);
         });
 
-        Discourse.AdminUser.findAll("active", data).then(function (users) {
+        GameOfForums.AdminUser.findAll("active", data).then(function (users) {
           self.setProperties({
             other_accounts: users,
             otherAccountsLoading: false,
@@ -65,7 +65,7 @@ export default Ember.Component.extend({
             totalOthersWithSameIP: null
           });
 
-          Discourse.ajax("/admin/users/delete-others-with-same-ip.json", {
+          GameOfForums.ajax("/admin/users/delete-others-with-same-ip.json", {
             type: "DELETE",
             data: {
               "ip": self.get("ip"),

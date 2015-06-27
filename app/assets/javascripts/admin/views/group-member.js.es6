@@ -1,4 +1,4 @@
-export default Discourse.View.extend({
+export default GameOfForums.View.extend({
   classNames: ["item"],
   templateName: "admin/templates/group_member"
 });

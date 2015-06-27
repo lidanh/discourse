@@ -1,14 +1,14 @@
-import { outputExportResult } from 'discourse/lib/export-result';
+import { outputExportResult } from 'game-of-forums/lib/export-result';
 
 export default Ember.ArrayController.extend({
   loading: false,
   itemController: 'admin-log-screened-ip-address',
   filter: null,
 
-  show: Discourse.debounce(function() {
+  show: GameOfForums.debounce(function() {
     var self = this;
     self.set('loading', true);
-    Discourse.ScreenedIpAddress.findAll(this.get("filter")).then(function(result) {
+    GameOfForums.ScreenedIpAddress.findAll(this.get("filter")).then(function(result) {
       self.set('model', result);
       self.set('loading', false);
     });
@@ -24,7 +24,7 @@ export default Ember.ArrayController.extend({
       return bootbox.confirm(I18n.t("admin.logs.screened_ips.roll_up_confirm"), I18n.t("no_value"), I18n.t("yes_value"), function (confirmed) {
         if (confirmed) {
           self.set("loading", true);
-          return Discourse.ScreenedIpAddress.rollUp().then(function(results) {
+          return GameOfForums.ScreenedIpAddress.rollUp().then(function(results) {
             if (results && results.subnets) {
               if (results.subnets.length > 0) {
                 self.send("show");
@@ -40,7 +40,7 @@ export default Ember.ArrayController.extend({
     },
 
     exportScreenedIpList() {
-      Discourse.ExportCsv.exportScreenedIpList().then(outputExportResult);
+      GameOfForums.ExportCsv.exportScreenedIpList().then(outputExportResult);
     }
   }
 });

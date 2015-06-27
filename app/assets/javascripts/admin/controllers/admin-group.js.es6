@@ -1,4 +1,4 @@
-import { popupAjaxError } from 'discourse/lib/ajax-error';
+import { popupAjaxError } from 'game-of-forums/lib/ajax-error';
 
 export default Em.ObjectController.extend({
   needs: ['adminGroupsType'],
@@ -15,7 +15,7 @@ export default Em.ObjectController.extend({
   }.property("limit", "user_count"),
 
   showingFirst: Em.computed.lte("currentPage", 1),
-  showingLast: Discourse.computed.propertyEqual("currentPage", "totalPages"),
+  showingLast: GameOfForums.computed.propertyEqual("currentPage", "totalPages"),
 
   aliasLevelOptions: function() {
     return [

@@ -1,5 +1,5 @@
-import BufferedContent from 'discourse/mixins/buffered-content';
-import ScrollTop from 'discourse/mixins/scroll-top';
+import BufferedContent from 'game-of-forums/mixins/buffered-content';
+import ScrollTop from 'game-of-forums/mixins/scroll-top';
 import SiteSetting from 'admin/models/site-setting';
 
 const CustomTypes = ['bool', 'enum', 'list', 'url_list', 'host_list'];
@@ -7,7 +7,7 @@ const CustomTypes = ['bool', 'enum', 'list', 'url_list', 'host_list'];
 export default Ember.Component.extend(BufferedContent, ScrollTop, {
   classNameBindings: [':row', ':setting', 'setting.overridden', 'typeClass'],
   content: Ember.computed.alias('setting'),
-  dirty: Discourse.computed.propertyNotEqual('buffered.value', 'setting.value'),
+  dirty: GameOfForums.computed.propertyNotEqual('buffered.value', 'setting.value'),
   validationMessage: null,
 
   preview: function() {

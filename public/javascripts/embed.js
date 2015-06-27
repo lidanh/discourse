@@ -1,6 +1,6 @@
 (function() {
 
-  var DE = window.DiscourseEmbed || {};
+  var DE = window.GameOfForumsEmbed || {};
   var comments = document.getElementById('discourse-comments');
   var iframe = document.createElement('iframe');
 

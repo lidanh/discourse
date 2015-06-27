@@ -2,10 +2,10 @@
   A view to handle color selections within a site customization
 
   @class AdminCustomizeColorsView
-  @extends Discourse.View
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.View
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminCustomizeColorsView = Discourse.View.extend({
+GameOfForums.AdminCustomizeColorsView = GameOfForums.View.extend({
   templateName: 'admin/templates/customize_colors'
 });

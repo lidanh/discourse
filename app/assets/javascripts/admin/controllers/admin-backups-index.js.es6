@@ -27,7 +27,7 @@ export default Ember.ArrayController.extend({
           I18n.t("yes_value"),
           function(confirmed) {
             if (confirmed) {
-              Discourse.User.currentProp("hideReadOnlyAlert", true);
+              GameOfForums.User.currentProp("hideReadOnlyAlert", true);
               self._toggleReadOnlyMode(true);
             }
           }
@@ -41,7 +41,7 @@ export default Ember.ArrayController.extend({
 
   _toggleReadOnlyMode(enable) {
     var site = this.site;
-    Discourse.ajax("/admin/backups/readonly", {
+    GameOfForums.ajax("/admin/backups/readonly", {
       type: "PUT",
       data: { enable: enable }
     }).then(function() {

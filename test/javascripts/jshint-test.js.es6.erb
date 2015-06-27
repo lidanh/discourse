@@ -3,7 +3,7 @@ module("JSHint");
 <%= "const JSHINT_OPTS = #{File.read(File.join(Rails.root, '.jshintrc'))};" %>
 
 var qHint = function(name, sourceFile) {
-    return asyncTestDiscourse(name, function() {
+    return asyncTestGameOfForums(name, function() {
       if (typeof window.__jshintSrc !== "undefined") {
         var src = window.__jshintSrc[sourceFile];
         if (src) {

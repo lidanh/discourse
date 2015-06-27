@@ -1,11 +1,11 @@
-import Presence from 'discourse/mixins/presence';
+import Presence from 'game-of-forums/mixins/presence';
 
 export default Ember.ArrayController.extend(Presence, {
   filter: null,
   onlyOverridden: false,
   filtered: Ember.computed.notEmpty('filter'),
 
-  filterContent: Discourse.debounce(function() {
+  filterContent: GameOfForums.debounce(function() {
 
     // If we have no content, don't bother filtering anything
     if (!this.present('allSiteSettings')) return;

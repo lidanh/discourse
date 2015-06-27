@@ -2056,7 +2056,7 @@ var html = (function(html4) {
         atype = html4.ATTRIBS[attribKey];
       }
 
-      // Discourse modification: give us more flexibility with whitelists
+      // GameOfForums modification: give us more flexibility with whitelists
       if (opt_nmTokenPolicy) {
         var newValue = opt_nmTokenPolicy(tagName, attribName, value);
         if (newValue) {

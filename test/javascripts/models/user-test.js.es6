@@ -1,7 +1,7 @@
-module("Discourse.User");
+module("GameOfForums.User");
 
 test('staff', function(){
-  var user = Discourse.User.create({id: 1, username: 'eviltrout'});
+  var user = GameOfForums.User.create({id: 1, username: 'eviltrout'});
 
   ok(!user.get('staff'), "user is not staff");
 
@@ -13,13 +13,13 @@ test('staff', function(){
 });
 
 test('searchContext', function() {
-  var user = Discourse.User.create({id: 1, username: 'EvilTrout'});
+  var user = GameOfForums.User.create({id: 1, username: 'EvilTrout'});
 
   deepEqual(user.get('searchContext'), {type: 'user', id: 'eviltrout', user: user}, "has a search context");
 });
 
 test("isAllowedToUploadAFile", function() {
-  var user = Discourse.User.create({ trust_level: 0, admin: true });
+  var user = GameOfForums.User.create({ trust_level: 0, admin: true });
   ok(user.isAllowedToUploadAFile("image"), "admin can always upload a file");
 
   user.setProperties({ admin: false, moderator: true });

@@ -1,11 +1,11 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   _json: null,
 
   model: function() {
     var self = this;
-    return Discourse.ajax('/admin/badges.json').then(function(json) {
+    return GameOfForums.ajax('/admin/badges.json').then(function(json) {
       self._json = json;
-      return Discourse.Badge.createFromJson(json);
+      return GameOfForums.Badge.createFromJson(json);
     });
   },
 

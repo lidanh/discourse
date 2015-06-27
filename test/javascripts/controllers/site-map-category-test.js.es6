@@ -8,18 +8,18 @@ test("showTopicCount anonymous", function() {
 });
 
 test("showTopicCount logged in", function() {
-  var controller = this.subject({ currentUser: Discourse.User.create() });
+  var controller = this.subject({ currentUser: GameOfForums.User.create() });
   ok(!controller.get("showTopicCount"), 'false when logged in');
 });
 
 test("unreadTotal default", function() {
-  var controller = this.subject({ currentUser: Discourse.User.create() });
+  var controller = this.subject({ currentUser: GameOfForums.User.create() });
   ok(!controller.get('unreadTotal'), "empty by default");
 });
 
 test("unreadTotal with values", function() {
   var controller = this.subject({
-    currentUser: Discourse.User.create(),
+    currentUser: GameOfForums.User.create(),
     model: { unreadTopics: 1, newTopics: 3 }
   });
   equal(controller.get('unreadTotal'), 4);

@@ -1,6 +1,6 @@
 import Session from "discourse/models/session";
 
-module("Discourse.Session");
+module("GameOfForums.Session");
 
 test('highestSeenByTopic', function() {
   var session = Session.current();

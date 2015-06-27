@@ -1,4 +1,4 @@
-import { outputExportResult } from 'discourse/lib/export-result';
+import { outputExportResult } from 'game-of-forums/lib/export-result';
 
 export default Ember.ArrayController.extend({
   loading: false,
@@ -12,14 +12,14 @@ export default Ember.ArrayController.extend({
     },
 
     exportScreenedEmailList() {
-      Discourse.ExportCsv.exportScreenedEmailList().then(outputExportResult);
+      GameOfForums.ExportCsv.exportScreenedEmailList().then(outputExportResult);
     }
   },
 
   show() {
     var self = this;
     self.set('loading', true);
-    Discourse.ScreenedEmail.findAll().then(function(result) {
+    GameOfForums.ScreenedEmail.findAll().then(function(result) {
       self.set('model', result);
       self.set('loading', false);
     });

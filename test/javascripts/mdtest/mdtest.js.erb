@@ -1,11 +1,11 @@
 module("MDTest", {
   setup: function() {
-    Discourse.SiteSettings.traditional_markdown_linebreaks = false;
+    GameOfForums.SiteSettings.traditional_markdown_linebreaks = false;
   }
 });
 
 // This is cheating, but the trivial differences between sanitization
-// do not affect formatting. 
+// do not affect formatting.
 function normalize(str) {
   return str.replace(/\n\s*/g, '').
              replace(/ \/\>/g, '>').
@@ -13,7 +13,7 @@ function normalize(str) {
              replace(/&#34;/g, '&quot;');
 }
 
-// We use a custom sanitizer for MD test that hoists out comments. In Discourse
+// We use a custom sanitizer for MD test that hoists out comments. In GameOfForums
 // they are stripped, but to be compliant with the spec they should not be.
 function hoistingSanitizer(result) {
   var hoisted,
@@ -28,7 +28,7 @@ function hoistingSanitizer(result) {
     }
   }
 
-  result = Discourse.Markdown.sanitize(result);
+  result = GameOfForums.Markdown.sanitize(result);
 
   if (hoisted) {
     hoisted.forEach(function(tuple) {
@@ -40,7 +40,7 @@ function hoistingSanitizer(result) {
 }
 
 var md = function(input, expected, text) {
-  var result = Discourse.Markdown.cook(input, {
+  var result = GameOfForums.Markdown.cook(input, {
         sanitizerFunction: hoistingSanitizer,
         traditional_markdown_linebreaks: true
       }),

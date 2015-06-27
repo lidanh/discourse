@@ -1,9 +1,9 @@
 
-module("Discourse.NavItem", {
+module("GameOfForums.NavItem", {
   setup: function() {
     Ember.run(function() {
-      const asianCategory = Discourse.Category.create({name: '确实是这样', id: 343434});
-      Discourse.Site.currentProp('categories').addObject(asianCategory);
+      const asianCategory = GameOfForums.Category.create({name: '确实是这样', id: 343434});
+      GameOfForums.Site.currentProp('categories').addObject(asianCategory);
     });
   }
 });
@@ -12,7 +12,7 @@ test('href', function(){
   expect(4);
 
   function href(text, expected, label) {
-    equal(Discourse.NavItem.fromText(text, {}).get('href'), expected, label);
+    equal(GameOfForums.NavItem.fromText(text, {}).get('href'), expected, label);
   }
 
   href('latest', '/latest', 'latest');

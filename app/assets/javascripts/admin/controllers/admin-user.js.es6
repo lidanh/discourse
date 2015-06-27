@@ -1,3 +1,3 @@
-import ObjectController from 'discourse/controllers/object';
+import ObjectController from 'game-of-forums/controllers/object';
 
 export default ObjectController.extend();

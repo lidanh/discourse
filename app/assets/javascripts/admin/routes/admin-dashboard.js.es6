@@ -1,4 +1,4 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
 
   setupController: function(c) {
     this.fetchDashboardData(c);
@@ -8,18 +8,18 @@ export default Discourse.Route.extend({
     if( !c.get('dashboardFetchedAt') || moment().subtract(30, 'minutes').toDate() > c.get('dashboardFetchedAt') ) {
       c.set('dashboardFetchedAt', new Date());
       var versionChecks = this.siteSettings.version_checks;
-      Discourse.AdminDashboard.find().then(function(d) {
+      GameOfForums.AdminDashboard.find().then(function(d) {
         if (versionChecks) {
-          c.set('versionCheck', Discourse.VersionCheck.create(d.version_check));
+          c.set('versionCheck', GameOfForums.VersionCheck.create(d.version_check));
         }
         _.each(d.reports,function(report){
-          c.set(report.type, Discourse.Report.create(report));
+          c.set(report.type, GameOfForums.Report.create(report));
         });
 
         var topReferrers = d.top_referrers;
         if (topReferrers && topReferrers.data) {
           d.top_referrers.data = topReferrers.data.map(function (user) {
-            return Discourse.AdminUser.create(user);
+            return GameOfForums.AdminUser.create(user);
           });
           c.set('top_referrers', topReferrers);
         }

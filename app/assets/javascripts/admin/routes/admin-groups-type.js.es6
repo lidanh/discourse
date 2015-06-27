@@ -1,7 +1,7 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model(params) {
     this.set("type", params.type);
-    return Discourse.Group.findAll().then(function(groups) {
+    return GameOfForums.Group.findAll().then(function(groups) {
       return groups.filterBy("type", params.type);
     });
   },
@@ -15,7 +15,7 @@ export default Discourse.Route.extend({
     newGroup() {
       const self = this;
       this.transitionTo("adminGroupsType", "custom").then(function() {
-        var group = Discourse.Group.create({ automatic: false, visible: true });
+        var group = GameOfForums.Group.create({ automatic: false, visible: true });
         self.transitionTo("adminGroup", group);
       });
     }

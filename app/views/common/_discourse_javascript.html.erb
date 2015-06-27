@@ -27,24 +27,24 @@
 </script>
 
 <script>
-  Discourse.CDN = '<%= Rails.configuration.action_controller.asset_host %>';
-  Discourse.BaseUrl = '<%= RailsMultisite::ConnectionManagement.current_hostname %>'.replace(/:[\d]*$/,"");
-  Discourse.BaseUri = '<%= Discourse::base_uri "/" %>';
-  Discourse.Environment = '<%= Rails.env %>';
-  Discourse.SiteSettings = PreloadStore.get('siteSettings');
-  Discourse.LetterAvatarVersion = '<%= LetterAvatar.version %>';
+  GameOfForums.CDN = '<%= Rails.configuration.action_controller.asset_host %>';
+  GameOfForums.BaseUrl = '<%= RailsMultisite::ConnectionManagement.current_hostname %>'.replace(/:[\d]*$/,"");
+  GameOfForums.BaseUri = '<%= Discourse::base_uri "/" %>';
+  GameOfForums.Environment = '<%= Rails.env %>';
+  GameOfForums.SiteSettings = PreloadStore.get('siteSettings');
+  GameOfForums.LetterAvatarVersion = '<%= LetterAvatar.version %>';
   PreloadStore.get("customEmoji").forEach(function(emoji) {
-    Discourse.Dialect.registerEmoji(emoji.name, emoji.url);
+    GameOfForums.Dialect.registerEmoji(emoji.name, emoji.url);
   });
-  Discourse.start();
-  Discourse.set('assetVersion','<%= Discourse.assets_digest %>');
-  Discourse.Session.currentProp("disableCustomCSS", <%= loading_admin? %>);
-  Discourse.HighlightJSPath = <%= HighlightJs.path.inspect.html_safe %>;
+  GameOfForums.start();
+  GameOfForums.set('assetVersion','<%= Discourse.assets_digest %>');
+  GameOfForums.Session.currentProp("disableCustomCSS", <%= loading_admin? %>);
+  GameOfForums.HighlightJSPath = <%= HighlightJs.path.inspect.html_safe %>;
   <%- if SiteSetting.enable_s3_uploads %>
     <%- if SiteSetting.s3_cdn_url.present? %>
-      Discourse.S3CDN = '<%= SiteSetting.s3_cdn_url %>';
+      GameOfForums.S3CDN = '<%= SiteSetting.s3_cdn_url %>';
     <%- end %>
-    Discourse.S3BaseUrl = '<%= Discourse.store.absolute_base_url %>';
+    GameOfForums.S3BaseUrl = '<%= Discourse.store.absolute_base_url %>';
   <%- end %>
 </script>
 

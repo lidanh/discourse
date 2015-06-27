@@ -1,15 +1,15 @@
-import ObjectController from 'discourse/controllers/object';
-import CanCheckEmails from 'discourse/mixins/can-check-emails';
+import ObjectController from 'game-of-forums/controllers/object';
+import CanCheckEmails from 'game-of-forums/mixins/can-check-emails';
 
 export default ObjectController.extend(CanCheckEmails, {
   editingTitle: false,
   originalPrimaryGroupId: null,
   availableGroups: null,
 
-  showApproval: Discourse.computed.setting('must_approve_users'),
-  showBadges: Discourse.computed.setting('enable_badges'),
+  showApproval: GameOfForums.computed.setting('must_approve_users'),
+  showBadges: GameOfForums.computed.setting('enable_badges'),
 
-  primaryGroupDirty: Discourse.computed.propertyNotEqual('originalPrimaryGroupId', 'model.primary_group_id'),
+  primaryGroupDirty: GameOfForums.computed.propertyNotEqual('originalPrimaryGroupId', 'model.primary_group_id'),
 
   automaticGroups: function() {
     return this.get("model.automaticGroups").map((g) => g.name).join(", ");
@@ -36,7 +36,7 @@ export default ObjectController.extend(CanCheckEmails, {
     saveTitle() {
       const self = this;
 
-      return Discourse.ajax("/users/" + this.get('username').toLowerCase(), {
+      return GameOfForums.ajax("/users/" + this.get('username').toLowerCase(), {
         data: {title: this.get('title')},
         type: 'PUT'
       }).catch(function(e) {
@@ -65,7 +65,7 @@ export default ObjectController.extend(CanCheckEmails, {
     savePrimaryGroup() {
       const self = this;
 
-      return Discourse.ajax("/admin/users/" + this.get('id') + "/primary_group", {
+      return GameOfForums.ajax("/admin/users/" + this.get('id') + "/primary_group", {
         type: 'PUT',
         data: {primary_group_id: this.get('model.primary_group_id')}
       }).then(function () {

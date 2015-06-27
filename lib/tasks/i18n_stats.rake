@@ -87,7 +87,7 @@ task "i18n:stats" => :environment do
     I18n.t("i18n.plural.keys", :locale => locale).map { |x| x.to_s }
   end
 
-  puts "Discourse Translation Status Script"
+  puts "GameOfForums Translation Status Script"
   puts "To show details about a specific locale (e.g. 'de'), run as:"
   puts "    rake i18n:stats locale=de"
   puts ""

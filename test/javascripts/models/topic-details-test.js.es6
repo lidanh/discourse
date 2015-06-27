@@ -25,6 +25,6 @@ test('updateFromJson', function() {
   containsInstance(details.get('suggested_topics'), Topic);
 
   equal(details.get('allowed_users.length'), 1, 'it loaded the allowed users');
-  containsInstance(details.get('allowed_users'), Discourse.User);
+  containsInstance(details.get('allowed_users'), GameOfForums.User);
 
 });

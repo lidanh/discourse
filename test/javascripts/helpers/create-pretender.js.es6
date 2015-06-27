@@ -47,7 +47,7 @@ const farmers = [{id: 1, name: 'Old MacDonald'},
                  {id: 2, name: 'Luke Skywalker'}];
 
 function loggedIn() {
-  return !!Discourse.User.current();
+  return !!GameOfForums.User.current();
 }
 
 export default function() {
@@ -284,7 +284,7 @@ export default function() {
   };
 
   server.checkPassthrough = function(request) {
-    return request.requestHeaders['Discourse-Script'];
+    return request.requestHeaders['GameOfForums-Script'];
   };
 
   return server;

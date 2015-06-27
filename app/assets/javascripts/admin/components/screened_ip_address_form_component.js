@@ -10,10 +10,10 @@
 
   @class ScreenedIpAddressFormComponent
   @extends Ember.Component
-  @namespace Discourse
-  @module Discourse
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.ScreenedIpAddressFormComponent = Ember.Component.extend({
+GameOfForums.ScreenedIpAddressFormComponent = Ember.Component.extend({
   classNames: ['screened-ip-address-form'],
   formSubmitted: false,
   actionName: 'block',
@@ -31,11 +31,11 @@ Discourse.ScreenedIpAddressFormComponent = Ember.Component.extend({
       if (!this.get('formSubmitted')) {
         var self = this;
         this.set('formSubmitted', true);
-        var screenedIpAddress = Discourse.ScreenedIpAddress.create({ip_address: this.get('ip_address'), action_name: this.get('actionName')});
+        var screenedIpAddress = GameOfForums.ScreenedIpAddress.create({ip_address: this.get('ip_address'), action_name: this.get('actionName')});
         screenedIpAddress.save().then(function(result) {
           self.set('ip_address', '');
           self.set('formSubmitted', false);
-          self.sendAction('action', Discourse.ScreenedIpAddress.create(result.screened_ip_address));
+          self.sendAction('action', GameOfForums.ScreenedIpAddress.create(result.screened_ip_address));
           Em.run.schedule('afterRender', function() { self.$('.ip-address-input').focus(); });
         }, function(e) {
           self.set('formSubmitted', false);

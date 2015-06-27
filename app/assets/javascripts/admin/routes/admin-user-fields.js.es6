@@ -1,6 +1,6 @@
 import UserField from 'admin/models/user-field';
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model: function() {
     return UserField.findAll();
   },

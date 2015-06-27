@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def add_readonly_header
-    response.headers['Discourse-Readonly'] = 'true' if Discourse.readonly_mode?
+    response.headers['GameOfForums-Readonly'] = 'true' if Discourse.readonly_mode?
   end
 
   def slow_platform?
@@ -144,9 +144,9 @@ class ApplicationController < ActionController::Base
   def set_current_user_for_logs
     if current_user
       Logster.add_to_env(request.env,"username",current_user.username)
-      response.headers["X-Discourse-Username"] = current_user.username
+      response.headers["X-GameOfForums-Username"] = current_user.username
     end
-    response.headers["X-Discourse-Route"] = "#{controller_name}/#{action_name}"
+    response.headers["X-GameOfForums-Route"] = "#{controller_name}/#{action_name}"
   end
 
   def set_locale

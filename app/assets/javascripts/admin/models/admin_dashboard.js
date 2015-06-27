@@ -2,14 +2,14 @@
   A model that stores all or some data that is displayed on the dashboard.
 
   @class AdminDashboard
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 
-Discourse.AdminDashboard = Discourse.Model.extend({});
+GameOfForums.AdminDashboard = GameOfForums.Model.extend({});
 
-Discourse.AdminDashboard.reopenClass({
+GameOfForums.AdminDashboard.reopenClass({
 
   /**
     Fetch all dashboard data. This can be an expensive request when the cached data
@@ -19,8 +19,8 @@ Discourse.AdminDashboard.reopenClass({
     @return {jqXHR} a jQuery Promise object
   **/
   find: function() {
-    return Discourse.ajax("/admin/dashboard.json").then(function(json) {
-      var model = Discourse.AdminDashboard.create(json);
+    return GameOfForums.ajax("/admin/dashboard.json").then(function(json) {
+      var model = GameOfForums.AdminDashboard.create(json);
       model.set('loaded', true);
       return model;
     });
@@ -34,11 +34,11 @@ Discourse.AdminDashboard.reopenClass({
     @return {jqXHR} a jQuery Promise object
   **/
   fetchProblems: function() {
-    return Discourse.ajax("/admin/dashboard/problems.json", {
+    return GameOfForums.ajax("/admin/dashboard/problems.json", {
       type: 'GET',
       dataType: 'json'
     }).then(function(json) {
-      var model = Discourse.AdminDashboard.create(json);
+      var model = GameOfForums.AdminDashboard.create(json);
       model.set('loaded', true);
       return model;
     });

@@ -1,7 +1,7 @@
 import Presence from 'discourse/mixins/presence';
 import Model from 'discourse/models/model';
 
-module("Discourse.Model");
+module("GameOfForums.Model");
 
 test("mixes in Presence", function() {
   ok(Presence.detect(Model.create()));

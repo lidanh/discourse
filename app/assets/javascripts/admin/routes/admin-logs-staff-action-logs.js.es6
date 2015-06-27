@@ -1,6 +1,6 @@
-import showModal from 'discourse/lib/show-modal';
+import showModal from 'game-of-forums/lib/show-modal';
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   // TODO: make this automatic using an `{{outlet}}`
   renderTemplate: function() {
     this.render('admin/templates/logs/staff_action_logs', {into: 'adminLogs'});

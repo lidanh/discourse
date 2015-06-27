@@ -9,7 +9,7 @@
 
   var ATTRIBUTES_REGEX = new RegExp("(" + WHITELISTED_ATTRIBUTES.join("|") + ")=['\"]?[^\\s\\]]+['\"]?", "g");
 
-  Discourse.Dialect.replaceBlock({
+  GameOfForums.Dialect.replaceBlock({
     start: /\[poll((?:\s+\w+=[^\s\]]+)*)\]([\s\S]*)/igm,
     stop: /\[\/poll\]/igm,
 
@@ -57,7 +57,7 @@
       if (attributes[DATA_PREFIX + "type"] === "number") {
         // default values
         if (isNaN(min)) { min = 1; }
-        if (isNaN(max)) { max = Discourse.SiteSettings.poll_maximum_options; }
+        if (isNaN(max)) { max = GameOfForums.SiteSettings.poll_maximum_options; }
         if (isNaN(step)) { step = 1; }
         // dynamically generate options
         contents.push(["bulletlist"]);
@@ -156,13 +156,13 @@
     }
   });
 
-  Discourse.Markdown.whiteListTag("div", "class", "poll");
-  Discourse.Markdown.whiteListTag("div", "class", /^poll-(info|container|buttons)/);
-  Discourse.Markdown.whiteListTag("div", "data-*");
+  GameOfForums.Markdown.whiteListTag("div", "class", "poll");
+  GameOfForums.Markdown.whiteListTag("div", "class", /^poll-(info|container|buttons)/);
+  GameOfForums.Markdown.whiteListTag("div", "data-*");
 
-  Discourse.Markdown.whiteListTag("span", "class", /^info-(number|text)/);
+  GameOfForums.Markdown.whiteListTag("span", "class", /^info-(number|text)/);
 
-  Discourse.Markdown.whiteListTag("a", "class", /^button (cast-votes|toggle-results)/);
+  GameOfForums.Markdown.whiteListTag("a", "class", /^button (cast-votes|toggle-results)/);
 
-  Discourse.Markdown.whiteListTag("li", "data-*");
+  GameOfForums.Markdown.whiteListTag("li", "data-*");
 })();

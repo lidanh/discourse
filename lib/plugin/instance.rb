@@ -187,7 +187,7 @@ class Plugin::Instance
       overrides << ", frameWidth: '#{auth.frame_width}'" if auth.frame_width
       overrides << ", frameHeight: '#{auth.frame_height}'" if auth.frame_height
 
-      js << "Discourse.LoginMethod.register(Discourse.LoginMethod.create({name: '#{auth.name}'#{overrides}}));\n"
+      js << "GameOfForums.LoginMethod.register(GameOfForums.LoginMethod.create({name: '#{auth.name}'#{overrides}}));\n"
 
       if auth.glyph
         css << ".btn-social.#{auth.name}:before{ content: '#{auth.glyph}'; }\n"

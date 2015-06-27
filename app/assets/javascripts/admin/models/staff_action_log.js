@@ -1,4 +1,4 @@
-Discourse.StaffActionLog = Discourse.Model.extend({
+GameOfForums.StaffActionLog = GameOfForums.Model.extend({
   showFullDetails: false,
 
   actionName: function() {
@@ -38,23 +38,23 @@ Discourse.StaffActionLog = Discourse.Model.extend({
   }.property('action_name')
 });
 
-Discourse.StaffActionLog.reopenClass({
+GameOfForums.StaffActionLog.reopenClass({
   create: function(attrs) {
     attrs = attrs || {};
 
     if (attrs.acting_user) {
-      attrs.acting_user = Discourse.AdminUser.create(attrs.acting_user);
+      attrs.acting_user = GameOfForums.AdminUser.create(attrs.acting_user);
     }
     if (attrs.target_user) {
-      attrs.target_user = Discourse.AdminUser.create(attrs.target_user);
+      attrs.target_user = GameOfForums.AdminUser.create(attrs.target_user);
     }
     return this._super(attrs);
   },
 
   findAll: function(filters) {
-    return Discourse.ajax("/admin/logs/staff_action_logs.json", { data: filters }).then(function(staff_actions) {
+    return GameOfForums.ajax("/admin/logs/staff_action_logs.json", { data: filters }).then(function(staff_actions) {
       return staff_actions.map(function(s) {
-        return Discourse.StaffActionLog.create(s);
+        return GameOfForums.StaffActionLog.create(s);
       });
     });
   }

@@ -10,7 +10,7 @@
         uploadText="UPLOAD"
     }}
 **/
-Discourse.ResumableUploadComponent = Ember.Component.extend(Discourse.StringBuffer, {
+GameOfForums.ResumableUploadComponent = Ember.Component.extend(GameOfForums.StringBuffer, {
   tagName: "button",
   classNames: ["btn", "ru"],
   classNameBindings: ["isUploading"],

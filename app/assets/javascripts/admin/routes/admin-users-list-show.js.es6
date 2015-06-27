@@ -1,7 +1,7 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model: function(params) {
     this.userFilter = params.filter;
-    return Discourse.AdminUser.findAll(params.filter);
+    return GameOfForums.AdminUser.findAll(params.filter);
   },
 
   setupController: function(controller, model) {

@@ -59,7 +59,7 @@ export default Ember.Controller.extend({
       var groupIds = items.map(function(i){return i.get("id") || -1});
       var names = items.map(function(i){return i.get("name")});
 
-      Discourse.ajax('/admin/badges/badge_groupings',{
+      GameOfForums.ajax('/admin/badges/badge_groupings',{
         data: {ids: groupIds, names: names},
         method: 'POST'
       }).then(function(data){

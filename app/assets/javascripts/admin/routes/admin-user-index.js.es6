@@ -1,6 +1,6 @@
-import showModal from 'discourse/lib/show-modal';
+import showModal from 'game-of-forums/lib/show-modal';
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model() {
     return this.modelFor('adminUser');
   },
@@ -8,7 +8,7 @@ export default Discourse.Route.extend({
   afterModel(model) {
     if (this.currentUser.get('admin')) {
       const self = this;
-      return Discourse.Group.findAll().then(function(groups){
+      return GameOfForums.Group.findAll().then(function(groups){
         self._availableGroups = groups.filterBy('automatic', false);
         return model;
       });

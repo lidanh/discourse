@@ -2,14 +2,14 @@
   Handles routes related to colors customization
 
   @class AdminCustomizeColorsRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminCustomizeColorsRoute = Discourse.Route.extend({
+GameOfForums.AdminCustomizeColorsRoute = GameOfForums.Route.extend({
 
   model: function() {
-    return Discourse.ColorScheme.findAll();
+    return GameOfForums.ColorScheme.findAll();
   },
 
   deactivate: function() {

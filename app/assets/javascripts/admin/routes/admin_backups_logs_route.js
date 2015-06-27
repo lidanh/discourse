@@ -1,4 +1,4 @@
-Discourse.AdminBackupsLogsRoute = Discourse.Route.extend({
+GameOfForums.AdminBackupsLogsRoute = GameOfForums.Route.extend({
 
   // since the logs are pushed via the message bus
   // we only want to preload them (hence the beforeModel hook)

@@ -1,12 +1,12 @@
 /**
-  Our data model for determining whether there's a new version of Discourse
+  Our data model for determining whether there's a new version of GameOfForums
 
   @class VersionCheck
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.VersionCheck = Discourse.Model.extend({
+GameOfForums.VersionCheck = GameOfForums.Model.extend({
 
   noCheckPerformed: function() {
     return this.get('updated_at') === null;
@@ -39,10 +39,10 @@ Discourse.VersionCheck = Discourse.Model.extend({
   }.property('installed_sha')
 });
 
-Discourse.VersionCheck.reopenClass({
+GameOfForums.VersionCheck.reopenClass({
   find: function() {
-    return Discourse.ajax('/admin/version_check').then(function(json) {
-      return Discourse.VersionCheck.create(json);
+    return GameOfForums.ajax('/admin/version_check').then(function(json) {
+      return GameOfForums.VersionCheck.create(json);
     });
   }
 });

@@ -15,7 +15,7 @@ require "fileutils"
 opts = OptionParser.new do |o|
   o.banner = "Usage: ruby bench.rb [options]"
 
-  o.on("-n", "--with_default_env", "Include recommended Discourse env") do
+  o.on("-n", "--with_default_env", "Include recommended GameOfForums env") do
     @include_env = true
   end
   o.on("-o", "--output [FILE]", "Output results to this file") do |f|

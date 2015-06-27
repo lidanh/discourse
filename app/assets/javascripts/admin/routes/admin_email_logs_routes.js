@@ -2,14 +2,14 @@
   Handles routes related to viewing email logs.
 
   @class AdminEmailSentRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminEmailLogsRoute = Discourse.Route.extend({
+GameOfForums.AdminEmailLogsRoute = GameOfForums.Route.extend({
 
   model: function() {
-    return Discourse.EmailLog.findAll({ status: this.get("status") });
+    return GameOfForums.EmailLog.findAll({ status: this.get("status") });
   },
 
   setupController: function(controller, model) {
@@ -24,6 +24,6 @@ Discourse.AdminEmailLogsRoute = Discourse.Route.extend({
 
 });
 
-Discourse.AdminEmailAllRoute = Discourse.AdminEmailLogsRoute.extend({ status: "all" });
-Discourse.AdminEmailSentRoute = Discourse.AdminEmailLogsRoute.extend({ status: "sent" });
-Discourse.AdminEmailSkippedRoute = Discourse.AdminEmailLogsRoute.extend({ status: "skipped" });
+GameOfForums.AdminEmailAllRoute = GameOfForums.AdminEmailLogsRoute.extend({ status: "all" });
+GameOfForums.AdminEmailSentRoute = GameOfForums.AdminEmailLogsRoute.extend({ status: "sent" });
+GameOfForums.AdminEmailSkippedRoute = GameOfForums.AdminEmailLogsRoute.extend({ status: "skipped" });

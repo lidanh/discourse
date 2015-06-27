@@ -62,12 +62,12 @@ WHERE table_schema='public' and (data_type like 'char%' or data_type like 'text%
     exit(1) unless backuper.success
   end
 
-  desc "export", "Backup a Discourse forum"
+  desc "export", "Backup a GameOfForums forum"
   def export
     backup
   end
 
-  desc "restore", "Restore a Discourse backup"
+  desc "restore", "Restore a GameOfForums backup"
   def restore(filename)
     load_rails
     require "backup_restore/backup_restore"
@@ -89,7 +89,7 @@ WHERE table_schema='public' and (data_type like 'char%' or data_type like 'text%
     exit(1) unless restorer.try(:success)
   end
 
-  desc "import", "Restore a Discourse backup"
+  desc "import", "Restore a GameOfForums backup"
   def import(filename)
     restore(filename)
   end

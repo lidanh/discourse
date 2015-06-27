@@ -74,7 +74,7 @@ module PrettyText
       Rails.configuration.ember.handlebars_location
     )
 
-    ctx.eval("var Discourse = {}; Discourse.SiteSettings = {};")
+    ctx.eval("var GameOfForums = {}; GameOfForums.SiteSettings = {};")
     ctx.eval("var window = {}; window.devicePixelRatio = 2;") # hack to make code think stuff is retina
     ctx.eval("var I18n = {}; I18n.t = function(a,b){ return helpers.t(a,b); }");
 
@@ -134,11 +134,11 @@ module PrettyText
   end
 
   def self.decorate_context(context)
-    context.eval("Discourse.SiteSettings = #{SiteSetting.client_settings_json};")
-    context.eval("Discourse.CDN = '#{Rails.configuration.action_controller.asset_host}';")
-    context.eval("Discourse.BaseUrl = 'http://#{RailsMultisite::ConnectionManagement.current_hostname}';")
-    context.eval("Discourse.getURL = function(url) { return '#{Discourse::base_uri}' + url };")
-    context.eval("Discourse.getURLWithCDN = function(url) { url = Discourse.getURL(url); if (Discourse.CDN) { url = Discourse.CDN + url; } return url; };")
+    context.eval("GameOfForums.SiteSettings = #{SiteSetting.client_settings_json};")
+    context.eval("GameOfForums.CDN = '#{Rails.configuration.action_controller.asset_host}';")
+    context.eval("GameOfForums.BaseUrl = 'http://#{RailsMultisite::ConnectionManagement.current_hostname}';")
+    context.eval("GameOfForums.getURL = function(url) { return '#{Discourse::base_uri}' + url };")
+    context.eval("GameOfForums.getURLWithCDN = function(url) { url = GameOfForums.getURL(url); if (GameOfForums.CDN) { url = GameOfForums.CDN + url; } return url; };")
   end
 
   def self.markdown(text, opts=nil)
@@ -159,18 +159,18 @@ module PrettyText
 
       if Post.white_listed_image_classes.present?
         Post.white_listed_image_classes.each do |klass|
-          context.eval("Discourse.Markdown.whiteListClass('#{klass}')")
+          context.eval("GameOfForums.Markdown.whiteListClass('#{klass}')")
         end
       end
 
       # custom emojis
       Emoji.custom.each do |emoji|
-        context.eval("Discourse.Dialect.registerEmoji('#{emoji.name}', '#{emoji.url}');")
+        context.eval("GameOfForums.Dialect.registerEmoji('#{emoji.name}', '#{emoji.url}');")
       end
 
       context.eval('opts["mentionLookup"] = function(u){return helpers.is_username_valid(u);}')
-      context.eval('opts["lookupAvatar"] = function(p){return Discourse.Utilities.avatarImg({size: "tiny", avatarTemplate: helpers.avatar_template(p)});}')
-      baked = context.eval('Discourse.Markdown.markdownConverter(opts).makeHtml(raw)')
+      context.eval('opts["lookupAvatar"] = function(p){return GameOfForums.Utilities.avatarImg({size: "tiny", avatarTemplate: helpers.avatar_template(p)});}')
+      baked = context.eval('GameOfForums.Markdown.markdownConverter(opts).makeHtml(raw)')
     end
 
     if baked.blank? && !(opts || {})[:skip_blank_test]
@@ -195,7 +195,7 @@ module PrettyText
       v8['avatarTemplate'] = avatar_template
       v8['size'] = size
       decorate_context(v8)
-      v8.eval("Discourse.Utilities.avatarImg({ avatarTemplate: avatarTemplate, size: size });")
+      v8.eval("GameOfForums.Utilities.avatarImg({ avatarTemplate: avatarTemplate, size: size });")
     end
   end
 

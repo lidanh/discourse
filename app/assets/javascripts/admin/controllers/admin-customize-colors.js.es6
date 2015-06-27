@@ -1,10 +1,10 @@
 /**
-  This controller supports interface for creating custom CSS skins in Discourse.
+  This controller supports interface for creating custom CSS skins in GameOfForums.
 
   @class AdminCustomizeColorsController
   @extends Ember.Controller
-  @namespace Discourse
-  @module Discourse
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 export default Ember.ArrayController.extend({
 

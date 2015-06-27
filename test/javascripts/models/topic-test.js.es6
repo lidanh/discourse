@@ -25,7 +25,7 @@ test('has a postStream', function() {
 
 test('category relationship', function() {
   // It finds the category by id
-  var category = Discourse.Category.list()[0],
+  var category = GameOfForums.Category.list()[0],
       topic = Topic.create({id: 1111, category_id: category.get('id') });
 
   equal(topic.get('category'), category);
@@ -33,7 +33,7 @@ test('category relationship', function() {
 
 test("updateFromJson", function() {
   var topic = Topic.create({id: 1234}),
-      category = Discourse.Category.list()[0];
+      category = GameOfForums.Category.list()[0];
 
   topic.updateFromJson({
     post_stream: [1,2,3],
@@ -49,27 +49,27 @@ test("updateFromJson", function() {
 });
 
 test("destroy", function() {
-  var user = Discourse.User.create({username: 'eviltrout'});
+  var user = GameOfForums.User.create({username: 'eviltrout'});
   var topic = Topic.create({id: 1234});
 
-  sandbox.stub(Discourse, 'ajax');
+  sandbox.stub(GameOfForums, 'ajax');
 
   topic.destroy(user);
   present(topic.get('deleted_at'), 'deleted at is set');
   equal(topic.get('deleted_by'), user, 'deleted by is set');
-  //ok(Discourse.ajax.calledOnce, "it called delete over the wire");
+  //ok(GameOfForums.ajax.calledOnce, "it called delete over the wire");
 });
 
 test("recover", function() {
-  var user = Discourse.User.create({username: 'eviltrout'});
+  var user = GameOfForums.User.create({username: 'eviltrout'});
   var topic = Topic.create({id: 1234, deleted_at: new Date(), deleted_by: user});
 
-  sandbox.stub(Discourse, 'ajax');
+  sandbox.stub(GameOfForums, 'ajax');
 
   topic.recover();
   blank(topic.get('deleted_at'), "it clears deleted_at");
   blank(topic.get('deleted_by'), "it clears deleted_by");
-  //ok(Discourse.ajax.calledOnce, "it called recover over the wire");
+  //ok(GameOfForums.ajax.calledOnce, "it called recover over the wire");
 });
 
 test('fancyTitle', function() {

@@ -1,5 +1,5 @@
 /* global ace:true */
-import loadScript from 'discourse/lib/load-script';
+import loadScript from 'game-of-forums/lib/load-script';
 
 export default Ember.Component.extend({
   mode: 'css',

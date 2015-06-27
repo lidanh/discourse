@@ -1,5 +1,5 @@
-module("Discourse.StaffActionLog");
+module("GameOfForums.StaffActionLog");
 
 test("create", function() {
-  ok(Discourse.StaffActionLog.create(), "it can be created without arguments");
+  ok(GameOfForums.StaffActionLog.create(), "it can be created without arguments");
 });

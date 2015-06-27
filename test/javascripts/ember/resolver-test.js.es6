@@ -1,7 +1,7 @@
-import DiscourseResolver from 'discourse/ember/resolver';
+import GameOfForumsResolver from 'discourse/ember/resolver';
 
 var originalTemplates, originalMobileViewFlag;
-var resolver = DiscourseResolver.create();
+var resolver = GameOfForumsResolver.create();
 
 function lookupTemplate(name, expectedTemplate, message) {
   var parseName = resolver.parseName(name);
@@ -20,13 +20,13 @@ module("Resolver", {
     originalTemplates = Ember.TEMPLATES;
     Ember.TEMPLATES = {};
 
-    originalMobileViewFlag = Discourse.Mobile.mobileView;
-    Discourse.Mobile.mobileView = false;
+    originalMobileViewFlag = GameOfForums.Mobile.mobileView;
+    GameOfForums.Mobile.mobileView = false;
   },
 
   teardown: function() {
     Ember.TEMPLATES = originalTemplates;
-    Discourse.Mobile.mobileView = originalMobileViewFlag;
+    GameOfForums.Mobile.mobileView = originalMobileViewFlag;
   }
 });
 
@@ -92,7 +92,7 @@ test("resolves mobile templates to 'mobile/' namespace", function() {
     "baz"
   ]);
 
-  Discourse.Mobile.mobileView = true;
+  GameOfForums.Mobile.mobileView = true;
 
   lookupTemplate("template:foo", "mobile/foo", "finding mobile version even if normal one is not present");
   lookupTemplate("template:bar", "mobile/bar", "preferring mobile version when both mobile and normal versions are present");

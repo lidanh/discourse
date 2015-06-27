@@ -3,8 +3,8 @@
 
   @class AdminApiController
   @extends Ember.ArrayController
-  @namespace Discourse
-  @module Discourse
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 export default Ember.ArrayController.extend({
 
@@ -16,7 +16,7 @@ export default Ember.ArrayController.extend({
     **/
     generateMasterKey: function() {
       var self = this;
-      Discourse.ApiKey.generateMasterKey().then(function (key) {
+      GameOfForums.ApiKey.generateMasterKey().then(function (key) {
         self.get('model').pushObject(key);
       });
     },
@@ -25,7 +25,7 @@ export default Ember.ArrayController.extend({
       Creates an API key instance with internal user object
 
       @method regenerateKey
-      @param {Discourse.ApiKey} key the key to regenerate
+      @param {GameOfForums.ApiKey} key the key to regenerate
     **/
     regenerateKey: function(key) {
       bootbox.confirm(I18n.t("admin.api.confirm_regen"), I18n.t("no_value"), I18n.t("yes_value"), function(result) {
@@ -39,7 +39,7 @@ export default Ember.ArrayController.extend({
       Revokes an API key
 
       @method revokeKey
-      @param {Discourse.ApiKey} key the key to revoke
+      @param {GameOfForums.ApiKey} key the key to revoke
     **/
     revokeKey: function(key) {
       var self = this;

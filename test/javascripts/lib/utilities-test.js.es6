@@ -1,6 +1,6 @@
-module("Discourse.Utilities");
+module("GameOfForums.Utilities");
 
-var utils = Discourse.Utilities;
+var utils = GameOfForums.Utilities;
 
 test("emailValid", function() {
   ok(utils.emailValid('Bob@example.com'), "allows upper case in the first part of emails");
@@ -23,8 +23,8 @@ test("uploading one file", function() {
 });
 
 test("new user cannot upload images", function() {
-  Discourse.SiteSettings.newuser_max_images = 0;
-  Discourse.User.resetCurrent(Discourse.User.create());
+  GameOfForums.SiteSettings.newuser_max_images = 0;
+  GameOfForums.User.resetCurrent(GameOfForums.User.create());
   sandbox.stub(bootbox, "alert");
 
   not(validUpload([{name: "image.png"}]), 'the upload is not valid');
@@ -32,9 +32,9 @@ test("new user cannot upload images", function() {
 });
 
 test("new user cannot upload attachments", function() {
-  Discourse.SiteSettings.newuser_max_attachments = 0;
+  GameOfForums.SiteSettings.newuser_max_attachments = 0;
   sandbox.stub(bootbox, "alert");
-  Discourse.User.resetCurrent(Discourse.User.create());
+  GameOfForums.User.resetCurrent(GameOfForums.User.create());
 
   not(validUpload([{name: "roman.txt"}]));
   ok(bootbox.alert.calledWith(I18n.t('post.errors.attachment_upload_not_allowed_for_new_user')));
@@ -42,7 +42,7 @@ test("new user cannot upload attachments", function() {
 
 test("ensures an authorized upload", function() {
   var html = { name: "unauthorized.html" };
-  var extensions = Discourse.SiteSettings.authorized_extensions.replace(/\|/g, ", ");
+  var extensions = GameOfForums.SiteSettings.authorized_extensions.replace(/\|/g, ", ");
   sandbox.stub(bootbox, "alert");
 
   not(validUpload([html]));
@@ -50,10 +50,10 @@ test("ensures an authorized upload", function() {
 });
 
 test("prevents files that are too big from being uploaded", function() {
-  Discourse.User.resetCurrent(Discourse.User.create());
+  GameOfForums.User.resetCurrent(GameOfForums.User.create());
   var image = { name: "image.png", size: 10 * 1024 };
-  Discourse.SiteSettings.max_image_size_kb = 5;
-  Discourse.User.currentProp("trust_level", 1);
+  GameOfForums.SiteSettings.max_image_size_kb = 5;
+  GameOfForums.User.currentProp("trust_level", 1);
   sandbox.stub(bootbox, "alert");
 
   not(validUpload([image]));
@@ -74,10 +74,10 @@ var dummyBlob = function() {
 };
 
 test("allows valid uploads to go through", function() {
-  Discourse.User.resetCurrent(Discourse.User.create());
-  Discourse.User.currentProp("trust_level", 1);
-  Discourse.SiteSettings.max_image_size_kb = 15;
-  Discourse.SiteSettings.max_attachment_size_kb = 1;
+  GameOfForums.User.resetCurrent(GameOfForums.User.create());
+  GameOfForums.User.currentProp("trust_level", 1);
+  GameOfForums.SiteSettings.max_image_size_kb = 15;
+  GameOfForums.SiteSettings.max_attachment_size_kb = 1;
   sandbox.stub(bootbox, "alert");
 
   // image
@@ -155,17 +155,17 @@ test("avatarImg", function() {
 });
 
 test("allowsAttachments", function() {
-  Discourse.SiteSettings.authorized_extensions = "jpg|jpeg|gif";
+  GameOfForums.SiteSettings.authorized_extensions = "jpg|jpeg|gif";
   not(utils.allowsAttachments(), "no attachments allowed by default");
 
-  Discourse.SiteSettings.authorized_extensions = "jpg|jpeg|gif|*";
+  GameOfForums.SiteSettings.authorized_extensions = "jpg|jpeg|gif|*";
   ok(utils.allowsAttachments(), "attachments are allowed when all extensions are allowed");
 
-  Discourse.SiteSettings.authorized_extensions = "jpg|jpeg|gif|pdf";
+  GameOfForums.SiteSettings.authorized_extensions = "jpg|jpeg|gif|pdf";
   ok(utils.allowsAttachments(), "attachments are allowed when at least one extension is not an image extension");
 });
 
 test("defaultHomepage", function() {
-  Discourse.SiteSettings.top_menu = "latest|top|hot";
+  GameOfForums.SiteSettings.top_menu = "latest|top|hot";
   equal(utils.defaultHomepage(), "latest", "default homepage is the first item in the top_menu site setting");
 });

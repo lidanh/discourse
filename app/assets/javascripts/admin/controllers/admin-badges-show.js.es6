@@ -1,5 +1,5 @@
-import { popupAjaxError } from 'discourse/lib/ajax-error';
-import BufferedContent from 'discourse/mixins/buffered-content';
+import { popupAjaxError } from 'game-of-forums/lib/ajax-error';
+import BufferedContent from 'game-of-forums/mixins/buffered-content';
 
 export default Ember.ObjectController.extend(BufferedContent, {
   needs: ['admin-badges'],
@@ -12,7 +12,7 @@ export default Ember.ObjectController.extend(BufferedContent, {
   protectedSystemFields: Em.computed.alias('controllers.admin-badges.protectedSystemFields'),
 
   readOnly: Ember.computed.alias('buffered.system'),
-  showDisplayName: Discourse.computed.propertyNotEqual('name', 'displayName'),
+  showDisplayName: GameOfForums.computed.propertyNotEqual('name', 'displayName'),
   canEditDescription: Em.computed.none('buffered.translatedDescription'),
 
   _resetSaving: function() {

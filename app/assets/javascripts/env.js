@@ -1,4 +1,4 @@
 window.ENV = { };
 
-window.Discourse = {};
-Discourse.SiteSettings = {};
+window.GameOfForums = {};
+GameOfForums.SiteSettings = {};

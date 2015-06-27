@@ -14,7 +14,7 @@ export default Ember.ArrayController.extend({
         I18n.t("yes_value"),
         function(destroy) {
           if (destroy) {
-            return Discourse.ajax("/admin/customize/emojis/" + emoji.get("name"), { type: "DELETE" }).then(function() {
+            return GameOfForums.ajax("/admin/customize/emojis/" + emoji.get("name"), { type: "DELETE" }).then(function() {
               self.removeObject(emoji);
             });
           }

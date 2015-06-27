@@ -577,7 +577,7 @@ en:
         account_age_days: "Account age in days"
         create: "Send an Invite"
         bulk_invite:
-          none: "You haven't invited anyone here yet. You can send individual invites, or invite a bunch of people at once by <a href='https://meta.discourse.org/t/send-bulk-invites/16468'>uploading a bulk invite file</a>."
+          none: "You haven't invited anyone here yet. You can send individual invites, or invite a bunch of people at once."
           text: "Bulk Invite from File"
           uploading: "Uploading..."
           success: "File uploaded successfully, you will be notified via message when the process is complete."
@@ -1633,7 +1633,7 @@ en:
         today: "Today"
         other_periods: "see top"
 
-    browser_update: 'Unfortunately, <a href="http://www.discourse.org/faq/#browser">your browser is too old to work on this site</a>. Please <a href="http://browsehappy.com">upgrade your browser</a>.'
+    browser_update: 'Unfortunately, your browser is too old to work on this site. Please <a href="http://browsehappy.com">upgrade your browser</a>.'
 
     permission_types:
       full: "Create / Reply / See"

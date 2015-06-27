@@ -1,4 +1,4 @@
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
 
   model: function(params) {
     var groups = this.modelFor('adminGroupsType'),

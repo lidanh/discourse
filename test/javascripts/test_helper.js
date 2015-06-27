@@ -63,10 +63,10 @@ var d = document;
 d.write('<div id="ember-testing-container"><div id="ember-testing"></div></div>');
 d.write('<style>#ember-testing-container { position: absolute; background: white; bottom: 0; right: 0; width: 640px; height: 384px; overflow: auto; z-index: 9999; border: 1px solid #ccc; } #ember-testing { zoom: 50%; }</style>');
 
-Discourse.rootElement = '#ember-testing';
-Discourse.setupForTesting();
-Discourse.injectTestHelpers();
-Discourse.start();
+GameOfForums.rootElement = '#ember-testing';
+GameOfForums.setupForTesting();
+GameOfForums.injectTestHelpers();
+GameOfForums.start();
 
 // disable logster error reporting
 if (window.Logster) {
@@ -85,16 +85,16 @@ QUnit.testStart(function(ctx) {
   server = createPretendServer();
 
   // Allow our tests to change site settings and have them reset before the next test
-  Discourse.SiteSettings = jQuery.extend(true, {}, Discourse.SiteSettingsOriginal);
-  Discourse.BaseUri = "/";
-  Discourse.BaseUrl = "localhost";
-  Discourse.User.resetCurrent();
-  Discourse.Site.resetCurrent(Discourse.Site.create(fixtures['site.json'].site));
+  GameOfForums.SiteSettings = jQuery.extend(true, {}, GameOfForums.SiteSettingsOriginal);
+  GameOfForums.BaseUri = "/";
+  GameOfForums.BaseUrl = "localhost";
+  GameOfForums.User.resetCurrent();
+  GameOfForums.Site.resetCurrent(GameOfForums.Site.create(fixtures['site.json'].site));
   PreloadStore.reset();
 
   window.sandbox = sinon.sandbox.create();
-  window.sandbox.stub(Discourse.ScrollingDOMMethods, "bindOnScroll");
-  window.sandbox.stub(Discourse.ScrollingDOMMethods, "unbindOnScroll");
+  window.sandbox.stub(GameOfForums.ScrollingDOMMethods, "bindOnScroll");
+  window.sandbox.stub(GameOfForums.ScrollingDOMMethods, "unbindOnScroll");
 
   // Don't debounce in test unless we're testing debouncing
   if (ctx.module.indexOf('debounce') === -1) {
@@ -120,7 +120,7 @@ QUnit.testDone(function() {
 var helpers = require("helpers/qunit-helpers");
 
 // TODO: Replace with proper imports rather than globals
-window.asyncTestDiscourse = helpers.asyncTestDiscourse;
+window.asyncTestGameOfForums = helpers.asyncTestGameOfForums;
 window.controllerFor = helpers.controllerFor;
 window.fixture = helpers.fixture;
 

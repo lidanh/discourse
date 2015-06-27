@@ -1,6 +1,6 @@
-import LoadMore from "discourse/mixins/load-more";
+import LoadMore from "game-of-forums/mixins/load-more";
 
-export default Discourse.View.extend(LoadMore, {
+export default GameOfForums.View.extend(LoadMore, {
   loading: false,
   eyelineSelector: '.admin-flags tbody tr',
 

@@ -1,10 +1,10 @@
-Discourse.SiteTextType = Discourse.Model.extend();
+GameOfForums.SiteTextType = GameOfForums.Model.extend();
 
-Discourse.SiteTextType.reopenClass({
+GameOfForums.SiteTextType.reopenClass({
   findAll: function() {
-    return Discourse.ajax("/admin/customize/site_text_types").then(function(data) {
+    return GameOfForums.ajax("/admin/customize/site_text_types").then(function(data) {
       return data.map(function(ct) {
-        return Discourse.SiteTextType.create(ct);
+        return GameOfForums.SiteTextType.create(ct);
       });
     });
   }

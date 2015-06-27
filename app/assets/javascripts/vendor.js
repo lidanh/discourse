@@ -1,6 +1,6 @@
 //= require logster
 //= require ./env
-//= require ./discourse/lib/probes.js
+//= require ./game-of-forums/lib/probes.js
 
 //= require handlebars.js
 //= require jquery_include.js
@@ -39,4 +39,4 @@
 //= require break_string
 //= require buffered-proxy
 //= require jquery.autoellipsis-1.0.10.min.js
-//= require_tree ./discourse/ember
+//= require_tree ./game-of-forums/ember

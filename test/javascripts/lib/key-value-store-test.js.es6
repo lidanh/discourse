@@ -1,6 +1,6 @@
-var store = Discourse.KeyValueStore;
+var store = GameOfForums.KeyValueStore;
 
-module("Discourse.KeyValueStore", {
+module("GameOfForums.KeyValueStore", {
   setup: function() {
     store.init("test");
   }

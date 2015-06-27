@@ -1,5 +1,5 @@
-Discourse.AdminCustomizeCssHtmlRoute = Discourse.Route.extend({
+GameOfForums.AdminCustomizeCssHtmlRoute = GameOfForums.Route.extend({
   model: function() {
-    return Discourse.SiteCustomization.findAll();
+    return GameOfForums.SiteCustomization.findAll();
   }
 });

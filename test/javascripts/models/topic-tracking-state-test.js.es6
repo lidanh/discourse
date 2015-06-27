@@ -1,8 +1,8 @@
-module("Discourse.TopicTrackingState");
+module("GameOfForums.TopicTrackingState");
 
 test("sync", function () {
 
-  var state = Discourse.TopicTrackingState.create();
+  var state = GameOfForums.TopicTrackingState.create();
   // fake track it
   state.states["t111"] = {last_read_post_number: null};
 

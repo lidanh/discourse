@@ -2,11 +2,11 @@
   Our data model for interacting with site customizations.
 
   @class SiteCustomization
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.SiteCustomization = Discourse.Model.extend({
+GameOfForums.SiteCustomization = GameOfForums.Model.extend({
   trackedProperties: [
     'enabled', 'name',
     'stylesheet', 'header', 'top', 'footer',
@@ -67,7 +67,7 @@ Discourse.SiteCustomization = Discourse.Model.extend({
     };
 
     var siteCustomization = this;
-    return Discourse.ajax("/admin/site_customizations" + (this.id ? '/' + this.id : ''), {
+    return GameOfForums.ajax("/admin/site_customizations" + (this.id ? '/' + this.id : ''), {
       data: { site_customization: data },
       type: this.id ? 'PUT' : 'POST'
     }).then(function (result) {
@@ -83,7 +83,7 @@ Discourse.SiteCustomization = Discourse.Model.extend({
 
   destroy: function() {
     if (!this.id) return;
-    return Discourse.ajax("/admin/site_customizations/" + this.id, { type: 'DELETE' });
+    return GameOfForums.ajax("/admin/site_customizations/" + this.id, { type: 'DELETE' });
   }
 });
 
@@ -96,13 +96,13 @@ var SiteCustomizations = Ember.ArrayProxy.extend({
   }.observes('selectedItem')
 });
 
-Discourse.SiteCustomization.reopenClass({
+GameOfForums.SiteCustomization.reopenClass({
   findAll: function() {
-    return Discourse.ajax("/admin/site_customizations").then(function (data) {
+    return GameOfForums.ajax("/admin/site_customizations").then(function (data) {
       var content = [];
       if (data) {
         content = data.site_customizations.map(function(c) {
-          return Discourse.SiteCustomization.create(c);
+          return GameOfForums.SiteCustomization.create(c);
         });
       }
       return SiteCustomizations.create({ content: content });

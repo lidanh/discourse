@@ -66,9 +66,9 @@ module Email
 
       host = Email::Sender.host_for(Discourse.base_url)
 
-      topic_id = header_value('X-Discourse-Topic-Id')
-      post_id = header_value('X-Discourse-Post-Id')
-      reply_key = header_value('X-Discourse-Reply-Key')
+      topic_id = header_value('X-GameOfForums-Topic-Id')
+      post_id = header_value('X-GameOfForums-Post-Id')
+      reply_key = header_value('X-GameOfForums-Reply-Key')
 
       # always set a default Message ID from the host
       uuid = SecureRandom.uuid
@@ -117,9 +117,9 @@ module Email
       email_log.reply_key = reply_key if reply_key.present?
 
       # Remove headers we don't need anymore
-      @message.header['X-Discourse-Topic-Id'] = nil if topic_id.present?
-      @message.header['X-Discourse-Post-Id'] = nil if post_id.present?
-      @message.header['X-Discourse-Reply-Key'] = nil if reply_key.present?
+      @message.header['X-GameOfForums-Topic-Id'] = nil if topic_id.present?
+      @message.header['X-GameOfForums-Post-Id'] = nil if post_id.present?
+      @message.header['X-GameOfForums-Reply-Key'] = nil if reply_key.present?
 
       # Suppress images from short emails
       if SiteSetting.strip_images_from_short_emails && @message.html_part.body.to_s.bytesize <= SiteSetting.short_email_length && @message.html_part.body =~ /<img[^>]+>/

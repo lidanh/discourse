@@ -1,6 +1,6 @@
-Discourse.AdminEmailIndexRoute = Discourse.Route.extend({
+GameOfForums.AdminEmailIndexRoute = GameOfForums.Route.extend({
   model: function() {
-    return Discourse.EmailSettings.find();
+    return GameOfForums.EmailSettings.find();
   },
 
   renderTemplate: function() {

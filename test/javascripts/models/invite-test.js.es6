@@ -1,5 +1,5 @@
-module("Discourse.Invite");
+module("GameOfForums.Invite");
 
 test("create", function() {
-  ok(Discourse.Invite.create(), "it can be created without arguments");
+  ok(GameOfForums.Invite.create(), "it can be created without arguments");
 });

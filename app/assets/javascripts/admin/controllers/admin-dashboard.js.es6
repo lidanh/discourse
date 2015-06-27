@@ -3,22 +3,22 @@
 
   @class AdminDashboardController
   @extends Ember.Controller
-  @namespace Discourse
-  @module Discourse
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 export default Ember.Controller.extend({
   loading: true,
   versionCheck: null,
   problemsCheckMinutes: 1,
 
-  showVersionChecks: Discourse.computed.setting('version_checks'),
+  showVersionChecks: GameOfForums.computed.setting('version_checks'),
 
   foundProblems: function() {
-    return(Discourse.User.currentProp('admin') && this.get('problems') && this.get('problems').length > 0);
+    return(GameOfForums.User.currentProp('admin') && this.get('problems') && this.get('problems').length > 0);
   }.property('problems'),
 
   thereWereProblems: function() {
-    if(!Discourse.User.currentProp('admin')) { return false }
+    if(!GameOfForums.User.currentProp('admin')) { return false }
     if( this.get('foundProblems') ) {
       this.set('hadProblems', true);
       return true;
@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
     this.set('loadingProblems', true);
     this.set('problemsFetchedAt', new Date());
     var c = this;
-    Discourse.AdminDashboard.fetchProblems().then(function(d) {
+    GameOfForums.AdminDashboard.fetchProblems().then(function(d) {
       c.set('problems', d.problems);
       c.set('loadingProblems', false);
       if( d.problems && d.problems.length > 0 ) {

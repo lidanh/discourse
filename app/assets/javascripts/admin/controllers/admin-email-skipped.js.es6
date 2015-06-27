@@ -1,9 +1,9 @@
-import DiscourseController from 'discourse/controllers/controller';
+import GameOfForumsController from 'game-of-forums/controllers/controller';
 
-export default DiscourseController.extend({
-  filterEmailLogs: Discourse.debounce(function() {
+export default GameOfForumsController.extend({
+  filterEmailLogs: GameOfForums.debounce(function() {
     var self = this;
-    Discourse.EmailLog.findAll(this.get("filter")).then(function(logs) {
+    GameOfForums.EmailLog.findAll(this.get("filter")).then(function(logs) {
       self.set("model", logs);
     });
   }, 250).observes("filter.user", "filter.address", "filter.type", "filter.skipped_reason")

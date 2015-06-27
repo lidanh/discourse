@@ -1,7 +1,7 @@
-module("Discourse.Post");
+module("GameOfForums.Post");
 
 var buildPost = function(args) {
-  return Discourse.Post.create(_.merge({
+  return GameOfForums.Post.create(_.merge({
     id: 1,
     can_delete: true,
     version: 1
@@ -9,14 +9,14 @@ var buildPost = function(args) {
 };
 
 test('defaults', function() {
-  var post = Discourse.Post.create({id: 1});
+  var post = GameOfForums.Post.create({id: 1});
   blank(post.get('deleted_at'), "it has no deleted_at by default");
   blank(post.get('deleted_by'), "there is no deleted_by by default");
   equal(post.get('replyHistory.length'), 0, "there is no reply history by default");
 });
 
 test('new_user', function() {
-  var post = Discourse.Post.create({trust_level: 0});
+  var post = GameOfForums.Post.create({trust_level: 0});
   ok(post.get('new_user'), "post is from a new user");
 
   post.set('trust_level', 1);
@@ -24,7 +24,7 @@ test('new_user', function() {
 });
 
 test('firstPost', function() {
-  var post = Discourse.Post.create({post_number: 1});
+  var post = GameOfForums.Post.create({post_number: 1});
   ok(post.get('firstPost'), "it's the first post");
 
   post.set('post_number', 10);
@@ -32,12 +32,12 @@ test('firstPost', function() {
 });
 
 test('updateFromPost', function() {
-  var post = Discourse.Post.create({
+  var post = GameOfForums.Post.create({
     post_number: 1,
     raw: 'hello world'
   });
 
-  post.updateFromPost(Discourse.Post.create({
+  post.updateFromPost(GameOfForums.Post.create({
     raw: 'different raw',
     wat: function() { return 123; }
   }));
@@ -46,7 +46,7 @@ test('updateFromPost', function() {
 });
 
 test('hasHistory', function() {
-  var post = Discourse.Post.create({id: 1});
+  var post = GameOfForums.Post.create({id: 1});
   ok(!post.get('hasHistory'), 'posts without versions have no history');
   post.set('version', 1);
   ok(!post.get('hasHistory'), 'posts with one version have no history');
@@ -56,7 +56,7 @@ test('hasHistory', function() {
 
 
 test('destroy by staff', function() {
-  var user = Discourse.User.create({username: 'staff', staff: true}),
+  var user = GameOfForums.User.create({username: 'staff', staff: true}),
       post = buildPost({user: user});
 
   post.destroy(user);
@@ -72,7 +72,7 @@ test('destroy by staff', function() {
 
 test('destroy by non-staff', function() {
   var originalCooked = "this is the original cooked value",
-      user = Discourse.User.create({username: 'evil trout'}),
+      user = GameOfForums.User.create({username: 'evil trout'}),
       post = buildPost({user: user, cooked: originalCooked});
 
   post.destroy(user);

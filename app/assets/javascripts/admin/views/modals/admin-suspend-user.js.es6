@@ -1,4 +1,4 @@
-import ModalBodyView from "discourse/views/modal-body";
+import ModalBodyView from "game-of-forums/views/modal-body";
 
 export default ModalBodyView.extend({
   templateName: 'admin/templates/modal/admin_suspend_user',

@@ -1,6 +1,6 @@
-import ModalFunctionality from 'discourse/mixins/modal-functionality';
+import ModalFunctionality from 'game-of-forums/mixins/modal-functionality';
 
-import ObjectController from 'discourse/controllers/object';
+import ObjectController from 'game-of-forums/controllers/object';
 
 export default ObjectController.extend(ModalFunctionality, {
   needs: ["admin-flags-list"],

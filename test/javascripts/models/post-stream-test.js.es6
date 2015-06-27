@@ -120,7 +120,7 @@ test('updateFromJson', function() {
   });
 
   equal(postStream.get('posts.length'), 1, 'it loaded the posts');
-  containsInstance(postStream.get('posts'), Discourse.Post);
+  containsInstance(postStream.get('posts'), GameOfForums.Post);
 
   equal(postStream.get('extra_property'), 12);
 });
@@ -301,22 +301,22 @@ test("identity map", function() {
   deepEqual(postStream.listUnloadedIds([1, 2, 3, 4]), [2, 4], "it only returns unloaded posts");
 });
 
-asyncTestDiscourse("loadIntoIdentityMap with no data", function() {
+asyncTestGameOfForums("loadIntoIdentityMap with no data", function() {
   const postStream = buildStream(1234);
   expect(1);
 
-  sandbox.stub(Discourse, "ajax");
+  sandbox.stub(GameOfForums, "ajax");
   postStream.loadIntoIdentityMap([]).then(function() {
-    ok(!Discourse.ajax.calledOnce, "an empty array returned a promise yet performed no ajax request");
+    ok(!GameOfForums.ajax.calledOnce, "an empty array returned a promise yet performed no ajax request");
     start();
   });
 });
 
-asyncTestDiscourse("loadIntoIdentityMap with post ids", function() {
+asyncTestGameOfForums("loadIntoIdentityMap with post ids", function() {
   const postStream = buildStream(1234);
   expect(1);
 
-  sandbox.stub(Discourse, "ajax").returns(Ember.RSVP.resolve({
+  sandbox.stub(GameOfForums, "ajax").returns(Ember.RSVP.resolve({
     post_stream: {
       posts: [{id: 10, post_number: 10}]
     }
@@ -328,7 +328,7 @@ asyncTestDiscourse("loadIntoIdentityMap with post ids", function() {
   });
 });
 
-asyncTestDiscourse("loading a post's history", function() {
+asyncTestGameOfForums("loading a post's history", function() {
   const postStream = buildStream(1234);
   const store = postStream.store;
   expect(3);
@@ -336,9 +336,9 @@ asyncTestDiscourse("loading a post's history", function() {
   const post = store.createRecord('post', {id: 4321});
   const secondPost = store.createRecord('post', {id: 2222});
 
-  sandbox.stub(Discourse, "ajax").returns(Ember.RSVP.resolve([secondPost]));
+  sandbox.stub(GameOfForums, "ajax").returns(Ember.RSVP.resolve([secondPost]));
   postStream.findReplyHistory(post).then(function() {
-    ok(Discourse.ajax.calledOnce, "it made the ajax request");
+    ok(GameOfForums.ajax.calledOnce, "it made the ajax request");
     present(postStream.findLoadedPost(2222), "it stores the returned post in the identity map");
     present(post.get('replyHistory'), "it sets the replyHistory attribute for the post");
     start();
@@ -353,7 +353,7 @@ test("staging and undoing a new post", function() {
   postStream.appendPost(original);
   ok(postStream.get('lastAppended'), original, "the original post is lastAppended");
 
-  const user = Discourse.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
+  const user = GameOfForums.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
   const stagedPost = store.createRecord('post', { raw: 'hello world this is my new post', topic_id: 10101 });
 
   const topic = postStream.get('topic');
@@ -398,7 +398,7 @@ test("staging and committing a post", function() {
   postStream.appendPost(original);
   ok(postStream.get('lastAppended'), original, "the original post is lastAppended");
 
-  const user = Discourse.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
+  const user = GameOfForums.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
   const stagedPost = store.createRecord('post', { raw: 'hello world this is my new post', topic_id: 10101 });
 
   const topic = postStream.get('topic');
@@ -478,7 +478,7 @@ test("comitting and triggerNewPostInStream race condition", function() {
   const store = postStream.store;
 
   postStream.appendPost(store.createRecord('post', {id: 1, post_number: 1}));
-  const user = Discourse.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
+  const user = GameOfForums.User.create({username: 'eviltrout', name: 'eviltrout', id: 321});
   const stagedPost = store.createRecord('post', { raw: 'hello world this is my new post' });
 
   postStream.stagePost(stagedPost, user);

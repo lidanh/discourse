@@ -134,7 +134,7 @@ export default Em.Controller.extend({
 
       this.set("loading", true);
 
-      Discourse.ajax("/polls/vote", {
+      GameOfForums.ajax("/polls/vote", {
         type: "PUT",
         data: {
           post_id: this.get("post.id"),
@@ -169,7 +169,7 @@ export default Em.Controller.extend({
           if (confirmed) {
             self.set("loading", true);
 
-            Discourse.ajax("/polls/toggle_status", {
+            GameOfForums.ajax("/polls/toggle_status", {
               type: "PUT",
               data: {
                 post_id: self.get("post.id"),

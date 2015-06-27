@@ -5,11 +5,11 @@ import siteFixtures from 'fixtures/site_fixtures';
 import HeaderView from 'discourse/views/header';
 
 function currentUser() {
-  return Discourse.User.create(sessionFixtures['/session/current.json'].current_user);
+  return GameOfForums.User.create(sessionFixtures['/session/current.json'].current_user);
 }
 
 function logIn() {
-  Discourse.User.resetCurrent(currentUser());
+  GameOfForums.User.resetCurrent(currentUser());
 }
 
 const Plugin = $.fn.modal;
@@ -32,13 +32,13 @@ function AcceptanceModal(option, _relatedTarget) {
 window.bootbox.$body = $('#ember-testing');
 $.fn.modal = AcceptanceModal;
 
-var oldAvatar = Discourse.Utilities.avatarImg;
+var oldAvatar = GameOfForums.Utilities.avatarImg;
 
 function acceptance(name, options) {
   module("Acceptance: " + name, {
     setup: function() {
       // Don't render avatars in acceptance tests, it's faster and no 404s
-      Discourse.Utilities.avatarImg = () => "";
+      GameOfForums.Utilities.avatarImg = () => "";
 
       // For now don't do scrolling stuff in Test Mode
       Ember.CloakedCollectionView.scrolled = Ember.K;
@@ -55,37 +55,37 @@ function acceptance(name, options) {
         }
 
         if (options.settings) {
-          Discourse.SiteSettings = jQuery.extend(true, Discourse.SiteSettings, options.settings);
+          GameOfForums.SiteSettings = jQuery.extend(true, GameOfForums.SiteSettings, options.settings);
         }
 
         if (options.site) {
-          Discourse.Site.resetCurrent(Discourse.Site.create(jQuery.extend(true, {}, siteJson, options.site)));
+          GameOfForums.Site.resetCurrent(GameOfForums.Site.create(jQuery.extend(true, {}, siteJson, options.site)));
         }
       }
 
-      Discourse.reset();
+      GameOfForums.reset();
     },
 
     teardown: function() {
       if (options && options.teardown) {
         options.teardown.call(this);
       }
-      Discourse.User.resetCurrent();
-      Discourse.Site.resetCurrent(Discourse.Site.create(fixtures['site.json'].site));
+      GameOfForums.User.resetCurrent();
+      GameOfForums.Site.resetCurrent(GameOfForums.Site.create(fixtures['site.json'].site));
 
-      Discourse.Utilities.avatarImg = oldAvatar;
-      Discourse.reset();
+      GameOfForums.Utilities.avatarImg = oldAvatar;
+      GameOfForums.reset();
     }
   });
 }
 
 function controllerFor(controller, model) {
-  controller = Discourse.__container__.lookup('controller:' + controller);
+  controller = GameOfForums.__container__.lookup('controller:' + controller);
   if (model) { controller.set('model', model ); }
   return controller;
 }
 
-function asyncTestDiscourse(text, func) {
+function asyncTestGameOfForums(text, func) {
   asyncTest(text, function () {
     var self = this;
     Ember.run(function () {
@@ -101,4 +101,4 @@ function fixture(selector) {
   return $("#qunit-fixture");
 }
 
-export { acceptance, controllerFor, asyncTestDiscourse, fixture, logIn, currentUser };
+export { acceptance, controllerFor, asyncTestGameOfForums, fixture, logIn, currentUser };

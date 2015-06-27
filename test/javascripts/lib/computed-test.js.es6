@@ -1,4 +1,4 @@
-module("Discourse.Computed", {
+module("GameOfForums.Computed", {
   setup: function() {
     sandbox.stub(I18n, "t", function(scope) {
       return "%@ translated: " + scope;
@@ -12,18 +12,18 @@ module("Discourse.Computed", {
 
 test("setting", function() {
   var t = Em.Object.extend({
-    vehicle: Discourse.computed.setting('vehicle'),
-    missingProp: Discourse.computed.setting('madeUpThing')
+    vehicle: GameOfForums.computed.setting('vehicle'),
+    missingProp: GameOfForums.computed.setting('madeUpThing')
   }).create();
 
-  Discourse.SiteSettings.vehicle = "airplane";
+  GameOfForums.SiteSettings.vehicle = "airplane";
   equal(t.get('vehicle'), "airplane", "it has the value of the site setting");
   ok(!t.get('missingProp'), "it is falsy when the site setting is not defined");
 });
 
 test("propertyEqual", function() {
   var t = Em.Object.extend({
-    same: Discourse.computed.propertyEqual('cookies', 'biscuits')
+    same: GameOfForums.computed.propertyEqual('cookies', 'biscuits')
   }).create({
     cookies: 10,
     biscuits: 10
@@ -36,7 +36,7 @@ test("propertyEqual", function() {
 
 test("propertyNotEqual", function() {
   var t = Em.Object.extend({
-    diff: Discourse.computed.propertyNotEqual('cookies', 'biscuits')
+    diff: GameOfForums.computed.propertyNotEqual('cookies', 'biscuits')
   }).create({
     cookies: 10,
     biscuits: 10
@@ -50,8 +50,8 @@ test("propertyNotEqual", function() {
 
 test("fmt", function() {
   var t = Em.Object.extend({
-    exclaimyUsername: Discourse.computed.fmt('username', "!!! %@ !!!"),
-    multiple: Discourse.computed.fmt('username', 'mood', "%@ is %@")
+    exclaimyUsername: GameOfForums.computed.fmt('username', "!!! %@ !!!"),
+    multiple: GameOfForums.computed.fmt('username', 'mood', "%@ is %@")
   }).create({
     username: 'eviltrout',
     mood: "happy"
@@ -69,8 +69,8 @@ test("fmt", function() {
 
 test("i18n", function() {
   var t = Em.Object.extend({
-    exclaimyUsername: Discourse.computed.i18n('username', "!!! %@ !!!"),
-    multiple: Discourse.computed.i18n('username', 'mood', "%@ is %@")
+    exclaimyUsername: GameOfForums.computed.i18n('username', "!!! %@ !!!"),
+    multiple: GameOfForums.computed.i18n('username', 'mood', "%@ is %@")
   }).create({
     username: 'eviltrout',
     mood: "happy"
@@ -88,15 +88,15 @@ test("i18n", function() {
 
 test("url", function() {
   var t, testClass;
-  
+
   testClass = Em.Object.extend({
-    userUrl: Discourse.computed.url('username', "/users/%@")
+    userUrl: GameOfForums.computed.url('username', "/users/%@")
   });
 
   t = testClass.create({ username: 'eviltrout' });
   equal(t.get('userUrl'), "/users/eviltrout", "it supports urls without a prefix");
 
-  Discourse.BaseUri = "/prefixed/";
+  GameOfForums.BaseUri = "/prefixed/";
   t = testClass.create({ username: 'eviltrout' });
   equal(t.get('userUrl'), "/prefixed/users/eviltrout", "it supports urls with a prefix");
 });

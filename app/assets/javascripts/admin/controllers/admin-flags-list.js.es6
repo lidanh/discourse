@@ -30,7 +30,7 @@ export default Ember.ArrayController.extend({
 
   loadMore(){
     var flags = this.get("model");
-    return Discourse.FlaggedPost.findAll(this.get("query"),flags.length+1).then(function(data){
+    return GameOfForums.FlaggedPost.findAll(this.get("query"),flags.length+1).then(function(data){
       if(data.length===0){
         flags.set("allLoaded",true);
       }

@@ -1,4 +1,4 @@
-import showModal from 'discourse/lib/show-modal';
+import showModal from 'game-of-forums/lib/show-modal';
 
 export default Ember.Route.extend({
   serialize(m) {
@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 
   model(params) {
     if (params.badge_id === "new") {
-      return Discourse.Badge.create({
+      return GameOfForums.Badge.create({
         name: I18n.t('admin.badges.new_badge')
       });
     }
@@ -30,7 +30,7 @@ export default Ember.Route.extend({
 
     preview(badge, explain) {
       badge.set('preview_loading', true);
-      Discourse.ajax('/admin/badges/preview.json', {
+      GameOfForums.ajax('/admin/badges/preview.json', {
         method: 'post',
         data: {
           sql: badge.get('query'),

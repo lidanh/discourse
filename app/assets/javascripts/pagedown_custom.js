@@ -4,7 +4,7 @@ window.PagedownCustom = {
       id: 'wmd-quote-post',
       description: I18n.t("composer.quote_post_title"),
       execute: function() {
-        return Discourse.__container__.lookup('controller:composer').send('importQuote');
+        return GameOfForums.__container__.lookup('controller:composer').send('importQuote');
       }
     }
   ],
@@ -15,7 +15,7 @@ window.PagedownCustom = {
     "doBlockquote": function(chunk, postProcessing, oldDoBlockquote) {
 
       // When traditional linebreaks are set, use the default Pagedown implementation
-      if (Discourse.SiteSettings.traditional_markdown_linebreaks) {
+      if (GameOfForums.SiteSettings.traditional_markdown_linebreaks) {
         return oldDoBlockquote.call(this, chunk, postProcessing);
       }
 

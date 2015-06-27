@@ -1,10 +1,10 @@
 /**
-  This controller supports interface for creating custom CSS skins in Discourse.
+  This controller supports interface for creating custom CSS skins in GameOfForums.
 
   @class AdminCustomizeCssHtmlController
   @extends Ember.Controller
-  @namespace Discourse
-  @module Discourse
+  @namespace GameOfForums
+  @module GameOfForums
 **/
 export default Ember.ArrayController.extend({
 
@@ -16,7 +16,7 @@ export default Ember.ArrayController.extend({
       @method newCustomization
     **/
     newCustomization: function() {
-      var item = Discourse.SiteCustomization.create({name: I18n.t("admin.customize.new_style")});
+      var item = GameOfForums.SiteCustomization.create({name: I18n.t("admin.customize.new_style")});
       this.pushObject(item);
       this.set('selectedItem', item);
     },
@@ -25,7 +25,7 @@ export default Ember.ArrayController.extend({
       Select a given style
 
       @method selectStyle
-      @param {Discourse.SiteCustomization} style The style we are selecting
+      @param {GameOfForums.SiteCustomization} style The style we are selecting
     **/
     selectStyle: function(style) {
       this.set('selectedItem', style);

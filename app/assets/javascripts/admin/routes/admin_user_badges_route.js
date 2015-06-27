@@ -3,20 +3,20 @@
   revoking badges.
 
   @class AdminUserBadgesRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminUserBadgesRoute = Discourse.Route.extend({
+GameOfForums.AdminUserBadgesRoute = GameOfForums.Route.extend({
   model: function() {
     var username = this.modelFor('adminUser').get('username');
-    return Discourse.UserBadge.findByUsername(username);
+    return GameOfForums.UserBadge.findByUsername(username);
   },
 
   setupController: function(controller, model) {
     // Find all badges.
     controller.set('loading', true);
-    Discourse.Badge.findAll().then(function(badges) {
+    GameOfForums.Badge.findAll().then(function(badges) {
       controller.set('badges', badges);
       if (badges.length > 0) {
         var grantableBadges = controller.get('grantableBadges');

@@ -112,7 +112,7 @@ class Disqus < Thor
   desc "import", "Imports posts from a Disqus XML export"
   method_option :file, aliases: '-f', required: true, desc: "The disqus XML file to import"
   method_option :dry_run, required: false, desc: "Just output what will be imported rather than doing it"
-  method_option :post_as, aliases: '-p', required: true, desc: "The Discourse username to post as"
+  method_option :post_as, aliases: '-p', required: true, desc: "The GameOfForums username to post as"
   method_option :strip, aliases: '-s', required: false, desc: "Text to strip from titles"
 
   def import

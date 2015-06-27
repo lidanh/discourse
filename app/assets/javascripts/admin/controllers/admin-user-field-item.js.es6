@@ -1,5 +1,5 @@
 import UserField from 'admin/models/user-field';
-import BufferedContent from 'discourse/mixins/buffered-content';
+import BufferedContent from 'game-of-forums/mixins/buffered-content';
 
 export default Ember.ObjectController.extend(BufferedContent, {
   needs: ['admin-user-fields'],

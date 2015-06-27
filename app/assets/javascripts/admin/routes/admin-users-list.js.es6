@@ -1,18 +1,18 @@
-import { outputExportResult } from 'discourse/lib/export-result';
+import { outputExportResult } from 'game-of-forums/lib/export-result';
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
 
   actions: {
     exportUsers: function() {
-      Discourse.ExportCsv.exportUserList().then(outputExportResult);
+      GameOfForums.ExportCsv.exportUserList().then(outputExportResult);
     },
 
     sendInvites: function() {
-      this.transitionTo('user.invited', Discourse.User.current());
+      this.transitionTo('user.invited', GameOfForums.User.current());
     },
 
     deleteUser: function(user) {
-      Discourse.AdminUser.create(user).destroy({ deletePosts: true });
+      GameOfForums.AdminUser.create(user).destroy({ deletePosts: true });
     }
   }
 

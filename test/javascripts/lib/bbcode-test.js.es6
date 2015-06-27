@@ -1,12 +1,12 @@
-module("Discourse.BBCode");
+module("GameOfForums.BBCode");
 
 var format = function(input, expected, text) {
-  var cooked = Discourse.Markdown.cook(input, {lookupAvatar: false, sanitize: true});
+  var cooked = GameOfForums.Markdown.cook(input, {lookupAvatar: false, sanitize: true});
   equal(cooked, "<p>" + expected + "</p>", text);
 };
 
 var formatQ = function(input, expected, text) {
-  var cooked = Discourse.Markdown.cook(input, {lookupAvatar: false, sanitize: true});
+  var cooked = GameOfForums.Markdown.cook(input, {lookupAvatar: false, sanitize: true});
   equal(cooked, expected, text);
 };
 
@@ -33,7 +33,7 @@ test('urls', function() {
          "supports [url] with an embedded [img]");
 });
 test('invalid bbcode', function() {
-  var cooked = Discourse.Markdown.cook("[code]I am not closed\n\nThis text exists.", {lookupAvatar: false});
+  var cooked = GameOfForums.Markdown.cook("[code]I am not closed\n\nThis text exists.", {lookupAvatar: false});
   equal(cooked, "<p>[code]I am not closed</p>\n\n<p>This text exists.</p>", "does not raise an error with an open bbcode tag.");
 });
 
@@ -82,7 +82,7 @@ test("size tags", function() {
 
 test("quotes", function() {
 
-  var post = Discourse.Post.create({
+  var post = GameOfForums.Post.create({
     cooked: "<p><b>lorem</b> ipsum</p>",
     username: "eviltrout",
     post_number: 1,
@@ -90,7 +90,7 @@ test("quotes", function() {
   });
 
   var formatQuote = function(val, expected, text) {
-    equal(Discourse.Quote.build(post, val), expected, text);
+    equal(GameOfForums.Quote.build(post, val), expected, text);
   };
 
   formatQuote(undefined, "", "empty string for undefined content");
@@ -158,7 +158,7 @@ test("quote formatting", function() {
 });
 
 test("quotes with trailing formatting", function() {
-  var cooked = Discourse.Markdown.cook("[quote=\"EvilTrout, post:123, topic:456, full:true\"]\nhello\n[/quote]\n*Test*", {lookupAvatar: false});
+  var cooked = GameOfForums.Markdown.cook("[quote=\"EvilTrout, post:123, topic:456, full:true\"]\nhello\n[/quote]\n*Test*", {lookupAvatar: false});
   equal(cooked,
         "<aside class=\"quote\" data-post=\"123\" data-topic=\"456\" data-full=\"true\"><div class=\"title\">" +
         "<div class=\"quote-controls\"></div>EvilTrout:</div><blockquote><p>hello</p></blockquote></aside>\n\n<p><em>Test</em></p>",

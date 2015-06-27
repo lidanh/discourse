@@ -1,7 +1,7 @@
-Discourse.AdminBackupsIndexRoute = Discourse.Route.extend({
+GameOfForums.AdminBackupsIndexRoute = GameOfForums.Route.extend({
 
   model: function() {
-    return Discourse.Backup.find();
+    return GameOfForums.Backup.find();
   }
 
 });

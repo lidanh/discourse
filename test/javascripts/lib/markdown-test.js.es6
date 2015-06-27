@@ -1,19 +1,19 @@
-module("Discourse.Markdown", {
+module("GameOfForums.Markdown", {
   setup: function() {
-    Discourse.SiteSettings.traditional_markdown_linebreaks = false;
-    Discourse.SiteSettings.default_code_lang = "auto";
+    GameOfForums.SiteSettings.traditional_markdown_linebreaks = false;
+    GameOfForums.SiteSettings.default_code_lang = "auto";
   }
 });
 
 var cooked = function(input, expected, text) {
-  var result = Discourse.Markdown.cook(input, {sanitize: true});
+  var result = GameOfForums.Markdown.cook(input, {sanitize: true});
   expected = expected.replace(/\/>/g, ">");
   // result = result.replace("/>", ">");
   equal(result, expected, text);
 };
 
 var cookedOptions = function(input, opts, expected, text) {
-  equal(Discourse.Markdown.cook(input, opts), expected, text);
+  equal(GameOfForums.Markdown.cook(input, opts), expected, text);
 };
 
 test("basic cooking", function() {
@@ -45,7 +45,7 @@ test("Traditional Line Breaks", function() {
                 traditionalOutput,
                 "It supports traditional markdown via an option");
 
-  Discourse.SiteSettings.traditional_markdown_linebreaks = true;
+  GameOfForums.SiteSettings.traditional_markdown_linebreaks = true;
   cooked(input, traditionalOutput, "It supports traditional markdown via a Site Setting");
 });
 
@@ -317,7 +317,7 @@ test("New Lines", function() {
 test("Oneboxing", function() {
 
   var matches = function(input, regexp) {
-    return Discourse.Markdown.cook(input).match(regexp);
+    return GameOfForums.Markdown.cook(input).match(regexp);
   };
 
   ok(!matches("- http://www.textfiles.com/bbs/MINDVOX/FORUMS/ethics\n\n- http://drupal.org", /onebox/),
@@ -429,7 +429,7 @@ test("Code Blocks", function() {
 });
 
 test("sanitize", function() {
-  var sanitize = Discourse.Markdown.sanitize;
+  var sanitize = GameOfForums.Markdown.sanitize;
 
   equal(sanitize("<i class=\"fa-bug fa-spin\">bug</i>"), "<i>bug</i>");
   equal(sanitize("<div><script>alert('hi');</script></div>"), "<div></div>");
@@ -488,7 +488,7 @@ test("URLs in BBCode tags", function() {
 });
 
 test("urlAllowed", function() {
-  var urlAllowed = Discourse.Markdown.urlAllowed;
+  var urlAllowed = GameOfForums.Markdown.urlAllowed;
 
   var allowed = function(url, msg) {
     equal(urlAllowed(url), url, msg);
@@ -515,7 +515,7 @@ test("images", function() {
 });
 
 test("censoring", function() {
-  Discourse.SiteSettings.censored_words = "shucks|whiz|whizzer";
+  GameOfForums.SiteSettings.censored_words = "shucks|whiz|whizzer";
   cooked("aw shucks, golly gee whiz.",
          "<p>aw &#9632;&#9632;&#9632;&#9632;&#9632;&#9632;, golly gee &#9632;&#9632;&#9632;&#9632;.</p>",
          "it censors words in the Site Settings");

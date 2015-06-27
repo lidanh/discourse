@@ -1,4 +1,4 @@
-Discourse.Report = Discourse.Model.extend({
+GameOfForums.Report = GameOfForums.Model.extend({
   reportUrl: function() {
     return("/admin/reports/" + this.get('type'));
   }.property('type'),
@@ -139,10 +139,10 @@ Discourse.Report = Discourse.Model.extend({
 
 });
 
-Discourse.Report.reopenClass({
+GameOfForums.Report.reopenClass({
   find: function(type, startDate, endDate) {
 
-    return Discourse.ajax("/admin/reports/" + type, {data: {
+    return GameOfForums.ajax("/admin/reports/" + type, {data: {
       start_date: startDate,
       end_date: endDate
     }}).then(function (json) {
@@ -156,7 +156,7 @@ Discourse.Report.reopenClass({
           row.percentage = Math.round((row.y / maxY) * 100);
         });
       }
-      var model = Discourse.Report.create({type: type});
+      var model = GameOfForums.Report.create({type: type});
       model.setProperties(json.report);
       return model;
     });

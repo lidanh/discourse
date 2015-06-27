@@ -29,8 +29,8 @@ describe Email::MessageBuilder do
   context "reply by email" do
 
     context "without allow_reply_by_email" do
-      it "does not have a X-Discourse-Reply-Key" do
-        expect(header_args['X-Discourse-Reply-Key']).to be_blank
+      it "does not have a X-GameOfForums-Reply-Key" do
+        expect(header_args['X-GameOfForums-Reply-Key']).to be_blank
       end
 
       it "returns a Reply-To header that's the same as From" do
@@ -40,7 +40,7 @@ describe Email::MessageBuilder do
 
     context "with allow_reply_by_email" do
       let(:reply_by_email_builder) { Email::MessageBuilder.new(to_address, allow_reply_by_email: true) }
-      let(:reply_key) { reply_by_email_builder.header_args['X-Discourse-Reply-Key'] }
+      let(:reply_key) { reply_by_email_builder.header_args['X-GameOfForums-Reply-Key'] }
 
       context "With the SiteSetting enabled" do
         before do
@@ -48,7 +48,7 @@ describe Email::MessageBuilder do
           SiteSetting.stubs(:reply_by_email_address).returns("r+%{reply_key}@reply.myforum.com")
         end
 
-        it "has a X-Discourse-Reply-Key" do
+        it "has a X-GameOfForums-Reply-Key" do
           expect(reply_key).to be_present
           expect(reply_key.size).to eq(32)
         end
@@ -68,7 +68,7 @@ describe Email::MessageBuilder do
           SiteSetting.stubs(:reply_by_email_enabled?).returns(false)
         end
 
-        it "has no X-Discourse-Reply-Key" do
+        it "has no X-GameOfForums-Reply-Key" do
           expect(reply_key).to be_blank
         end
 
@@ -80,7 +80,7 @@ describe Email::MessageBuilder do
 
     context "with allow_reply_by_email" do
       let(:reply_by_email_builder) { Email::MessageBuilder.new(to_address, allow_reply_by_email: true, private_reply: true, from_alias: "Username") }
-      let(:reply_key) { reply_by_email_builder.header_args['X-Discourse-Reply-Key'] }
+      let(:reply_key) { reply_by_email_builder.header_args['X-GameOfForums-Reply-Key'] }
 
       context "With the SiteSetting enabled" do
         before do
@@ -88,7 +88,7 @@ describe Email::MessageBuilder do
           SiteSetting.stubs(:reply_by_email_address).returns("r+%{reply_key}@reply.myforum.com")
         end
 
-        it "has a X-Discourse-Reply-Key" do
+        it "has a X-GameOfForums-Reply-Key" do
           expect(reply_key).to be_present
           expect(reply_key.size).to eq(32)
         end
@@ -103,7 +103,7 @@ describe Email::MessageBuilder do
           SiteSetting.stubs(:reply_by_email_enabled?).returns(false)
         end
 
-        it "has no X-Discourse-Reply-Key" do
+        it "has no X-GameOfForums-Reply-Key" do
           expect(reply_key).to be_blank
         end
 
@@ -142,11 +142,11 @@ describe Email::MessageBuilder do
                                                                post_id: 4567) }
 
     it "passes through a post_id" do
-      expect(message_with_header_args.header_args['X-Discourse-Post-Id']).to eq('4567')
+      expect(message_with_header_args.header_args['X-GameOfForums-Post-Id']).to eq('4567')
     end
 
     it "passes through a topic_id" do
-      expect(message_with_header_args.header_args['X-Discourse-Topic-Id']).to eq('1234')
+      expect(message_with_header_args.header_args['X-GameOfForums-Topic-Id']).to eq('1234')
     end
 
   end

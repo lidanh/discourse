@@ -2,16 +2,16 @@
   Our data model for representing the current email settings
 
   @class EmailSettings
-  @extends Discourse.Model
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Model
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.EmailSettings = Discourse.Model.extend({});
+GameOfForums.EmailSettings = GameOfForums.Model.extend({});
 
-Discourse.EmailSettings.reopenClass({
+GameOfForums.EmailSettings.reopenClass({
   find: function() {
-    return Discourse.ajax("/admin/email.json").then(function (settings) {
-      return Discourse.EmailSettings.create(settings);
+    return GameOfForums.ajax("/admin/email.json").then(function (settings) {
+      return GameOfForums.EmailSettings.create(settings);
     });
   }
 });

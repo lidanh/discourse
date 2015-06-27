@@ -1,9 +1,9 @@
-import showModal from 'discourse/lib/show-modal';
+import showModal from 'game-of-forums/lib/show-modal';
 
-export default Discourse.Route.extend({
+export default GameOfForums.Route.extend({
   model(params) {
     this.filter = params.filter;
-    return Discourse.FlaggedPost.findAll(params.filter);
+    return GameOfForums.FlaggedPost.findAll(params.filter);
   },
 
   setupController(controller, model) {

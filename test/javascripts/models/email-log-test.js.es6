@@ -1,5 +1,5 @@
-module("Discourse.EmailLog");
+module("GameOfForums.EmailLog");
 
 test("create", function() {
-  ok(Discourse.EmailLog.create(), "it can be created without arguments");
+  ok(GameOfForums.EmailLog.create(), "it can be created without arguments");
 });

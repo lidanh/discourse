@@ -2,13 +2,13 @@
   Handles routes for admin reports
 
   @class AdminReportsRoute
-  @extends Discourse.Route
-  @namespace Discourse
-  @module Discourse
+  @extends GameOfForums.Route
+  @namespace GameOfForums
+  @module GameOfForums
 **/
-Discourse.AdminReportsRoute = Discourse.Route.extend({
+GameOfForums.AdminReportsRoute = GameOfForums.Route.extend({
   model: function(params) {
-    return Discourse.Report.find(params.type);
+    return GameOfForums.Report.find(params.type);
   },
 
   setupController: function(controller, model) {
