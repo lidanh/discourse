@@ -27,6 +27,8 @@ end
 
 gem 'actionpack-action_caching'
 
+gem 'sprockets', '2.11.0'
+
 # Rails 4.1.6+ will relax the mail gem version requirement to `~> 2.5, >= 2.5.4`.
 # However, mail gem 2.6.x currently does not work with discourse because of the
 # reference to `Mail::RFC2822Parser` in `lib/email.rb`. This ensure discourse
@@ -183,7 +185,7 @@ end
 
 gem 'rmmseg-cpp', require: false
 
-gem 'logster'#, :git => 'https://github.com/lidanh/logster.git'
+gem 'logster', :git => 'https://github.com/lidanh/logster.git'
 
 # perftools only works on 1.9 atm
 group :profile do

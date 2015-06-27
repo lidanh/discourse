@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/lidanh/logster.git
+  revision: 82f8777eb1ff03a7faeeecb6934ba6d6e1a367c1
+  specs:
+    logster (0.8.3)
+
 PATH
   remote: vendor/gems/rails_multisite
   specs:
@@ -148,7 +154,6 @@ GEM
       thor (~> 0.15)
     libv8 (3.16.14.9)
     listen (0.7.3)
-    logster (0.8.3)
     lru_redux (1.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -348,7 +353,7 @@ GEM
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
-    sprockets (2.12.4)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -422,7 +427,7 @@ DEPENDENCIES
   image_optim
   librarian (>= 0.0.25)
   listen (= 0.7.3)
-  logster
+  logster!
   lru_redux
   mail (~> 2.5.4)
   memory_profiler
@@ -477,6 +482,7 @@ DEPENDENCIES
   simplecov
   sinatra
   spork-rails
+  sprockets (= 2.11.0)
   stackprof
   therubyracer
   thin
