@@ -7,7 +7,7 @@
     <meta name="description" content="<%= @description_meta || SiteSetting.site_description %>">
     <%= render partial: "layouts/head" %>
     <%= render partial: "common/special_font_face" %>
-    <%= render partial: "common/discourse_stylesheet" %>
+    <%= render partial: "common/games_of_forums_stylesheet" %>
     <%= discourse_csrf_tags %>
 
     <%- if SiteSetting.enable_escaped_fragments? %>
@@ -89,7 +89,7 @@
 
     <%= yield :data %>
 
-    <%= render :partial => "common/discourse_javascript" %>
+    <%= render :partial => "common/games_of_forums_javascript" %>
 
     <%= render_google_analytics_code %>
 
