@@ -128,7 +128,7 @@ end
 
 Badge.seed do |b|
   b.id = Badge::FirstFlag
-  b.default_name = "First Flag"
+  b.default_name = "First Report"
   b.badge_type_id = BadgeType::Bronze
   b.multiple_grant = false
   b.target_posts = true

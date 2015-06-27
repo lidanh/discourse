@@ -23,9 +23,6 @@ export default Ember.Component.extend(StringBuffer, {
           post_count  += c.get('post_count');
         }
       });
-      if (topic_count < 5 || post_count < this.siteSettings.tl1_requires_read_posts) {
-        notices.push([I18n.t("too_few_topics_notice", { posts: this.siteSettings.tl1_requires_read_posts }), 'alert-too-few-topics']);
-      }
     }
 
     if (!_.isEmpty(this.siteSettings.global_notice)) {

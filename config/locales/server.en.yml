@@ -206,40 +206,20 @@ en:
 
       - Does the title sound interesting if you read it out loud? Is it a good summary?
 
-      - Who would be interested in this? Why does it matter? What kind of responses do you want?
-
-      - Include commonly used words in your topic so others can *find* it. To group your topic with related topics, select a subforum.
-
-      For more, [see our community guidelines](/guidelines). This panel will only appear for your first %{education_posts_text}.
-
     'new-reply': |
       Welcome to %{site_name} &mdash; **thanks for contributing!**
 
       - Does your reply improve the conversation in some way?
-
-      - Be kind to your fellow community members.
-
-      - Constructive criticism is welcome, but criticize *ideas*, not people.
-
-      For more, [see our community guidelines](/guidelines). This panel will only appear for your first %{education_posts_text}.
 
     avatar: |
       ### How about a new picture for your account?
 
       You've posted a few topics and replies, but your avatar isn't as unique as you are -- it's the same default avatar all new users have.
 
-      Have you considered **[visiting your user profile](%{profile_path})** and uploading a custom image that represents you?
-
-      It's easier to follow community discussions and find interesting people in conversations when everyone has a unique avatar!
-
     sequential_replies: |
       ### Consider replying to several posts at once
 
       Rather than many sequential replies to a topic, please consider a single reply that includes quotes from previous posts or @name references.
-
-      You can edit your previous reply to add a quote by highlighting text and selecting the <b>quote reply</b> button that appears.
-
-      It's easier for everyone to read topics that have fewer in-depth replies versus lots of small, individual replies.
 
     dominating_topic: |
       ### Let others join the conversation
@@ -251,9 +231,7 @@ en:
     too_many_replies: |
       ### You have reached the reply limit for this topic
 
-      We're sorry, but new users are temporarily limited to %{newuser_max_replies_per_topic} replies in the same topic.
-
-      Instead of adding another reply, please consider editing your previous replies, or visiting other topics.
+      New users are temporarily limited to %{newuser_max_replies_per_topic} replies in the same topic.
 
     reviving_old_topic: |
       ### Revive this topic?
@@ -1911,7 +1889,7 @@ en:
         If the above link is not clickable, try copying and pasting it into the address bar of your web browser.
 
   page_not_found:
-    title: "The page you requested doesn't exist or is private."
+    title: "File not found - 404 error"
     popular_topics: "Popular"
     recent_topics: "Recent"
     see_more: "More"

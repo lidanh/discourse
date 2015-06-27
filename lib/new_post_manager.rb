@@ -28,15 +28,31 @@ class NewPostManager
     @sorted_handlers.sort_by! {|h| -h[:priority]}
   end
 
-  def self.user_needs_approval?(user)
-    return false if user.staff?
+  def self.user_needs_approval?(manager)
+    return false if manager.user.staff?
 
-    (user.post_count < SiteSetting.approve_post_count) ||
-      (user.trust_level < SiteSetting.approve_unless_trust_level.to_i)
+    has_censored_words?(manager.args[:raw]) ||
+    (manager.user.post_count < SiteSetting.approve_post_count) ||
+      (manager.user.trust_level < SiteSetting.approve_unless_trust_level.to_i)
+  end
+
+  def self.has_censored_words?(message)
+    censored = SiteSetting.censored_words
+
+    return false if  !censored || censored.length == 0
+
+    censorRegexp = ""
+
+    split = censored.split("|")
+    if (split && split.length)
+      censorRegexp = Regexp.new("\\b(?:" + split.map { |word| "(" + word + ")" }.join("|") + ")\\b", Regexp::IGNORECASE | Regexp::MULTILINE)
+    end
+
+    message.scan(censorRegexp).length > 0
   end
 
   def self.default_handler(manager)
-    manager.enqueue('default') if user_needs_approval?(manager.user)
+    manager.enqueue('default') if user_needs_approval?(manager)
   end
 
   def self.queue_enabled?

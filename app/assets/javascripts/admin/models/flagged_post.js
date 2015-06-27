@@ -39,8 +39,8 @@ Discourse.FlaggedPost = Discourse.Post.extend({
     if (!disposition) { return null; }
     var icon, title = I18n.t('admin.flags.dispositions.' + disposition);
     switch (disposition) {
-      case "deferred": { icon = "fa-external-link"; break; }
-      case "agreed": { icon = "fa-thumbs-o-up"; break; }
+      case "deferred": { icon = "fa-thumbs-o-down"; break; }
+      case "agreed": { icon = "fa-trash"; break; }
       case "disagreed": { icon = "fa-thumbs-o-down"; break; }
     }
     return "<i class='fa " + icon + "' title='" + title + "'></i>";

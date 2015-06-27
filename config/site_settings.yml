@@ -371,13 +371,13 @@ posting:
     default: 15
   enable_private_messages: false
   ninja_edit_window: 300
-  post_edit_time_limit: 86400
+  post_edit_time_limit: 0
   edit_history_visible_to_public:
     client: true
     default: true
   delete_removed_posts_after:
     client: true
-    default: 24
+    default: 0
     min: 0
   traditional_markdown_linebreaks:
     client: true

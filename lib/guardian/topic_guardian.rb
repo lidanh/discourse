@@ -43,7 +43,7 @@ module TopicGuardian
 
   def can_delete_topic?(topic)
     !topic.trashed? &&
-    is_staff? &&
+    (is_staff? || is_my_own?(topic)) &&
     !(Category.exists?(topic_id: topic.id)) &&
     !Discourse.static_doc_topic_ids.include?(topic.id)
   end
