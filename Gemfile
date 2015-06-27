@@ -183,7 +183,7 @@ end
 
 gem 'rmmseg-cpp', require: false
 
-gem 'logster'
+gem 'logster', :git => 'https://github.com/lidanh/logster.git'
 
 # perftools only works on 1.9 atm
 group :profile do
